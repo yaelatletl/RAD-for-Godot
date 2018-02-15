@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://pl3d/Player3d.gd" type="Script" id=1]
+[ext_resource path="res://BaseGD/pl3d/Player3d.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleShape" id=1]
 
-radius = 1.0
-height = 1.78442
+radius = 0.39852
+height = 1.2
 
 [node name="KinematicBody" type="KinematicBody"]
 
@@ -27,25 +27,27 @@ keep_jump_inertia = true
 air_idle_deaccel = false
 accel = 19.0
 deaccel = 14.0
+sharp_turn_threshold = 140
+JumpHeight = 7.0
 WALKSPEED = null
 RUNSPEED = null
 Playermodel = null
 worldsize = null
 active = true
-view_sensitivity = 5
+view_sensitivity = 0.3
 grav = 9.8
 max_speed = 3.1
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.11795, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
 shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
 [node name="Camera" type="Camera" parent="." index="1"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.37875, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -62,7 +64,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Yaw" type="Position3D" parent="." index="2"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2884, -0.780969 )
 _sections_unfolded = [ "Transform" ]
 
 
