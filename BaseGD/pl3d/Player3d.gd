@@ -57,7 +57,7 @@ export(float) var view_sensitivity = 5
 export(float) var grav = 9.8
 var gravity = Vector3(0,-grav,0)
 
-var max_speed = WALKSPEED
+var max_speed
 var velocity = Vector3()
 var linear_velocity=Vector3()
 
@@ -115,11 +115,11 @@ func _physics_process(delta):
 	var aim = $Camera.get_global_transform().basis
 
 	if (Input.is_action_pressed("move_forwards")):
-		dir += aim[2]
+		dir -= aim[2]
 	if (Input.is_action_pressed("move_backwards")):
 		dir += aim[2]
 	if (Input.is_action_pressed("move_left")):
-		dir += aim[0]
+		dir -= aim[0]
 	if (Input.is_action_pressed("move_right")):
 		dir += aim[0]
 
@@ -150,7 +150,7 @@ func _physics_process(delta):
 				hspeed = 0
 
 		horizontal_velocity = hdir*hspeed
-
+#Yaw is a placeholder for the actual model that is going to be used
 		var mesh_xform = $Yaw.get_transform()
 		var facing_mesh = -mesh_xform.basis[0].normalized()
 		facing_mesh = (facing_mesh - up*facing_mesh.dot(up)).normalized()
@@ -224,7 +224,7 @@ func _ready():
 
 		#get_node("Crosshair").set_crosshair(1)
 
-	##Ported from eco-controller, may not work.
+	##Ported succesfuly from eco-controller
 func _input(ev):
 
 	if not active:
