@@ -13,7 +13,6 @@ const CHAR_SCALE = Vector3(0.3, 0.3, 0.3)
 
 var facing_dir = Vector3(1, 0, 0)
 var movement_dir = Vector3()
-
 var jumping = false
 
 export(int) var turn_speed = 40
@@ -24,7 +23,11 @@ export(float) var deaccel = 14.0
 export(float) var sharp_turn_threshold = 140
 export(float) var JumpHeight = 7.0
 
-
+export(bool) var AllowChangeCamera = false
+export(bool) var FPSCamera = true
+export(bool) var thRDPersCamera = false
+export(bool) var RPGCamera = false
+export(bool) var TopDownCamera = false
 
 var prev_shoot = false
 
@@ -57,7 +60,7 @@ export(float) var view_sensitivity = 5
 export(float) var grav = 9.8
 var gravity = Vector3(0,-grav,0)
 
-var max_speed
+var max_speed = 0.0
 var velocity = Vector3()
 var linear_velocity=Vector3()
 
@@ -110,10 +113,9 @@ func _physics_process(delta):
 	var hspeed = horizontal_velocity.length() # Horizontal speed
 
 
-
+#Movement 
 	var dir = Vector3() # Where does the player intend to walk to
-	var aim = $Camera.get_global_transform().basis
-
+	var aim = $FPSCamera.get_global_transform().basis
 	if (Input.is_action_pressed("move_forwards")):
 		dir -= aim[2]
 	if (Input.is_action_pressed("move_backwards")):
@@ -150,6 +152,7 @@ func _physics_process(delta):
 				hspeed = 0
 
 		horizontal_velocity = hdir*hspeed
+		
 #Yaw is a placeholder for the actual model that is going to be used
 		var mesh_xform = $Yaw.get_transform()
 		var facing_mesh = -mesh_xform.basis[0].normalized()
@@ -207,7 +210,32 @@ func _physics_process(delta):
 		#get_node("sound_shoot").play()
 
 	prev_shoot = shoot_attempt
-
+	
+	if AllowChangeCamera:
+		if Input.is_action_pressed("cameraFPS"):
+			$FPSCamera.make_current()
+			get_node("target/camera").clear_current()
+			$TopDownCamera.clear_current()
+			get_node("FPSCamera/3RDPersCamera").clear_current()
+		
+		if Input.is_action_pressed("camera3RD"):
+			get_node("FPSCamera/3RDPersCamera").make_current()
+			$FPSCamera.clear_current()
+			get_node("target/camera").clear_current()
+			$TopDownCamera.clear_current()
+		
+		if Input.is_action_pressed("cameraPlat"):
+			get_node("target/camera").make_current()
+			$FPSCamera.clear_current()
+			$TopDownCamera.clear_current()
+			get_node("FPSCamera/3RDPersCamera").clear_current()
+		
+		if Input.is_action_pressed("cameraTop"):
+			$TopDownCamera.make_current()
+			$FPSCamera.make_current()
+			get_node("target/camera").clear_current()
+			get_node("FPSCamera/3RDPersCamera").clear_current()
+			
 	#if (is_on_floor()):
 		#get_node("AnimationTreePlayer").blend2_node_set_amount("walk", hspeed/max_speed)
 
@@ -218,18 +246,11 @@ func _physics_process(delta):
 func _ready():
 #	get_node("AnimationTreePlayer").set_active(true)
 	set_process_input(true)
-	set_process(true)
+	#set_process(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
-		#get_node("Crosshair").set_crosshair(1)
 
-	##Ported succesfuly from eco-controller
-func _input(ev):
+	
 
-	if not active:
-		return
-	if (ev is InputEventMouseMotion):
-		yaw = yaw - ev.relative.x * view_sensitivity
-		pitch = clamp(pitch - ev.relative.y * view_sensitivity,-4500,4500)
-		$Camera.rotation_degrees = Vector3(deg2rad(pitch), deg2rad(yaw), 0)
+
