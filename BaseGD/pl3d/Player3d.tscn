@@ -13,7 +13,7 @@ height = 1.2
 
 [sub_resource type="SphereShape" id=2]
 
-radius = 0.0462334
+radius = 0.330527
 
 [sub_resource type="PrismMesh" id=3]
 
@@ -56,6 +56,7 @@ JumpHeight = 7.0
 AllowChangeCamera = false
 FPSCamera = true
 thRDPersCamera = false
+fixpos = 0.5
 RPGCamera = false
 TopDownCamera = false
 WALKSPEED = 3.1
@@ -93,7 +94,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="3RDPersCamera" type="Camera" parent="FPSCamera" index="0"]
 
-transform = Transform( 0.996848, -0.0300684, 0.073413, 0, 0.925389, 0.379019, -0.0793321, -0.377824, 0.922472, 0.496263, 0.746838, 1.07246 )
+transform = Transform( 0.997858, -0.0247958, 0.0605398, 0.0132274, 0.982746, 0.184489, -0.0640698, -0.183292, 0.980968, 0.497637, 0.587095, 1.46373 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -111,7 +112,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CameraCollision" type="KinematicBody" parent="FPSCamera" index="1"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133426, 0 )
+transform = Transform( 0.999903, 0, -0.0139474, -0.00282001, 0.979347, -0.202169, 0.0136593, 0.202189, 0.979251, -0.00137395, 0.516047, 1.64668 )
 input_ray_pickable = false
 input_capture_on_drag = false
 collision_layer = 1
@@ -128,7 +129,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="FPSCamera/CameraCollision" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.476892, 0.694477, 1.18918 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.476892, 0.0157118, -0.0391517 )
 shape = SubResource( 2 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
@@ -211,6 +212,6 @@ autoturn_speed = 50
 
 [node name="CameraOrigin" type="Spatial" parent="." index="5"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489479, 1.96177, 1.22899 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489479, 2.14343, 1.44329 )
 
 

@@ -26,6 +26,7 @@ export(float) var JumpHeight = 7.0
 export(bool) var AllowChangeCamera = false
 export(bool) var FPSCamera = true
 export(bool) var thRDPersCamera = false
+export(float) var fixpos = 0.5
 export(bool) var RPGCamera = false
 export(bool) var TopDownCamera = false
 
