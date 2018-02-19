@@ -37,9 +37,9 @@ func _process(delta):
 			translation.z += delta*0.2
 		else:
 			translation.z -= delta*0.2
-func _fixed_process(delta):
+#func _fixed_process(delta):
 	#move towards target destination
-	move(velocity*delta)
+#	move(velocity*delta)
 	
 	#once target destination is reached
 	#if(get_pos().distance_to(target) <= 20):
