@@ -8,10 +8,10 @@ path.etc2="res://.import/512_anaranjado.png-48fb7c0a8e0776799e59a8e84b3ad022.etc
 [deps]
 
 source_file="res://BaseGD/materiales/texturas/512_anaranjado.png"
-source_md5="0a8787417ae67d47544931eb1168d363"
+source_md5="b90ba0b1bf123e00ad4860de8d04594e"
 
 dest_files=[ "res://.import/512_anaranjado.png-48fb7c0a8e0776799e59a8e84b3ad022.s3tc.stex", "res://.import/512_anaranjado.png-48fb7c0a8e0776799e59a8e84b3ad022.etc2.stex" ]
-dest_md5="2a8592ee9a55f92af4e14c365ac25624"
+dest_md5="312ed16e901bb14afc9291925856b829"
 
 [params]
 
