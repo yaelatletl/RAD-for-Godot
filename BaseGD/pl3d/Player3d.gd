@@ -215,27 +215,27 @@ func _physics_process(delta):
 	if AllowChangeCamera:
 		if Input.is_action_pressed("cameraFPS"):
 			$FPSCamera.make_current()
-			get_node("target/camera").clear_current()
-			$TopDownCamera.clear_current()
-			get_node("FPSCamera/3RDPersCamera").clear_current()
+			#get_node("target/camera").clear_current()
+			#$TopDownCamera.clear_current()
+			#get_node("FPSCamera/3RDPersCamera").clear_current()
 		
 		if Input.is_action_pressed("camera3RD"):
 			get_node("FPSCamera/3RDPersCamera").make_current()
-			$FPSCamera.clear_current()
-			get_node("target/camera").clear_current()
-			$TopDownCamera.clear_current()
+			#$FPSCamera.clear_current()
+			#get_node("target/camera").clear_current()
+			#$TopDownCamera.clear_current()
 		
 		if Input.is_action_pressed("cameraPlat"):
 			get_node("target/camera").make_current()
-			$FPSCamera.clear_current()
-			$TopDownCamera.clear_current()
-			get_node("FPSCamera/3RDPersCamera").clear_current()
+			#$FPSCamera.clear_current()
+			#$TopDownCamera.clear_current()
+			#get_node("FPSCamera/3RDPersCamera").clear_current()
 		
 		if Input.is_action_pressed("cameraTop"):
 			$TopDownCamera.make_current()
-			$FPSCamera.make_current()
-			get_node("target/camera").clear_current()
-			get_node("FPSCamera/3RDPersCamera").clear_current()
+			#$FPSCamera.clear_current()
+			#get_node("target/camera").clear_current()
+			#get_node("FPSCamera/3RDPersCamera").clear_current()
 			
 	#if (is_on_floor()):
 		#get_node("AnimationTreePlayer").blend2_node_set_amount("walk", hspeed/max_speed)
