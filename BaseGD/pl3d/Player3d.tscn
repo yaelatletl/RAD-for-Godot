@@ -14,7 +14,7 @@ height = 1.2
 
 [sub_resource type="SphereShape" id=2]
 
-radius = 0.330527
+radius = 0.245702
 
 [sub_resource type="PrismMesh" id=3]
 
@@ -133,7 +133,7 @@ _sections_unfolded = [ "Transform" ]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.476892, 0.0157118, -0.0391517 )
 shape = SubResource( 2 )
 disabled = false
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
 [node name="Yaw" type="MeshInstance" parent="." index="2"]
 

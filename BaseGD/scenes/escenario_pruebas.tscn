@@ -3,10 +3,10 @@
 [ext_resource path="res://BaseGD/mesh/piso.mesh" type="ArrayMesh" id=1]
 [ext_resource path="res://BaseGD/materiales/test_material_gris.material" type="Material" id=2]
 [ext_resource path="res://BaseGD/mesh/muralla.mesh" type="ArrayMesh" id=3]
-[ext_resource path="res://BaseGD/mesh/Tres/escaleras.tres" type="ArrayMesh" id=4]
-[ext_resource path="res://BaseGD/mesh/colliderEscaleras.shape" type="Shape" id=5]
-[ext_resource path="res://BaseGD/mesh/plataforma2.mesh" type="ArrayMesh" id=6]
-[ext_resource path="res://BaseGD/materiales/test_material_anaranjado.material" type="Material" id=7]
+[ext_resource path="res://BaseGD/mesh/escalera.mesh" type="ArrayMesh" id=4]
+[ext_resource path="res://BaseGD/materiales/test_material_anaranjado.material" type="Material" id=5]
+[ext_resource path="res://BaseGD/mesh/colliderEscaleras.shape" type="Shape" id=6]
+[ext_resource path="res://BaseGD/mesh/plataforma2.mesh" type="ArrayMesh" id=7]
 [ext_resource path="res://BaseGD/mesh/plataforma1.mesh" type="ArrayMesh" id=8]
 [ext_resource path="res://BaseGD/mesh/rampla.mesh" type="ArrayMesh" id=9]
 [ext_resource path="res://BaseGD/mesh/cubo.mesh" type="ArrayMesh" id=10]
@@ -390,12 +390,12 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 4 )
 skeleton = NodePath("..")
-material/0 = null
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo/es_1" index="1"]
 
-shape = ExtResource( 5 )
+shape = ExtResource( 6 )
 disabled = false
 
 [node name="es_2" type="StaticBody" parent="statics/p_pasillo" index="1"]
@@ -425,12 +425,12 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 4 )
 skeleton = NodePath("..")
-material/0 = null
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo/es_2" index="1"]
 
-shape = ExtResource( 5 )
+shape = ExtResource( 6 )
 disabled = false
 
 [node name="p_1" type="StaticBody" parent="statics/p_pasillo" index="2"]
@@ -458,9 +458,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo/p_1" index="1"]
@@ -495,9 +495,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo/p_2" index="1"]
@@ -532,9 +532,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo/p_3" index="1"]
@@ -574,9 +574,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo2/p_1" index="1"]
@@ -611,9 +611,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo2/p_2" index="1"]
@@ -648,9 +648,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo2/p_3" index="1"]
@@ -687,12 +687,12 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 4 )
 skeleton = NodePath("..")
-material/0 = null
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo2/es_1" index="1"]
 
-shape = ExtResource( 5 )
+shape = ExtResource( 6 )
 disabled = false
 
 [node name="es_2" type="StaticBody" parent="statics/p_pasillo2" index="4"]
@@ -722,12 +722,12 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 4 )
 skeleton = NodePath("..")
-material/0 = null
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo2/es_2" index="1"]
 
-shape = ExtResource( 5 )
+shape = ExtResource( 6 )
 disabled = false
 
 [node name="plataformas" type="Spatial" parent="statics" index="7"]
@@ -762,7 +762,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 8 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/plataformas/pla-4" index="1"]
@@ -799,7 +799,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 8 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/plataformas/pla-2" index="1"]
@@ -836,7 +836,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 8 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/plataformas/pla-5" index="1"]
@@ -873,7 +873,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 8 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/plataformas/pla-3" index="1"]
@@ -909,7 +909,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 9 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/rampla" index="1"]
@@ -943,7 +943,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = ExtResource( 8 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 7 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/StaticBody" index="1"]
@@ -1147,7 +1147,6 @@ environment = SubResource( 11 )
 [node name="Player" parent="." index="4" instance=ExtResource( 13 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38339, 0, 0 )
-JumpHeight = 2.0
-FPSCamera = false
+AllowChangeCamera = true
 
 

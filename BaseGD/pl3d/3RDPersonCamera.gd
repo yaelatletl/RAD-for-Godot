@@ -21,9 +21,25 @@ func _process(delta):
 	
 	
 	
-	if translation != origin.translation and not (is_on_floor() or is_on_ceiling() or is_on_wall()):
-		#Vector maths to get the [cof] camera to it's place each time it moves
-		translation = translation - delta*(origin.translation-translation).normalized()
+	if translation != Vector3(-0.001374,0.516047,1.64668) and not (is_on_floor() or is_on_ceiling() or is_on_wall()):
+		if translation.x < -0.001374-0.2:
+			translation.x = translation.x + delta
+		if translation.x > -0.001374+0.2:
+			translation.x = translation.x - delta
+			
+		if translation.y < 0.516047-0.2:
+			translation.y = translation.y + delta
+		if translation.y > 0.516047+0.2:
+			translation.y = translation.y - delta
+			
+		if translation.z < 1.64668-0.2:
+			translation.z = translation.z + delta
+		if translation.z > 1.64668+0.2:
+			translation.z = translation.z - delta	
+			
+	print(str(translation))
+	print(str(translation-origin.translation))
+	print(str(origin.translation))
 	#	if translation.x<origin.x:
 	#		translation.x += delta*0.2
 	#	else:
