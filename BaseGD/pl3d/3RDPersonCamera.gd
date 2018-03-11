@@ -22,37 +22,19 @@ func _process(delta):
 	
 	
 	if translation != Vector3(-0.001374,0.516047,1.64668) and not (is_on_floor() or is_on_ceiling() or is_on_wall()):
-		if translation.x < -0.001374-0.2:
+		if translation.x <= -0.001374-0.2:
 			translation.x = translation.x + delta
-		if translation.x > -0.001374+0.2:
+		if translation.x >= -0.001374+0.2:
 			translation.x = translation.x - delta
 			
-		if translation.y < 0.516047-0.2:
+		if translation.y <= 0.516047-0.2:
 			translation.y = translation.y + delta
-		if translation.y > 0.516047+0.2:
+		if translation.y >= 0.516047+0.2:
 			translation.y = translation.y - delta
 			
-		if translation.z < 1.64668-0.2:
+		if translation.z <= 1.64668-0.2:
 			translation.z = translation.z + delta
-		if translation.z > 1.64668+0.2:
+		if translation.z >= 1.64668+0.2:
 			translation.z = translation.z - delta	
 			
-	print(str(translation))
-	print(str(translation-origin.translation))
-	print(str(origin.translation))
-	#	if translation.x<origin.x:
-	#		translation.x += delta*0.2
-	#	else:
-	#		translation.x -= delta*0.2
-
-	#	if translation.y<origin.y:
-	#		translation.y -= delta*0.2
-	#	else:
-	#		translation.y += delta*0.2
-
-		#if translation.z<origin.z:
-		#	translation.z += delta*0.2
-	#	else:
-	#		translation.z -= delta*0.2
-		#var dir = (origin.transform.origin - transform.origin).normalized()
-		#translation = dir*delta
+	

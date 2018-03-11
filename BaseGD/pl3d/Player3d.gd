@@ -15,6 +15,7 @@ var facing_dir = Vector3(1, 0, 0)
 var movement_dir = Vector3()
 var jumping = false
 
+var aimrotation = Vector3()
 export(int) var turn_speed = 40
 export(bool) var keep_jump_inertia = true
 export(bool) var air_idle_deaccel = false
@@ -29,8 +30,10 @@ export(bool) var thRDPersCamera = false
 export(float) var fixpos = 0.5
 export(bool) var RPGCamera = false
 export(bool) var TopDownCamera = false
+var translationcamera
 
 var prev_shoot = false
+
 
 
 
@@ -43,13 +46,8 @@ signal HasObjective
 signal paused
 signal reload_weapon
 
-#Just ignore this variables. They are used for camera.
-var yaw = 0
-var pitch = 0
-var cameraaim = Vector3()
 
-
-#Change this stuff
+#Options
 export (float) var WALKSPEED = 3.1
 export (float) var RUNSPEED = 4.5
 export (PackedScene) var Playermodel
@@ -230,8 +228,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("cameraTop"):
 			$TopDownCamera.make_current()
 			$FPSCamera.restrictaxis = true
-			#get_node("target/camera").clear_current()
-			#get_node("FPSCamera/3RDPersCamera").clear_current()
+			
 			
 	#if (is_on_floor()):
 		#get_node("AnimationTreePlayer").blend2_node_set_amount("walk", hspeed/max_speed)
@@ -239,15 +236,11 @@ func _physics_process(delta):
 	#get_node("AnimationTreePlayer").transition_node_set_current("state", anim)
 	#get_node("AnimationTreePlayer").blend2_node_set_amount("gun", min(shoot_blend, 1.0))
 #	state.set_angular_velocity(Vector3())
-
+	aimrotation = $FPSCamera.rotation_degrees
+	translationcamera=$FPSCamera.get_global_transform().origin
 func _ready():
 #	get_node("AnimationTreePlayer").set_active(true)
 	set_process_input(true)
-	#set_process(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-
-
-	
 
 

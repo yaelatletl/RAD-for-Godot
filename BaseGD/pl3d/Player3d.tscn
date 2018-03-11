@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://BaseGD/pl3d/Player3d.gd" type="Script" id=1]
 [ext_resource path="res://BaseGD/pl3d/FPSCamera.gd" type="Script" id=2]
@@ -15,22 +15,6 @@ height = 1.2
 [sub_resource type="SphereShape" id=2]
 
 radius = 0.245702
-
-[sub_resource type="PrismMesh" id=3]
-
-left_to_right = 0.5
-size = Vector3( 2, 2, 2 )
-subdivide_width = 0
-subdivide_height = 0
-subdivide_depth = 0
-
-[sub_resource type="PrismMesh" id=4]
-
-left_to_right = 0.5
-size = Vector3( 2, 2, 2 )
-subdivide_width = 0
-subdivide_height = 0
-subdivide_depth = 0
 
 [node name="Player" type="KinematicBody"]
 
@@ -135,38 +119,10 @@ shape = SubResource( 2 )
 disabled = false
 _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
-[node name="Yaw" type="MeshInstance" parent="." index="2"]
+[node name="Yaw" type="Spatial" parent="." index="2"]
 
 transform = Transform( 0.405829, 0, 0, 0, 0.336027, -0.0042619, 0, 0.00461637, 0.310227, 0, 0.657452, -0.0413046 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 3 )
-skeleton = NodePath("..")
-material/0 = null
 _sections_unfolded = [ "Transform" ]
-
-[node name="MeshInstance" type="MeshInstance" parent="Yaw" index="0"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1493, -0.0171023 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
-skeleton = NodePath("..")
-material/0 = null
 
 [node name="TopDownCamera" type="Camera" parent="." index="3"]
 
