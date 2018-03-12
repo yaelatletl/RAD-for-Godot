@@ -1,0 +1,6 @@
+[gd_resource type="ConcavePolygonShape" format=2]
+
+[resource]
+
+data = PoolVector3Array( -8, 0, 8, -8, 0, -8, 8, 0, -8, -8, 0, 8, 8, 0, -8, 8, 0, 8 )
+
