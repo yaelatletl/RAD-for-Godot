@@ -7,7 +7,7 @@ func _ready():
 	var origin=$Renderer/Viewport/Camera.get_camera_transform().origin
 	materialin = get_node(Out).materialout
 	materialout = $Renderer/Viewport.get_texture()
-	#$MeshInstance.set_surface_material(0, materialin)
+	$MeshInstance.set_surface_material(0, materialin)
 	var far = $Renderer/Viewport/Camera.far
 	
 
