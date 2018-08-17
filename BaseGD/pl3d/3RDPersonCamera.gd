@@ -8,8 +8,8 @@ var originalpos = Vector3()
 var origin = Vector3()
 var cameramovement
 func _ready():
-	gravity = get_node("../../").gravity
-	cameramovement = get_node("../../").fixpos
+	gravity = get_parent().get_parent().gravity
+	cameramovement = get_node("../..").fixpos
 
 func _process(delta):
 	linear_velocity = move_and_slide(linear_velocity,-gravity.normalized())

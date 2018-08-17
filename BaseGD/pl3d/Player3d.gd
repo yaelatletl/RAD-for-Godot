@@ -14,16 +14,18 @@ const CHAR_SCALE = Vector3(0.3, 0.3, 0.3)
 var facing_dir = Vector3(1, 0, 0)
 var movement_dir = Vector3()
 var jumping = false
-
+export(float) var health = 100
 var aimrotation = Vector3()
 export(int) var turn_speed = 40
 export(bool) var keep_jump_inertia = true
 export(bool) var air_idle_deaccel = false
+export(bool) var fixed_up = true
 export(float) var accel = 19.0
 export(float) var deaccel = 14.0
 export(float) var sharp_turn_threshold = 140
 export(float) var JumpHeight = 7.0
 
+export(int) var Team = 1
 export(bool) var AllowChangeCamera = false
 export(bool) var FPSCamera = true
 export(bool) var thRDPersCamera = false
@@ -33,7 +35,8 @@ export(bool) var TopDownCamera = false
 var translationcamera
 
 var prev_shoot = false
-
+var ismoving = false
+var up
 
 
 
@@ -48,12 +51,12 @@ signal reload_weapon
 
 
 #Options
-export (float) var WALKSPEED = 3.1
-export (float) var RUNSPEED = 4.5
-export (PackedScene) var Playermodel
-export (Vector3) var worldsize #This should be a 3d area that delmits the space of the scene
+export(float) var WALKSPEED = 3.1
+export(float) var RUNSPEED = 4.5
+export(PackedScene) var Playermodel
 export(bool) var active=true
 export(float) var view_sensitivity = 5
+export var weight= 1
 
 ##Physics
 export(float) var grav = 9.8
@@ -62,6 +65,7 @@ var gravity = Vector3(0,-grav,0)
 var max_speed = 0.0
 var velocity = Vector3()
 var linear_velocity=Vector3()
+var hspeed
 
 
 #Rotates the model to where the camera points
@@ -101,35 +105,53 @@ func _physics_process(delta):
 		max_speed=WALKSPEED
 
 
-	linear_velocity += gravity*delta # Apply gravity
+	linear_velocity += gravity*delta/weight # Apply gravity
 
 	var anim = ANIM_FLOOR
-
-	var up = -gravity.normalized() # (up is against gravity)
+	if fixed_up:
+		 up = Vector3(0,1,0) # (up is against gravity)
+	else:
+		 up = -gravity.normalized()
 	var vertical_velocity = up.dot(linear_velocity) # Vertical velocity
 	var horizontal_velocity = linear_velocity - up*vertical_velocity # Horizontal velocity
 	var hdir = horizontal_velocity.normalized() # Horizontal direction
-	var hspeed = horizontal_velocity.length() # Horizontal speed
+	hspeed = horizontal_velocity.length() # Horizontal speed
 
 
-#Movement 
+
+#Movement
 	var dir = Vector3() # Where does the player intend to walk to
-	var aim = $FPSCamera.get_global_transform().basis
+
+
+#THIS BLOCK IS INTENDED FOR FPS CONTROLLER USE ONLY
+	var aim = $Pivot/FPSCamera.get_global_transform().basis
 	if (Input.is_action_pressed("move_forwards")):
 		dir -= aim[2]
+		ismoving = true
+	else:
+		ismoving = false
 	if (Input.is_action_pressed("move_backwards")):
 		dir += aim[2]
+		ismoving = true
+	else:
+		ismoving = false
 	if (Input.is_action_pressed("move_left")):
 		dir -= aim[0]
+
+		$Pivot/FPSCamera.Znoice =  1*hspeed
+
 	if (Input.is_action_pressed("move_right")):
 		dir += aim[0]
+		$Pivot/FPSCamera.Znoice =  -1*hspeed
 
 	var jump_attempt = Input.is_action_pressed("jump")
 	var shoot_attempt = Input.is_action_pressed("shoot")
+#END OF THE BLOCK
+
 
 	var target_dir = (dir - up*dir.dot(up)).normalized()
 
-	if (is_on_floor()):
+	if (is_on_floor()): #Only lets the character change it's facing direction when it's on the floor.
 		var sharp_turn = hspeed > 0.1 and rad2deg(acos(target_dir.dot(hdir))) > sharp_turn_threshold
 
 		if (dir.length() > 0.1 and !sharp_turn):
@@ -140,18 +162,23 @@ func _physics_process(delta):
 				#else
 				hdir = adjust_facing(hdir, target_dir, delta, 1.0/hspeed*turn_speed, up)
 				facing_dir = hdir
+
 			else:
 				hdir = target_dir
 
+
 			if (hspeed < max_speed):
 				hspeed += accel*delta
+			else:
+				if hspeed > 0:
+					hspeed -= deaccel*delta
 		else:
 			hspeed -= deaccel*delta
 			if (hspeed < 0):
 				hspeed = 0
 
 		horizontal_velocity = hdir*hspeed
-		
+
 #Yaw is a placeholder for the actual model that is going to be used
 		var mesh_xform = $Yaw.get_transform()
 		var facing_mesh = -mesh_xform.basis[0].normalized()
@@ -209,38 +236,38 @@ func _physics_process(delta):
 		#get_node("sound_shoot").play()
 
 	prev_shoot = shoot_attempt
-	
+
 	if AllowChangeCamera:
 		if Input.is_action_pressed("cameraFPS"):
-			$FPSCamera.make_current()
-			$FPSCamera.restrictaxis = false
+			$Pivot/FPSCamera.make_current()
+			$Pivot/FPSCamera.restrictaxis = false
 
-		
+
 		if Input.is_action_pressed("camera3RD"):
-			get_node("FPSCamera/3RDPersCamera").make_current()
-			$FPSCamera.restrictaxis = false
-		
-		if Input.is_action_pressed("cameraPlat"):
-			get_node("target/camera").make_current()
-			$FPSCamera.restrictaxis = true
-			
-		
+			get_node("Pivot/3RDPersCamera").make_current()
+			$Pivot/FPSCamera.restrictaxis = false
+
+		#if Input.is_action_pressed("cameraPlat"):
+		#	get_node("target/camera").make_current()
+		#	$Pivot/FPSCamera.restrictaxis = true
+
+
 		if Input.is_action_pressed("cameraTop"):
 			$TopDownCamera.make_current()
-			$FPSCamera.restrictaxis = true
-			
-			
+			$Pivot/FPSCamera.restrictaxis = true
+
+
 	#if (is_on_floor()):
 		#get_node("AnimationTreePlayer").blend2_node_set_amount("walk", hspeed/max_speed)
 
 	#get_node("AnimationTreePlayer").transition_node_set_current("state", anim)
 	#get_node("AnimationTreePlayer").blend2_node_set_amount("gun", min(shoot_blend, 1.0))
 #	state.set_angular_velocity(Vector3())
-	aimrotation = $FPSCamera.rotation_degrees
-	translationcamera=$FPSCamera.get_global_transform().origin
+	aimrotation = $Pivot/FPSCamera.rotation_degrees
+	translationcamera=$Pivot/FPSCamera.get_global_transform().origin
 func _ready():
+	CHAR_SCALE = scale
+	print(get_rid())
 #	get_node("AnimationTreePlayer").set_active(true)
 	set_process_input(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-

@@ -1149,14 +1149,16 @@ environment = SubResource( 11 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.84043, 1.60624, 0 )
 AllowChangeCamera = true
 
-[node name="Portal1" parent="." index="5" instance=ExtResource( 14 )]
+[node name="Portal3" parent="." index="5" instance=ExtResource( 14 )]
 
-transform = Transform( -0.0120495, 0, 0.999927, 0, 1, 0, -0.999927, 0, -0.0120495, -7.69297, 0, 0 )
+transform = Transform( -0.999691, 0, -0.0248586, 0, 1, 0, 0.0248586, 0, -0.999691, 4.58041, 0, 7.50327 )
 Out = NodePath("../Portal2")
+Player = NodePath("../Player")
 
 [node name="Portal2" parent="." index="6" instance=ExtResource( 14 )]
 
-transform = Transform( -0.999691, 0, -0.0248586, 0, 1, 0, 0.0248586, 0, -0.999691, -5.62168, 0, 7.50327 )
-Out = NodePath("../Portal1")
+transform = Transform( -0.999691, 0, -0.0248586, 0, 1, 0, 0.0248586, 0, -0.999691, -6.60881, 0.217871, 5.79877 )
+Out = NodePath("../Portal3")
+Player = NodePath("../Player")
 
 

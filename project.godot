@@ -18,10 +18,18 @@ config/icon="res://icon.png"
 
 RAD="*res://Helpers.gd"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=1280
 window/size/height=720
+
+[editor_plugins]
+
+enabled=PoolStringArray( "PersistenceNode", "WorldManagement" )
 
 [input]
 
@@ -45,3 +53,12 @@ cameraPlat=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name
  ]
 cameraTop=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":48,"unicode":0,"echo":false,"script":null)
  ]
+
+[physics]
+
+3d/physics_engine="Bullet"
+
+[rendering]
+
+threads/thread_model=2
+quality/filters/msaa=1

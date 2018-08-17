@@ -14,7 +14,7 @@ var min_height = 0
 func _physics_process(dt):
 	var target = get_parent().get_global_transform().origin
 	var pos = get_global_transform().origin
-	var up = Vector3(0, 1, 0)
+	var up = -(get_parent().get_parent().gravity)
 	
 	var delta = pos - target
 	
@@ -58,7 +58,7 @@ func _physics_process(dt):
 
 	pos = target + delta
 	
-	look_at_from_position(pos, target, up)
+	look_at(target, up)
 	
 	# Turn a little up or down
 	var t = get_transform()

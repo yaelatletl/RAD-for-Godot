@@ -1,68 +1,114 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=41 format=2]
 
-[ext_resource path="res://BaseGD/mesh/piso.mesh" type="ArrayMesh" id=1]
-[ext_resource path="res://BaseGD/materiales/test_material_gris.material" type="Material" id=2]
-[ext_resource path="res://BaseGD/mesh/muralla.mesh" type="ArrayMesh" id=3]
-[ext_resource path="res://BaseGD/mesh/escalera.mesh" type="ArrayMesh" id=4]
-[ext_resource path="res://BaseGD/materiales/test_material_anaranjado.material" type="Material" id=5]
-[ext_resource path="res://BaseGD/mesh/colliderEscaleras.shape" type="Shape" id=6]
-[ext_resource path="res://BaseGD/mesh/plataforma2.mesh" type="ArrayMesh" id=7]
-[ext_resource path="res://BaseGD/mesh/plataforma1.mesh" type="ArrayMesh" id=8]
-[ext_resource path="res://BaseGD/mesh/rampla.mesh" type="ArrayMesh" id=9]
-[ext_resource path="res://BaseGD/borrowed/water_shader/WaterShaderMaterial.tres" type="Material" id=10]
-[ext_resource path="res://BaseGD/mesh/cubo.mesh" type="ArrayMesh" id=11]
-[ext_resource path="res://BaseGD/materiales/test_material_celeste.material" type="Material" id=12]
-[ext_resource path="res://BaseGD/mesh/slide.mesh" type="ArrayMesh" id=13]
-[ext_resource path="res://BaseGD/pl3d/Player3d.tscn" type="PackedScene" id=14]
-[ext_resource path="res://BaseGD/scenes/Camera.gd" type="Script" id=15]
+[ext_resource path="res://addons/WorldManagement/WorldManagement.gd" type="Script" id=1]
+[ext_resource path="res://addons/WorldManagement/icon.png" type="Texture" id=2]
+[ext_resource path="res://BaseGD/mesh/piso.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://BaseGD/materiales/test_material_gris.material" type="Material" id=4]
+[ext_resource path="res://BaseGD/mesh/muralla.mesh" type="ArrayMesh" id=5]
+[ext_resource path="res://BaseGD/mesh/escalera.mesh" type="ArrayMesh" id=6]
+[ext_resource path="res://BaseGD/materiales/test_material_anaranjado.material" type="Material" id=7]
+[ext_resource path="res://BaseGD/mesh/colliderEscaleras.shape" type="Shape" id=8]
+[ext_resource path="res://BaseGD/mesh/plataforma2.mesh" type="ArrayMesh" id=9]
+[ext_resource path="res://BaseGD/mesh/plataforma1.mesh" type="ArrayMesh" id=10]
+[ext_resource path="res://BaseGD/mesh/rampla.mesh" type="ArrayMesh" id=11]
+[ext_resource path="res://BaseGD/mesh/cubo.mesh" type="ArrayMesh" id=12]
+[ext_resource path="res://BaseGD/materiales/test_material_celeste.material" type="Material" id=13]
+[ext_resource path="res://BaseGD/mesh/slide.mesh" type="ArrayMesh" id=14]
+[ext_resource path="res://TheTowers.png" type="Texture" id=15]
+[ext_resource path="res://BaseGD/pl3d/Player3d.tscn" type="PackedScene" id=16]
+[ext_resource path="res://BaseGD/scenes/Camera.gd" type="Script" id=17]
+[ext_resource path="res://BaseShapes/PfhorPrueba.tscn" type="PackedScene" id=18]
+[ext_resource path="res://BaseGD/Workstations/BasicWorkStation.tscn" type="PackedScene" id=19]
+[ext_resource path="res://addons/WorldManagement/GravityArea.gd" type="Script" id=20]
+[ext_resource path="res://addons/WorldManagement/Gravicon.png" type="Texture" id=21]
 
-[sub_resource type="ConvexPolygonShape" id=1]
+[sub_resource type="NavigationMesh" id=1]
 
-resource_name = "PisoPolygonShape"
+vertices = PoolVector3Array( -8, 0, 8, 8, 0, -8, -8, 0, -8, 8, 0, 8 )
+polygons = [ PoolIntArray( 0, 2, 1 ), PoolIntArray( 0, 1, 3 ) ]
+sample_partition_type/sample_partition_type = 0
+cell/size = 0.3
+cell/height = 0.2
+agent/height = 2.0
+agent/radius = 0.6
+agent/max_climb = 0.9
+agent/max_slope = 45.0
+region/min_size = 8.0
+region/merge_size = 20.0
+edge/max_length = 12.0
+edge/max_error = 1.3
+polygon/verts_per_poly = 6.0
+detail/sample_distance = 6.0
+detail/sample_max_error = 1.0
+filter/low_hanging_obstacles = false
+filter/ledge_spans = false
+filter/filter_walkable_low_height_spans = false
+
+[sub_resource type="ConvexPolygonShape" id=2]
+
 points = PoolVector3Array( -8, 0, 8, 8, 0, -8, -8, 0, -8, 8, 0, 8 )
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="BoxShape" id=2]
-
-extents = Vector3( 0.3, 1, 8 )
-
 [sub_resource type="BoxShape" id=3]
 
+extents = Vector3( 0.220075, 3.55107, 8 )
+
+[sub_resource type="PlaneMesh" id=4]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+size = Vector2( 2, 2 )
+subdivide_width = 0
+subdivide_depth = 0
+
+[sub_resource type="BoxShape" id=5]
+
 extents = Vector3( 1, 0.1, 0.5 )
-
-[sub_resource type="BoxShape" id=4]
-
-extents = Vector3( 0.5, 0.1, 0.5 )
-
-[sub_resource type="ConcavePolygonShape" id=5]
-
-resource_name = "RamplaPolygonShape"
-data = PoolVector3Array( 0.3999, 0.916, 0.5, 0.3999, 0.916, -0.5, 0.3999, 0, -0.5, -0.5996, 0, -0.5, -0.5996, 0, 0.5, 0.3999, 0, 0.5, 0.3999, 0.916, 0.5, -0.5996, 0, 0.5, -0.5996, 0, -0.5, 0.3999, 0, -0.5, 0.3999, 0.916, -0.5, -0.5996, 0, -0.5, 0.3999, 0, 0.5, -0.5996, 0, 0.5, 0.3999, 0.916, 0.5, 0.3999, 0.916, 0.5, 0.3999, 0, -0.5, 0.3999, 0, 0.5, -0.5996, 0, -0.5, 0.3999, 0, 0.5, 0.3999, 0, -0.5, 0.3999, 0.916, 0.5, -0.5996, 0, -0.5, 0.3999, 0.916, -0.5 )
-_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="BoxShape" id=6]
 
 extents = Vector3( 0.5, 0.1, 0.5 )
 
-[sub_resource type="SphereMesh" id=15]
+[sub_resource type="NavigationMesh" id=7]
 
-radius = 1.0
-height = 2.0
-radial_segments = 64
-rings = 32
-is_hemisphere = false
+vertices = PoolVector3Array( 0.399902, 0.916016, 0.5, 0.399902, 0.916016, -0.5, 0.399902, 0, -0.5, -0.599609, 0, -0.5, -0.599609, 0, 0.5, 0.399902, 0, 0.5, 0.399902, 0.916016, 0.5, -0.599609, 0, 0.5, -0.599609, 0, -0.5, 0.399902, 0, -0.5, 0.399902, 0.916016, -0.5, -0.599609, 0, -0.5, 0.399902, 0, 0.5, -0.599609, 0, 0.5, 0.399902, 0.916016, 0.5, 0.399902, 0, 0.5, 0.399902, 0, -0.5, 0.399902, 0.916016, -0.5 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 4, 5 ), PoolIntArray( 6, 7, 8 ), PoolIntArray( 9, 10, 11 ), PoolIntArray( 12, 13, 14 ), PoolIntArray( 0, 2, 15 ), PoolIntArray( 3, 5, 16 ), PoolIntArray( 6, 8, 17 ) ]
+sample_partition_type/sample_partition_type = 0
+cell/size = 0.3
+cell/height = 0.2
+agent/height = 2.0
+agent/radius = 0.6
+agent/max_climb = 0.9
+agent/max_slope = 45.0
+region/min_size = 8.0
+region/merge_size = 20.0
+edge/max_length = 12.0
+edge/max_error = 1.3
+polygon/verts_per_poly = 6.0
+detail/sample_distance = 6.0
+detail/sample_max_error = 1.0
+filter/low_hanging_obstacles = false
+filter/ledge_spans = false
+filter/filter_walkable_low_height_spans = false
 
-[sub_resource type="BoxShape" id=7]
+[sub_resource type="ConcavePolygonShape" id=8]
 
-extents = Vector3( 1, 1, 1 )
+data = PoolVector3Array( 0.3999, 0.916, 0.5, 0.3999, 0.916, -0.5, 0.3999, 0, -0.5, -0.5996, 0, -0.5, -0.5996, 0, 0.5, 0.3999, 0, 0.5, 0.3999, 0.916, 0.5, -0.5996, 0, 0.5, -0.5996, 0, -0.5, 0.3999, 0, -0.5, 0.3999, 0.916, -0.5, -0.5996, 0, -0.5, 0.3999, 0, 0.5, -0.5996, 0, 0.5, 0.3999, 0.916, 0.5, 0.3999, 0.916, 0.5, 0.3999, 0, -0.5, 0.3999, 0, 0.5, -0.5996, 0, -0.5, 0.3999, 0, 0.5, 0.3999, 0, -0.5, 0.3999, 0.916, 0.5, -0.5996, 0, -0.5, 0.3999, 0.916, -0.5 )
+_sections_unfolded = [ "Resource" ]
 
-[sub_resource type="BoxShape" id=8]
+[sub_resource type="BoxShape" id=9]
 
 extents = Vector3( 0.5, 0.1, 0.5 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="BoxShape" id=10]
 
-resource_name = "slide"
+extents = Vector3( 1, 1, 1 )
+
+[sub_resource type="BoxShape" id=11]
+
+extents = Vector3( 4.24156, 0.1, 2.87976 )
+
+[sub_resource type="Animation" id=12]
+
 length = 6.0
 loop = true
 step = 0.1
@@ -79,31 +125,15 @@ tracks/0/keys = {
 "values": [ Vector3( 2, 0, 0 ), Vector3( 6.2, 0, 0 ), Vector3( 2, 0, 0 ) ]
 }
 
-[sub_resource type="ProceduralSky" id=10]
+[sub_resource type="PanoramaSky" id=13]
 
 radiance_size = 4
-sky_top_color = Color( 0.0470588, 0.454902, 0.976471, 1 )
-sky_horizon_color = Color( 0.556863, 0.823529, 0.909804, 1 )
-sky_curve = 0.25
-sky_energy = 1.0
-ground_bottom_color = Color( 0.101961, 0.145098, 0.188235, 1 )
-ground_horizon_color = Color( 0.482353, 0.788235, 0.952941, 1 )
-ground_curve = 0.01
-ground_energy = 1.0
-sun_color = Color( 1, 1, 1, 1 )
-sun_latitude = 35.0
-sun_longitude = 0.0
-sun_angle_min = 1.0
-sun_angle_max = 100.0
-sun_curve = 0.05
-sun_energy = 16.0
-texture_size = 2
-_sections_unfolded = [ "Sun" ]
+panorama = ExtResource( 15 )
 
-[sub_resource type="Environment" id=11]
+[sub_resource type="Environment" id=14]
 
 background_mode = 2
-background_sky = SubResource( 10 )
+background_sky = SubResource( 13 )
 background_sky_custom_fov = 0.0
 background_color = Color( 0, 0, 0, 1 )
 background_energy = 1.0
@@ -180,20 +210,20 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Ambient Light", "Background" ]
 
-[sub_resource type="PlaneMesh" id=12]
+[sub_resource type="PlaneMesh" id=15]
 
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector2( 2, 2 )
 subdivide_width = 0
 subdivide_depth = 0
 
-[sub_resource type="ViewportTexture" id=13]
+[sub_resource type="ViewportTexture" id=16]
 
 resource_local_to_scene = true
-flags = 68
-viewport_path = NodePath("Portal/Viewport")
-_sections_unfolded = [ "Resource" ]
+flags = 0
+viewport_path = NodePath("Portal2/Viewport")
 
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="SpatialMaterial" id=17]
 
 resource_local_to_scene = true
 render_priority = 0
@@ -218,13 +248,18 @@ params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
 albedo_color = Color( 1, 1, 1, 1 )
-albedo_texture = SubResource( 13 )
+albedo_texture = SubResource( 16 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
 roughness = 0.0
 roughness_texture_channel = 0
-emission_enabled = false
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = SubResource( 16 )
 normal_enabled = false
 rim_enabled = false
 clearcoat_enabled = false
@@ -245,13 +280,54 @@ uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
-_sections_unfolded = [ "Albedo", "Flags", "Parameters", "Resource", "UV1" ]
+_sections_unfolded = [ "Albedo", "Emission", "Flags", "Parameters", "Resource", "UV1" ]
+
+[sub_resource type="ViewportTexture" id=18]
+
+resource_local_to_scene = true
+flags = 0
+viewport_path = NodePath("Portal/Viewport")
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="BoxShape" id=19]
+
+extents = Vector3( 2.19565, 3.68347, 1.97051 )
 
 [node name="mundo" type="Spatial" index="0"]
 
-[node name="statics" type="Spatial" parent="." index="0"]
+_sections_unfolded = [ "Transform" ]
 
-[node name="piso" type="StaticBody" parent="statics" index="0"]
+[node name="statics" type="Navigation" parent="." index="0"]
+
+up_vector = Vector3( 0, 1, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+
+[node name="piso2" type="MeshInstance" parent="statics" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0330715, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 3 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 4 )
+_sections_unfolded = [ "material" ]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="statics/piso2" index="0"]
+
+navmesh = SubResource( 1 )
+enabled = true
+
+[node name="piso" type="StaticBody" parent="statics" index="1"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -262,30 +338,13 @@ bounce = 0.0
 constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
 
-[node name="piso" type="MeshInstance" parent="statics/piso" index="0"]
+[node name="CollisionShape" type="CollisionShape" parent="statics/piso" index="0"]
 
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = ExtResource( 1 )
-skeleton = NodePath("..")
-material/0 = ExtResource( 2 )
-_sections_unfolded = [ "material" ]
-
-[node name="CollisionShape" type="CollisionShape" parent="statics/piso" index="1"]
-
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 disabled = false
 
-[node name="muralla" type="StaticBody" parent="statics" index="1"]
+[node name="muralla" type="StaticBody" parent="statics" index="2"]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -308,19 +367,19 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 3 )
+mesh = ExtResource( 5 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 2 )
+material/0 = ExtResource( 4 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/muralla" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="muralla2" type="StaticBody" parent="statics" index="2"]
+[node name="muralla2" type="StaticBody" parent="statics" index="3"]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
@@ -345,22 +404,22 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 3 )
+mesh = ExtResource( 5 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 2 )
+material/0 = ExtResource( 4 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/muralla2" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="muralla3" type="StaticBody" parent="statics" index="3"]
+[node name="muralla3" type="StaticBody" parent="statics" index="4"]
 
 editor/display_folded = true
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -8 )
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 0, 0, -8 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -382,22 +441,21 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 3 )
+mesh = ExtResource( 5 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 2 )
+material/0 = ExtResource( 4 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/muralla3" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="muralla4" type="StaticBody" parent="statics" index="4"]
+[node name="muralla4" type="StaticBody" parent="statics" index="5"]
 
-editor/display_folded = true
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 8 )
+transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 0, 0, 8 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -410,6 +468,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="muralla" type="MeshInstance" parent="statics/muralla4" index="0"]
 
+transform = Transform( -0.0122514, -0.999925, 3.47146e-007, 1.17977, -0.0144549, -5.15695e-008, 3.47146e-007, 4.37081e-008, 7.92953, 0, 0.817384, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -419,19 +478,19 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 3 )
+mesh = SubResource( 4 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 2 )
+material/0 = null
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/muralla4" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="p_pasillo" type="Spatial" parent="statics" index="5"]
+[node name="p_pasillo" type="Spatial" parent="statics" index="6"]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.5 )
@@ -462,20 +521,20 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 4 )
+mesh = ExtResource( 6 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo/es_1" index="1"]
 
-shape = ExtResource( 6 )
+shape = ExtResource( 8 )
 disabled = false
 
 [node name="es_2" type="StaticBody" parent="statics/p_pasillo" index="1"]
 
 editor/display_folded = true
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4, 0, -2.38419e-07 )
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 4.4, 0, -2.38419e-007 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -497,14 +556,14 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 4 )
+mesh = ExtResource( 6 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo/es_2" index="1"]
 
-shape = ExtResource( 6 )
+shape = ExtResource( 8 )
 disabled = false
 
 [node name="p_1" type="StaticBody" parent="statics/p_pasillo" index="2"]
@@ -532,21 +591,20 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 7 )
+mesh = ExtResource( 9 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo/p_1" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
 [node name="p_2" type="StaticBody" parent="statics/p_pasillo" index="3"]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -558,26 +616,10 @@ constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="plataforma2" type="MeshInstance" parent="statics/p_pasillo/p_2" index="0"]
-
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = ExtResource( 7 )
-skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
-_sections_unfolded = [ "material" ]
-
-[node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo/p_2" index="1"]
+[node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo/p_2" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
@@ -606,24 +648,40 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 7 )
+mesh = ExtResource( 9 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo/p_3" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="p_pasillo2" type="Spatial" parent="statics" index="6"]
+[node name="p_pasillo2" type="Spatial" parent="statics" index="7"]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5 )
 
-[node name="p_1" type="StaticBody" parent="statics/p_pasillo2" index="0"]
+[node name="plataforma2" type="MeshInstance" parent="statics/p_pasillo2" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = ExtResource( 9 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 7 )
+_sections_unfolded = [ "material" ]
+
+[node name="p_1" type="StaticBody" parent="statics/p_pasillo2" index="1"]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
@@ -639,6 +697,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="plataforma2" type="MeshInstance" parent="statics/p_pasillo2/p_1" index="0"]
 
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0401363, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -648,19 +707,19 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 7 )
+mesh = ExtResource( 9 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo2/p_1" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="p_2" type="StaticBody" parent="statics/p_pasillo2" index="1"]
+[node name="p_2" type="StaticBody" parent="statics/p_pasillo2" index="2"]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
@@ -685,19 +744,19 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 7 )
+mesh = ExtResource( 9 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo2/p_2" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="p_3" type="StaticBody" parent="statics/p_pasillo2" index="2"]
+[node name="p_3" type="StaticBody" parent="statics/p_pasillo2" index="3"]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0 )
@@ -722,19 +781,19 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 7 )
+mesh = ExtResource( 9 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo2/p_3" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="es_1" type="StaticBody" parent="statics/p_pasillo2" index="3"]
+[node name="es_1" type="StaticBody" parent="statics/p_pasillo2" index="4"]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 0 )
@@ -759,20 +818,20 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 4 )
+mesh = ExtResource( 6 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo2/es_1" index="1"]
 
-shape = ExtResource( 6 )
+shape = ExtResource( 8 )
 disabled = false
 
-[node name="es_2" type="StaticBody" parent="statics/p_pasillo2" index="4"]
+[node name="es_2" type="StaticBody" parent="statics/p_pasillo2" index="5"]
 
 editor/display_folded = true
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4, 0, 0 )
+transform = Transform( -1, 0, -8.74228e-008, 0, 1, 0, 8.74228e-008, 0, -1, 4.4, 0, 0 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -794,17 +853,17 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 4 )
+mesh = ExtResource( 6 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/p_pasillo2/es_2" index="1"]
 
-shape = ExtResource( 6 )
+shape = ExtResource( 8 )
 disabled = false
 
-[node name="plataformas" type="Spatial" parent="statics" index="7"]
+[node name="plataformas" type="Spatial" parent="statics" index="8"]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7, 0, 0 )
@@ -834,15 +893,15 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 8 )
+mesh = ExtResource( 10 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/plataformas/pla-4" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
@@ -871,15 +930,15 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 8 )
+mesh = ExtResource( 10 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/plataformas/pla-2" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
@@ -908,15 +967,15 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 8 )
+mesh = ExtResource( 10 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/plataformas/pla-5" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
@@ -945,21 +1004,20 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 8 )
+mesh = ExtResource( 10 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/plataformas/pla-3" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="rampla" type="StaticBody" parent="statics" index="8"]
+[node name="rampla" type="StaticBody" parent="statics" index="9"]
 
-editor/display_folded = true
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -981,17 +1039,22 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 9 )
+mesh = ExtResource( 11 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "material" ]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="statics/rampla/MeshInstance" index="0"]
+
+navmesh = SubResource( 7 )
+enabled = true
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/rampla" index="1"]
 
-shape = SubResource( 5 )
+shape = SubResource( 8 )
 disabled = false
 
-[node name="StaticBody" type="StaticBody" parent="statics" index="9"]
+[node name="StaticBody" type="StaticBody" parent="statics" index="10"]
 
 editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
@@ -1015,33 +1078,16 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 8 )
+mesh = ExtResource( 10 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 7 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="statics/StaticBody" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 disabled = false
-
-[node name="MeshInstance" type="MeshInstance" parent="statics" index="10"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21539, 3.43607 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 15 )
-skeleton = NodePath("..")
-material/0 = ExtResource( 10 )
-_sections_unfolded = [ "Geometry", "material" ]
 
 [node name="lights" type="Spatial" parent="." index="1"]
 
@@ -1049,7 +1095,7 @@ editor/display_folded = true
 
 [node name="DirectionalLight" type="DirectionalLight" parent="lights" index="0"]
 
-transform = Transform( -1, 5.01437e-08, -7.16125e-08, 0, 0.819152, 0.573577, 8.74228e-08, 0.573577, -0.819152, 0, 6.25405, 0 )
+transform = Transform( -1, 5.01437e-008, -7.16125e-008, 0, 0.819152, 0.573577, 8.74228e-008, 0.573577, -0.819152, 0, 6.25405, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -1076,8 +1122,6 @@ directional_shadow_max_distance = 30.0
 _sections_unfolded = [ "Directional Shadow", "Pause", "Transform", "Visibility" ]
 
 [node name="dinamicos" type="Spatial" parent="." index="2"]
-
-editor/display_folded = true
 
 [node name="cubo" type="RigidBody" parent="dinamicos" index="0"]
 
@@ -1120,26 +1164,25 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 11 )
+mesh = ExtResource( 12 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 12 )
+material/0 = ExtResource( 13 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="dinamicos/cubo" index="1"]
 
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 disabled = false
 
 [node name="cubo2" type="RigidBody" parent="dinamicos" index="1"]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17625, 8.41594, -5.92564 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
 collision_mask = 1
 mode = 0
-mass = 1.0
+mass = 0.22
 friction = 1.0
 bounce = 0.0
 gravity_scale = 1.0
@@ -1171,19 +1214,18 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 11 )
+mesh = ExtResource( 12 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 12 )
+material/0 = ExtResource( 13 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="dinamicos/cubo2" index="1"]
 
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 disabled = false
 
 [node name="slide2" type="KinematicBody" parent="dinamicos" index="2"]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -1209,15 +1251,15 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = ExtResource( 13 )
+mesh = ExtResource( 14 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 12 )
+material/0 = ExtResource( 13 )
 _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="dinamicos/slide2" index="1"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
-shape = SubResource( 8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.34951, 3.36196, 7.29915 )
+shape = SubResource( 11 )
 disabled = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="dinamicos/slide2" index="2"]
@@ -1227,15 +1269,17 @@ autoplay = "slide"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/slide = SubResource( 9 )
+anims/slide = SubResource( 12 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
 
-environment = SubResource( 11 )
+environment = SubResource( 14 )
 
-[node name="Player" parent="." index="4" instance=ExtResource( 14 )]
+[node name="Player" parent="." index="4" groups=[
+"Player",
+] instance=ExtResource( 16 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.84043, 1.60624, 0 )
 AllowChangeCamera = true
@@ -1247,7 +1291,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="Portal" index="0"]
 
-transform = Transform( -0.0121909, 0.999879, 0.00969256, -0.0038527, 0.00964623, -0.999946, -0.999918, -0.0122276, 0.00373464, 0.228978, -0.0136385, 0.0334628 )
+transform = Transform( -0.0121909, 0.999879, 0.00969256, -0.0038527, 0.00964623, -0.999946, -0.999918, -0.0122276, 0.00373464, 0.228978, -0.0283629, 0.0334628 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -1257,9 +1301,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 12 )
+mesh = SubResource( 15 )
 skeleton = NodePath("..")
-material/0 = SubResource( 14 )
+material/0 = SubResource( 17 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="Viewport" type="Viewport" parent="Portal" index="1"]
@@ -1269,7 +1313,7 @@ size = Vector2( 2048, 1024 )
 own_world = false
 world = null
 transparent_bg = false
-msaa = 0
+msaa = 2
 hdr = true
 disable_3d = false
 usage = 2
@@ -1282,17 +1326,17 @@ audio_listener_enable_3d = true
 physics_object_picking = false
 gui_disable_input = false
 gui_snap_controls_to_pixels = true
-shadow_atlas_size = 0
+shadow_atlas_size = 1
 shadow_atlas_quad_0 = 2
 shadow_atlas_quad_1 = 2
 shadow_atlas_quad_2 = 3
 shadow_atlas_quad_3 = 4
-_sections_unfolded = [ "Audio Listener" ]
+_sections_unfolded = [ "Audio Listener", "GUI", "Physics", "Render Target", "Rendering", "Shadow Atlas" ]
 
 [node name="Camera" type="Camera" parent="Portal/Viewport" index="0"]
 
-transform = Transform( -4.37114e-08, 0, -1, 0, 1.02605, 0, 1.02605, 0, -4.485e-08, -7.61751, 0.96404, -1.82756 )
-keep_aspect = 1
+transform = Transform( -4.37114e-008, 0, -1, 0, 1.02605, 0, 1.02605, 0, -4.485e-008, -7.61751, 0.965782, -1.62339 )
+keep_aspect = 0
 cull_mask = 1048575
 environment = null
 h_offset = 0.0
@@ -1300,12 +1344,13 @@ v_offset = 0.0
 doppler_tracking = 2
 projection = 0
 current = true
-fov = 90.9
+fov = 105.847
 size = 1.0
 near = 0.01
 far = 100.0
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 _sections_unfolded = [ "Transform", "Visibility" ]
+PortalOut = null
 
 [node name="Control" type="Control" parent="Portal" index="2"]
 
@@ -1318,6 +1363,7 @@ margin_top = 547.0
 margin_right = 1259.0
 margin_bottom = 694.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -1335,18 +1381,19 @@ margin_right = 807.0
 margin_bottom = 451.0
 rect_rotation = 180.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 13 )
+texture = SubResource( 18 )
 expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Focus", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags" ]
 
 [node name="Portal2" type="Spatial" parent="." index="6"]
 
-transform = Transform( -0.0119492, 0, -0.999929, 0, 1, 0, 0.999929, 0, -0.0119492, -6.08488, 1.00558, -7.52224 )
+transform = Transform( -0.0119492, 0, -0.999929, 0, 1, 0, 0.999929, 0, -0.0119492, 4.02641, 1.00558, -7.76188 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="Portal2" index="0"]
@@ -1361,9 +1408,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 12 )
+mesh = SubResource( 15 )
 skeleton = NodePath("..")
-material/0 = SubResource( 14 )
+material/0 = SubResource( 17 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="Viewport" type="Viewport" parent="Portal2" index="1"]
@@ -1395,7 +1442,7 @@ _sections_unfolded = [ "Audio Listener" ]
 
 [node name="Camera" type="Camera" parent="Portal2/Viewport" index="0"]
 
-transform = Transform( -0.999631, 0, 0.0271762, 0, 1, 0, -0.0271762, 0, -0.999631, -6.09625, 0.979219, -7.08497 )
+transform = Transform( -2.99889, 0, 0.0271763, 0, 1, 0, -0.0815289, 0, -0.999631, 3.96393, 0.979219, -7.44933 )
 keep_aspect = 0
 cull_mask = 1048575
 environment = null
@@ -1404,12 +1451,13 @@ v_offset = 0.046
 doppler_tracking = 2
 projection = 0
 current = true
-fov = 90.0
+fov = 180.0
 size = 1.0
 near = 0.01
 far = 100.0
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 _sections_unfolded = [ "Transform" ]
+PortalOut = null
 
 [node name="Control" type="Control" parent="Portal2" index="2"]
 
@@ -1422,6 +1470,7 @@ margin_top = 547.0
 margin_right = 1259.0
 margin_bottom = 694.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -1439,13 +1488,66 @@ margin_right = 807.0
 margin_bottom = 451.0
 rect_rotation = 180.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 13 )
+texture = SubResource( 18 )
 expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Focus", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags" ]
+
+[node name="Navigation" type="Navigation" parent="." index="7"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80669, 0.42225, 0 )
+up_vector = Vector3( 0, 1, 0 )
+
+[node name="Pfhor" parent="." index="8" instance=ExtResource( 18 )]
+
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.029, 1.19178, 0 )
+AI_active = true
+smellarea = 150.0
+heararea = 10
+
+[node name="Spatial" parent="." index="9" instance=ExtResource( 19 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.81257, 0.231243, 5.74986 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Gravity Area" type="Area" parent="Spatial" index="2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35795, 0.258186, 0.020093 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = true
+gravity_distance_scale = 0.01
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = -1.0
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+script = ExtResource( 20 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_editor_icon": ExtResource( 21 )
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Gravity Area" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.58735, 0 )
+shape = SubResource( 19 )
+disabled = false
 
 
