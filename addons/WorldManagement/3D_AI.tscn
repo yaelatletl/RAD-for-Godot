@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -13,7 +13,58 @@ radial_segments = 6
 rings = 6
 is_hemisphere = false
 
-[node name="AI" type="Spatial"]
+[sub_resource type="SpatialMaterial" id=3]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 1, 1, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+
+[node name="AI" type="Spatial" index="0"]
 
 [node name="Senses" type="Spatial" parent="." index="0"]
 
@@ -53,7 +104,43 @@ disabled = false
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.83143, 0 )
 enabled = true
 exclude_parent = true
-cast_to = Vector3( 0, 0, 40 )
+cast_to = Vector3( 0, 0, 20 )
+collision_mask = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Eyes2" type="RayCast" parent="Senses/SmellandHear/Eyes" index="0"]
+
+transform = Transform( 1, -9.81394e-009, -1.11594e-009, 9.81394e-009, 0.97447, 0.224517, -1.11594e-009, -0.224517, 0.97447, 0, 0, 0 )
+enabled = true
+exclude_parent = true
+cast_to = Vector3( 0, 0, 20 )
+collision_mask = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Eyes3" type="RayCast" parent="Senses/SmellandHear/Eyes" index="1"]
+
+transform = Transform( 1, 7.98199e-009, -7.34964e-010, -7.982e-009, 0.983186, -0.182607, -7.34964e-010, 0.182607, 0.983186, 0, 0, 0 )
+enabled = true
+exclude_parent = true
+cast_to = Vector3( 0, 0, 20 )
+collision_mask = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Eyes4" type="RayCast" parent="Senses/SmellandHear/Eyes" index="2"]
+
+transform = Transform( -5.10293e-008, 0.983186, -0.182607, -1, -4.09375e-008, 5.90349e-008, 5.05668e-008, 0.182607, 0.983186, 0, 0, 0 )
+enabled = true
+exclude_parent = true
+cast_to = Vector3( 0, 0, 20 )
+collision_mask = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Eyes5" type="RayCast" parent="Senses/SmellandHear/Eyes" index="3"]
+
+transform = Transform( -3.69832e-008, 0.99033, 0.138732, -1, -4.1578e-008, 3.02224e-008, 3.56983e-008, -0.138732, 0.99033, 0, 0, 0 )
+enabled = true
+exclude_parent = true
+cast_to = Vector3( 0, 0, 20 )
 collision_mask = 1
 _sections_unfolded = [ "Visibility" ]
 
@@ -85,7 +172,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="Senses/SmellandHear" index="5"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.83143, 7.5449 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40375e-006, 2.83143, 39.6589 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -97,7 +184,8 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 2 )
 skeleton = NodePath("..")
-material/0 = null
+material/0 = SubResource( 3 )
+_sections_unfolded = [ "material" ]
 
 [node name="Hear" type="Area" parent="Senses" index="1"]
 

@@ -3,6 +3,11 @@ func map(x, in_min, in_max, out_min, out_max):
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 #Usage:  val = map(val, 0, 1023, 0, 255)
 
+func vec_distance(VectorA,VectorB):
+	return sqrt(pow(VectorA.x-VectorB.x,2) + pow(VectorA.y-VectorB.y,2) + pow(VectorA.z-VectorB.z,2))
+
+
+
 func rotation_from_to(A,B):
 	var output=Vector3()
 	output.x=rad2deg(atan2((B.y-A.y),(B.z-A.z)))

@@ -12,7 +12,10 @@ export(float) var smellarea = 5
 export(float) var heararea = 10
 export(float) var health = 100
 export(float) var speedfactor = 0.4
-
+export(float) var hearing_precision = 2
+export(float) var smelling_precision = 2
+export(bool) var can_hear_workstations = true
+export(bool) var can_smell_workstations = false
 
 #time for timers
 export(int) var timewaiting = 2
@@ -41,11 +44,12 @@ var visible_obj
 var current_target
 var up
 var has_target = false
-
-
+var workstation_pos = Vector3(0,0,0)
+var margin_hearing = 0.0
+var margin_smelling = 0.0
 var position =Vector3(0,0,0)
 var randposition =Vector3(0,0,0)
-var linear_velocity = Vector3()
+var linear_velocity = Vector3(0,0,0)
 var gravity = Vector3(0,-grav,0)
 var sharp_turn_threshold = 140
 var jump_attempt = false
@@ -63,12 +67,29 @@ func _ready():
 	$AI/Senses/Hear/CollisionShape.shape.radius = heararea
 	var groups = get_groups()
 	visible_obj = $AI/Senses/SmellandHear/Eyes
+	visible_obj2 = $AI/Senses/SmellandHear/Eyes/Eyes2
+	visible_obj3 = $AI/Senses/SmellandHear/Eyes/Eyes3
+	visible_obj4 = $AI/Senses/SmellandHear/Eyes/Eyes4
+	visible_obj5 = $AI/Senses/SmellandHear/Eyes/Eyes5
 	set_process(true)
 
 	Spatial_Routine()
 	CHAR_SCALE = scale
 	initialized = true
+	current_target = null
+	
+func visible_colliding():
+	if visible_obj.is_colliding() or visible_obj2.is_colliding() or visible_obj3.is_colliding() or visible_obj5.is_colliding() or visible_obj.is_colliding():
+		return true
+	else:
+		return false
 
+func get_visible():
+	visible_obj.get_collider().get_groups()
+	visible_obj2.get_collider().get_groups()
+	visible_obj3.get_collider().get_groups()
+	visible_obj4.get_collider().get_groups()
+	visible_obj5.get_collider().get_groups()
 
 func Spatial_Routine():
 	#idle()
@@ -81,7 +102,12 @@ func Spatial_Routine():
 	$AI/Senses/SmellandHear.connect("body_entered", self, "check_body")
 	$AI/Senses/Hear.connect("body_entered", self, "check_sound")
 	#Spatial_Routine()
-
+	
+	
+func check_sound(object):
+	pass
+	
+	
 func reset_target():
 	has_target = false 
 	current_target = null
@@ -109,20 +135,22 @@ func Hunting():
 
 
 func check_area(object):
-	#for x in object.get_groups():
-	#	print(to_global(object.translation))
-	#	print(object.translation)
-	#	if x == "Workstation" and is_worker and indifference==10:
-	#		position = object.translation
-	#		workstation_near = true
-	#	if x == "Workstation" and is_worker and (indifference >= 1 and indifference <=5):
-	#		#Killenemies()
-	#		position = object.translation
-	#		workstation_near = true
-#		if x == "Workstation" and is_worker and indifference == 0:
-#			#Killallenemies()
-#			position = object.translation
-#			workstation_near = true
+	for x in object.get_groups():
+		print(to_global(object.translation))
+		print(object.translation)
+		if can_smell_workstations:
+			if x == "Workstation" and is_worker and indifference==10:
+				current_target = object
+				position = current_target.translation
+				workstation_near = true
+			if x == "Workstation" and is_worker and (indifference >= 1 and indifference <=5):
+			#Killenemies()
+				position = object.translation
+				workstation_near = true
+			if x == "Workstation" and is_worker and indifference == 0:
+				#Killallenemies()
+				position = object.translation
+				workstation_near = true
 	pass
 
 func check_body(object):
@@ -223,6 +251,7 @@ func Spatial_move_to(vector,delta):
 	linear_velocity = move_and_slide(linear_velocity,-gravity.normalized())
 
 func _process(delta):
+	var precision = 1 
 	if AI_active:
 		globaldelta = delta
 		if is_moving:
@@ -230,13 +259,23 @@ func _process(delta):
 		else:
 			Spatial_move_to(translation,delta)
 		AI_is_seeing()
-	
-		if (translation-current_target.translation > Vector3(heararea,heararea,heararea)) or (visible_obj.get_collider() != current_target):
-			position = Vector3(current_target.translation.x, current_target.translation.y, current_target.translation.z)
-			$AI/NewSearch.start() #It's not looking at the target, has ten seconds to find it. 
-		else: #It's looking at the target now. 
-			if not $AI/NewSearch.is_stopped(): #Is it counting to change target? 
-				$AI/NewSearch.stop() #Cancels the timer to look for another target
+		
+		if workstation_near and can_smell_workstations:
+			var vector_distance = sqrt(pow(translation.x-current_target.translation.x,2)+pow(translation.y-current_target.translation.y,2)+pow(translation.z-current_target.translation.z,2))
+			precision = vector_distance/smelling_precision
+			print(precision)
+			if precision != null:
+				print(precision)
+				margin_smelling = rand_range(-precision,precision)
+				position = Vector3(workstation_pos.x+margin_smelling,workstation_pos.y+margin_smelling,workstation_pos.z+margin_smelling)
+		
+		if (current_target != null):
+			if (RAD.vec_distance(translation,current_target.translation) > heararea) or (visible_obj.get_collider() != current_target):
+				position = Vector3(current_target.translation.x, current_target.translation.y, current_target.translation.z) 
+				$AI/NewSearch.start() #It's not looking at the target, has ten seconds to find it. 
+			else: #It's looking at the target now. 
+				if not $AI/NewSearch.is_stopped(): #Is it counting to change target? 
+					$AI/NewSearch.stop() #Cancels the timer to look for another target
 
 func new_position():
 	if not has_target:
@@ -254,14 +293,15 @@ func AI_is_seeing():
 			if x == "Workstation" and is_worker:
 				if visible_obj.get_collider().functional == true:
 					current_target = visible_obj.get_collider()
-					position = current_target.translation
+					position = current_target.final_pos
 					has_target = true
 			
 			if (x == "Player" or x == "AI")  and not visible_obj.get_collider().Team == Team:
 				current_target = visible_obj.get_collider()
-				position = current_target.translation
+				position = Vector3(current_target.translation.x, current_target.translation.y, current_target.translation.z) 
 				has_target = true
 				
+			
 			
 			
 			else:

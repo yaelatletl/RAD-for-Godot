@@ -196,9 +196,11 @@ func _physics_process(delta):
 			#get_node("sound_jump").play()
 	else:
 		if (vertical_velocity > 0):
-			print(ANIM_AIR_UP)
+			pass
+			#print(ANIM_AIR_UP) #Placeholder
 		else:
-			print(ANIM_AIR_DOWN)
+			pass
+			#print(ANIM_AIR_DOWN)
 		if (dir.length() > 0.1):
 			horizontal_velocity += target_dir*accel*delta
 			if (horizontal_velocity.length() > max_speed):
@@ -267,7 +269,6 @@ func _physics_process(delta):
 	translationcamera=$Pivot/FPSCamera.get_global_transform().origin
 func _ready():
 	CHAR_SCALE = scale
-	print(get_rid())
-#	get_node("AnimationTreePlayer").set_active(true)
+	#get_node("AnimationTreePlayer").set_active(true)
 	set_process_input(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
