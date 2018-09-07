@@ -12,7 +12,6 @@ func _ready():
 
 
 func TraceAllMeshes(node):
-	print(node)
 	for N in node.get_children():
 		print(N)
 		if N.is_class("MeshInstance"):

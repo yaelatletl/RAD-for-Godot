@@ -64,7 +64,7 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[node name="AI" type="Spatial" index="0"]
+[node name="AI" type="Spatial"]
 
 [node name="Senses" type="Spatial" parent="." index="0"]
 

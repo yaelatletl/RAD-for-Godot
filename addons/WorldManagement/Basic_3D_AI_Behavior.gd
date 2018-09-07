@@ -40,7 +40,15 @@ var on_workstation = false
 var workstation_near = false
 var player_near = false
 var is_on_sight = false
-var visible_obj
+
+#Vision colliders
+var visible_obj1
+var visible_obj2
+var visible_obj3
+var visible_obj4
+var visible_obj5
+
+
 var current_target
 var up
 var has_target = false
@@ -66,7 +74,7 @@ func _ready():
 	$AI/Senses/SmellandHear/CollisionShape.shape.radius = smellarea
 	$AI/Senses/Hear/CollisionShape.shape.radius = heararea
 	var groups = get_groups()
-	visible_obj = $AI/Senses/SmellandHear/Eyes
+	visible_obj1 = $AI/Senses/SmellandHear/Eyes
 	visible_obj2 = $AI/Senses/SmellandHear/Eyes/Eyes2
 	visible_obj3 = $AI/Senses/SmellandHear/Eyes/Eyes3
 	visible_obj4 = $AI/Senses/SmellandHear/Eyes/Eyes4
@@ -79,17 +87,24 @@ func _ready():
 	current_target = null
 	
 func visible_colliding():
-	if visible_obj.is_colliding() or visible_obj2.is_colliding() or visible_obj3.is_colliding() or visible_obj5.is_colliding() or visible_obj.is_colliding():
+	if visible_obj1.is_colliding() or visible_obj2.is_colliding() or visible_obj3.is_colliding() or visible_obj4.is_colliding() or visible_obj5.is_colliding():
 		return true
 	else:
 		return false
 
+
+#Gets each object that should be considered for behavior and adds it to an array
 func get_visible():
-	visible_obj.get_collider().get_groups()
-	visible_obj2.get_collider().get_groups()
-	visible_obj3.get_collider().get_groups()
-	visible_obj4.get_collider().get_groups()
-	visible_obj5.get_collider().get_groups()
+	var vis = []
+	vis.append( visible_obj1)
+	for a in range(1,5):
+		if get("visible_obj"+str(a)).get_collider() != null:
+			for x in get("visible_obj"+str(a)).get_collider().get_groups():
+				if x == "Player" or "Workstation" or "AI":
+					vis.append(get("visible_obj"+str(a)).get_collider())
+			
+	return vis
+
 
 func Spatial_Routine():
 	#idle()
@@ -119,6 +134,7 @@ func switch_waiting():
 	else:
 		is_moving = true
 		pass
+
 func Work():
 	if on_workstation:
 		do_work()
@@ -258,7 +274,8 @@ func _process(delta):
 			wander()
 		else:
 			Spatial_move_to(translation,delta)
-		AI_is_seeing()
+		if initialized:
+			AI_is_seeing()
 		
 		if workstation_near and can_smell_workstations:
 			var vector_distance = sqrt(pow(translation.x-current_target.translation.x,2)+pow(translation.y-current_target.translation.y,2)+pow(translation.z-current_target.translation.z,2))
@@ -270,7 +287,7 @@ func _process(delta):
 				position = Vector3(workstation_pos.x+margin_smelling,workstation_pos.y+margin_smelling,workstation_pos.z+margin_smelling)
 		
 		if (current_target != null):
-			if (RAD.vec_distance(translation,current_target.translation) > heararea) or (visible_obj.get_collider() != current_target):
+			if (RAD.vec_distance(translation,current_target.translation) > heararea) or (visible_obj1.get_collider() != current_target):
 				position = Vector3(current_target.translation.x, current_target.translation.y, current_target.translation.z) 
 				$AI/NewSearch.start() #It's not looking at the target, has ten seconds to find it. 
 			else: #It's looking at the target now. 
@@ -286,29 +303,27 @@ func new_position():
 	
 
 func AI_is_seeing():
-	if visible_obj.is_colliding():
-		var obj_seen_grps = visible_obj.get_collider().get_groups()
-		for x in obj_seen_grps:
+	if visible_colliding():
+		if get_visible() != null:
+			for x in get_visible():
+				for y in x.get_groups():
+			 
 			
-			if x == "Workstation" and is_worker:
-				if visible_obj.get_collider().functional == true:
-					current_target = visible_obj.get_collider()
-					position = current_target.final_pos
-					has_target = true
+					if y == "Workstation" and is_worker:
+						if x.functional == true:
+							current_target = x
+							position = current_target.final_pos
+							has_target = true
 			
-			if (x == "Player" or x == "AI")  and not visible_obj.get_collider().Team == Team:
-				current_target = visible_obj.get_collider()
-				position = Vector3(current_target.translation.x, current_target.translation.y, current_target.translation.z) 
-				has_target = true
-				
-			
-			
-			
-			else:
-				if not has_target and (visible_obj.get_collider() is KinematicBody):
-					var WorkPos = visible_obj.get_collider().translation
-					Spatial_move_to(WorkPos, globaldelta)
-
+					if (y == "Player" or y == "AI")  and not x.Team == Team:
+						current_target = x
+						position = Vector3(current_target.translation.x, current_target.translation.y, current_target.translation.z) 
+						has_target = true
+					else:
+						#if not has_target and (x.get_collider() is KinematicBody):
+						#	var WorkPos = x.get_collider().translation
+						#	Spatial_move_to(WorkPos, globaldelta)
+						pass
 func AI_Check_Target_State():
 	if current_target.Health != 0:
 		Attack()

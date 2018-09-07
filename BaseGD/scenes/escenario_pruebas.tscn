@@ -755,7 +755,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="p_3" type="StaticBody" parent="statics/p_pasillo2" index="3"]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0 )
 input_ray_pickable = true
 input_capture_on_drag = false
