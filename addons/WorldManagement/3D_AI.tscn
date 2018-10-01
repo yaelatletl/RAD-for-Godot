@@ -219,38 +219,65 @@ disabled = false
 [node name="Wait" type="Timer" parent="." index="1"]
 
 process_mode = 1
-wait_time = 10.0
+wait_time = 1.0
+one_shot = true
+autostart = true
+
+[node name="Reload" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 1.0
 one_shot = false
 autostart = true
 
-[node name="NewSearch" type="Timer" parent="." index="2"]
+[node name="Wait2" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 10.0
+one_shot = true
+autostart = false
+
+[node name="NewSearch" type="Timer" parent="." index="4"]
 
 process_mode = 1
 wait_time = 10.0
 one_shot = true
 autostart = true
 
-[node name="Hunt" type="Timer" parent="." index="3"]
+[node name="Hunt" type="Timer" parent="." index="5"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
 
-[node name="Work" type="Timer" parent="." index="4"]
+[node name="Work" type="Timer" parent="." index="6"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
 
-[node name="Wander" type="Timer" parent="." index="5"]
+[node name="Wander" type="Timer" parent="." index="7"]
 
 process_mode = 1
-wait_time = 1.0
+wait_time = 5.0
 one_shot = false
 autostart = true
 
-[node name="Node2D" type="Node2D" parent="." index="6"]
+[node name="Node2D" type="Node2D" parent="." index="8"]
+
+[node name="draw" type="ImmediateGeometry" parent="." index="9"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+_sections_unfolded = [ "Geometry", "LOD" ]
 
 

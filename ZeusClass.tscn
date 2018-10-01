@@ -69,7 +69,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Flags", "Metallic", "NormalMap", "Resource", "Roughness" ]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=2]
 
 resource_local_to_scene = true
 render_priority = 0
@@ -127,7 +127,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Metallic", "NormalMap", "Resource", "Roughness" ]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=3]
 
 resource_local_to_scene = true
 render_priority = 0
@@ -195,7 +195,7 @@ _sections_unfolded = [ "material" ]
 
 [node name="Cube.001" parent="." index="1"]
 
-material/0 = SubResource( 3 )
+material/0 = SubResource( 2 )
 _sections_unfolded = [ "Geometry", "material" ]
 
 [node name="Cube.003" parent="." index="2"]
@@ -205,7 +205,7 @@ _sections_unfolded = [ "Geometry", "LOD", "material" ]
 
 [node name="Torus" parent="." index="3"]
 
-material/0 = SubResource( 2 )
+material/0 = SubResource( 3 )
 _sections_unfolded = [ "material" ]
 
 

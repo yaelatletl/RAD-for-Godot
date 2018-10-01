@@ -10,7 +10,7 @@ const SHOOT_TIME = 1.5
 const SHOOT_SCALE = 2
 
 const CHAR_SCALE = Vector3(0.3, 0.3, 0.3)
-
+var health2
 var facing_dir = Vector3(1, 0, 0)
 var movement_dir = Vector3()
 var jumping = false
@@ -93,7 +93,13 @@ func adjust_facing(p_facing, p_target, p_step, p_adjust_rate, current_gn):
 
 	return (n*cos(ang) + t*sin(ang))*p_facing.length()
 
-
+func _process(delta):
+	
+	
+	if self.has_node("HUD"):
+		$HUD.health = health
+		$HUD.change_health()
+	
 func _physics_process(delta):
 	#	var d = 1.0 - delta*state.get_total_density()
 #	if (d < 0):
@@ -268,6 +274,7 @@ func _physics_process(delta):
 	aimrotation = $Pivot/FPSCamera.rotation_degrees
 	translationcamera=$Pivot/FPSCamera.get_global_transform().origin
 func _ready():
+	health2 = health
 	CHAR_SCALE = scale
 	#get_node("AnimationTreePlayer").set_active(true)
 	set_process_input(true)

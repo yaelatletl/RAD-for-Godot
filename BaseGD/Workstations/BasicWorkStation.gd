@@ -2,6 +2,7 @@ extends Area
 
 var functional = true
 var final_pos = Vector3(0,0,0)
+var health = 0 
 func _ready():
 	final_pos = $FinalPos.translation
 	# Called when the node is added to the scene for the first time.

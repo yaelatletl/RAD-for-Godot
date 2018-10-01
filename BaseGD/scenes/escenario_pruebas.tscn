@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://addons/WorldManagement/WorldManagement.gd" type="Script" id=1]
 [ext_resource path="res://addons/WorldManagement/icon.png" type="Texture" id=2]
@@ -98,15 +98,37 @@ _sections_unfolded = [ "Resource" ]
 
 extents = Vector3( 0.5, 0.1, 0.5 )
 
-[sub_resource type="BoxShape" id=10]
+[sub_resource type="NavigationMesh" id=10]
 
-extents = Vector3( 1, 1, 1 )
+vertices = PoolVector3Array( -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 4, 5 ), PoolIntArray( 6, 7, 8 ), PoolIntArray( 9, 10, 11 ), PoolIntArray( 12, 13, 14 ), PoolIntArray( 15, 16, 17 ), PoolIntArray( 0, 2, 18 ), PoolIntArray( 3, 5, 19 ), PoolIntArray( 6, 8, 20 ), PoolIntArray( 9, 11, 21 ), PoolIntArray( 12, 14, 22 ), PoolIntArray( 15, 17, 23 ) ]
+sample_partition_type/sample_partition_type = 0
+cell/size = 0.3
+cell/height = 0.2
+agent/height = 2.0
+agent/radius = 0.6
+agent/max_climb = 0.9
+agent/max_slope = 45.0
+region/min_size = 8.0
+region/merge_size = 20.0
+edge/max_length = 12.0
+edge/max_error = 1.3
+polygon/verts_per_poly = 6.0
+detail/sample_distance = 6.0
+detail/sample_max_error = 1.0
+filter/low_hanging_obstacles = false
+filter/ledge_spans = false
+filter/filter_walkable_low_height_spans = false
 
 [sub_resource type="BoxShape" id=11]
 
+extents = Vector3( 1, 1, 1 )
+
+[sub_resource type="BoxShape" id=12]
+
 extents = Vector3( 4.24156, 0.1, 2.87976 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 
 length = 6.0
 loop = true
@@ -124,15 +146,15 @@ tracks/0/keys = {
 "values": [ Vector3( 2, 0, 0 ), Vector3( 6.2, 0, 0 ), Vector3( 2, 0, 0 ) ]
 }
 
-[sub_resource type="PanoramaSky" id=13]
+[sub_resource type="PanoramaSky" id=14]
 
 radiance_size = 4
 panorama = ExtResource( 14 )
 
-[sub_resource type="Environment" id=14]
+[sub_resource type="Environment" id=15]
 
 background_mode = 2
-background_sky = SubResource( 13 )
+background_sky = SubResource( 14 )
 background_sky_custom_fov = 0.0
 background_color = Color( 0, 0, 0, 1 )
 background_energy = 1.0
@@ -209,20 +231,20 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Ambient Light", "Background" ]
 
-[sub_resource type="PlaneMesh" id=15]
+[sub_resource type="PlaneMesh" id=16]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector2( 2, 2 )
 subdivide_width = 0
 subdivide_depth = 0
 
-[sub_resource type="ViewportTexture" id=16]
+[sub_resource type="ViewportTexture" id=17]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Portal2/Viewport")
 
-[sub_resource type="SpatialMaterial" id=17]
+[sub_resource type="SpatialMaterial" id=18]
 
 resource_local_to_scene = true
 render_priority = 0
@@ -247,7 +269,7 @@ params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
 albedo_color = Color( 1, 1, 1, 1 )
-albedo_texture = SubResource( 16 )
+albedo_texture = SubResource( 17 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -258,7 +280,7 @@ emission = Color( 0, 0, 0, 1 )
 emission_energy = 1.0
 emission_operator = 0
 emission_on_uv2 = false
-emission_texture = SubResource( 16 )
+emission_texture = SubResource( 17 )
 normal_enabled = false
 rim_enabled = false
 clearcoat_enabled = false
@@ -281,16 +303,24 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Emission", "Flags", "Parameters", "Resource", "UV1" ]
 
-[sub_resource type="ViewportTexture" id=18]
+[sub_resource type="ViewportTexture" id=19]
 
 resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Portal/Viewport")
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="BoxShape" id=19]
+[sub_resource type="BoxShape" id=20]
 
 extents = Vector3( 2.19565, 3.68347, 1.97051 )
+
+[sub_resource type="Curve3D" id=21]
+
+bake_interval = 0.2
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -0.343578, 0.283936, 3.29451, 0, 0, 0, 0, 0, 0, -0.414307, 1.12111, 3.52941, 0, 0, 0, 0, 0, 0, -5.86758, 0.152344, 1.94892, 0, 0, 0, 0, 0, 0, -3.67214, 0.20752, -4.92067, 0, 0, 0, 0, 0, 0, 1.06574, 3.05882, -5.68848, 0, 0, 0, 0, 0, 0, 5.70947, 0.262976, -2.3391, 0, 0, 0, 0, 0, 0, 5.88863, 0.262939, -0.813081, 0, 0, 0, 0, 0, 0, 5.80078, 0.179931, 0.761246, 0, 0, 0, 0, 0, 0, 2.22729, 0.175707, 2.04831, 0, 0, 0, 0, 0, 0, 4.68468, 0.283936, 4.85256, 0, 0, 0, 0, 0, 0, 2.91417, 0.283936, 6.62308, 0, 0, 0, 0, 0, 0, -2.60984, 0.283936, 6.48144, 0, 0, 0, 0, 0, 0, 0.791956, 0.396357, -2.25698, 0, 0, 0, 0, 0, 0, -2.60984, 0.283936, 6.48144, 0, 0, 0, 0, 0, 0, -2.60984, 0.283936, 6.48144, 0, 0, 0, 0, 0, 0, -2.60984, 0.283936, 6.48144, 0, 0, 0, 0, 0, 0, -2.60984, 0.283936, 6.48144, 0, 0, 0, 0, 0, 0, -2.60984, 0.283936, 6.48144, 0, 0, 0, 0, 0, 0, -2.60984, 0.283936, 6.48144, 0, 0, 0, 0, 0, 0, -2.60984, 0.283936, 6.48144, 0, 0, 0, 0, 0, 0, -2.60984, 0.283936, 6.48144, 0, 0, 0, 0, 0, 0, -2.60984, 0.283936, 6.48144, 0, 0, 0, 0, 0, 0, -0.343578, 0.283936, 3.29451 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
 
 [node name="mundo" type="Spatial"]
 
@@ -1085,11 +1115,9 @@ disabled = false
 
 [node name="lights" type="Spatial" parent="." index="1"]
 
-editor/display_folded = true
-
 [node name="DirectionalLight" type="DirectionalLight" parent="lights" index="0"]
 
-transform = Transform( -1, 5.01437e-008, -7.16125e-008, 0, 0.819152, 0.573577, 8.74228e-008, 0.573577, -0.819152, 0, 6.25405, 0 )
+transform = Transform( 0.995716, 0.053036, -0.0757432, -0.0225969, 0.933886, 0.356857, 0.0896617, -0.353617, 0.931084, 0, 6.25405, 0 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -1119,7 +1147,6 @@ _sections_unfolded = [ "Directional Shadow", "Pause", "Transform", "Visibility" 
 
 [node name="cubo" type="RigidBody" parent="dinamicos" index="0"]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17625, 1.40456, -5.92564 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -1163,9 +1190,14 @@ skeleton = NodePath("..")
 material/0 = ExtResource( 12 )
 _sections_unfolded = [ "material" ]
 
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="dinamicos/cubo/MeshInstance" index="0"]
+
+navmesh = SubResource( 10 )
+enabled = true
+
 [node name="CollisionShape" type="CollisionShape" parent="dinamicos/cubo" index="1"]
 
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 disabled = false
 
 [node name="cubo2" type="RigidBody" parent="dinamicos" index="1"]
@@ -1215,7 +1247,7 @@ _sections_unfolded = [ "material" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="dinamicos/cubo2" index="1"]
 
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 disabled = false
 
 [node name="slide2" type="KinematicBody" parent="dinamicos" index="2"]
@@ -1253,7 +1285,7 @@ _sections_unfolded = [ "material" ]
 [node name="CollisionShape" type="CollisionShape" parent="dinamicos/slide2" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.34951, 3.36196, 7.29915 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 disabled = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="dinamicos/slide2" index="2"]
@@ -1263,13 +1295,13 @@ autoplay = "slide"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/slide = SubResource( 12 )
+anims/slide = SubResource( 13 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
 
-environment = SubResource( 14 )
+environment = SubResource( 15 )
 
 [node name="Player" parent="." index="4" groups=[
 "Player",
@@ -1295,9 +1327,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 15 )
+mesh = SubResource( 16 )
 skeleton = NodePath("..")
-material/0 = SubResource( 17 )
+material/0 = SubResource( 18 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="Viewport" type="Viewport" parent="Portal" index="1"]
@@ -1380,7 +1412,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 18 )
+texture = SubResource( 19 )
 expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Focus", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags" ]
@@ -1402,9 +1434,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 15 )
+mesh = SubResource( 16 )
 skeleton = NodePath("..")
-material/0 = SubResource( 17 )
+material/0 = SubResource( 18 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="Viewport" type="Viewport" parent="Portal2" index="1"]
@@ -1487,7 +1519,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = SubResource( 18 )
+texture = SubResource( 19 )
 expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Focus", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags" ]
@@ -1500,13 +1532,7 @@ up_vector = Vector3( 0, 1, 0 )
 [node name="Pfhor" parent="." index="8" instance=ExtResource( 17 )]
 
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.896962, 0.303316, -0.862156 )
-AI_active = true
 smellarea = 150.0
-heararea = 10
-hearing_precision = 2
-smelling_precision = 2
-can_hear_workstations = true
-can_smell_workstations = false
 
 [node name="Spatial" parent="." index="9" instance=ExtResource( 18 )]
 
@@ -1545,7 +1571,20 @@ __meta__ = {
 [node name="CollisionShape" type="CollisionShape" parent="Spatial/Gravity Area" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.58735, 0 )
-shape = SubResource( 19 )
+shape = SubResource( 20 )
 disabled = false
+
+[node name="Path" type="Path" parent="." index="10"]
+
+curve = SubResource( 21 )
+
+[node name="PathFollow" type="PathFollow" parent="Path" index="0"]
+
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotation_mode = 3
+cubic_interp = true
+loop = true
 
 
