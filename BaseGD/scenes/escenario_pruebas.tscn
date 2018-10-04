@@ -1533,6 +1533,7 @@ up_vector = Vector3( 0, 1, 0 )
 
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.896962, 0.303316, -0.862156 )
 smellarea = 150.0
+turn_speed = 1
 
 [node name="Spatial" parent="." index="9" instance=ExtResource( 18 )]
 

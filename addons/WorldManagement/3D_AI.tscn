@@ -101,7 +101,7 @@ disabled = false
 
 [node name="Eyes" type="RayCast" parent="Senses/SmellandHear" index="1"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.83143, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53976, 0 )
 enabled = true
 exclude_parent = true
 cast_to = Vector3( 0, 0, 20 )
@@ -110,7 +110,7 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="Eyes2" type="RayCast" parent="Senses/SmellandHear/Eyes" index="0"]
 
-transform = Transform( 1, -9.81394e-009, -1.11594e-009, 9.81394e-009, 0.97447, 0.224517, -1.11594e-009, -0.224517, 0.97447, 0, 0, 0 )
+transform = Transform( 1, -7.59041e-009, -6.6408e-010, 7.5904e-009, 0.984808, 0.173648, -6.64077e-010, -0.173648, 0.984808, 0, 0.221942, 0 )
 enabled = true
 exclude_parent = true
 cast_to = Vector3( 0, 0, 20 )
@@ -119,7 +119,7 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="Eyes3" type="RayCast" parent="Senses/SmellandHear/Eyes" index="1"]
 
-transform = Transform( 1, 7.98199e-009, -7.34964e-010, -7.982e-009, 0.983186, -0.182607, -7.34964e-010, 0.182607, 0.983186, 0, 0, 0 )
+transform = Transform( 1, 3.8097e-009, -1.66335e-010, -3.8097e-009, 0.996195, -0.0871557, -1.66335e-010, 0.0871557, 0.996195, 0, -0.828907, 0 )
 enabled = true
 exclude_parent = true
 cast_to = Vector3( 0, 0, 20 )
@@ -128,16 +128,34 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="Eyes4" type="RayCast" parent="Senses/SmellandHear/Eyes" index="2"]
 
-transform = Transform( -5.10293e-008, 0.983186, -0.182607, -1, -4.09375e-008, 5.90349e-008, 5.05668e-008, 0.182607, 0.983186, 0, 0, 0 )
+transform = Transform( -6.7395e-008, 0.250014, -0.968242, -1, -4.09375e-008, 5.90349e-008, -2.48778e-008, 0.968242, 0.250014, -1, 0, 4.37114e-008 )
 enabled = true
 exclude_parent = true
 cast_to = Vector3( 0, 0, 20 )
 collision_mask = 1
 _sections_unfolded = [ "Visibility" ]
 
-[node name="Eyes5" type="RayCast" parent="Senses/SmellandHear/Eyes" index="3"]
+[node name="Eyes6" type="RayCast" parent="Senses/SmellandHear/Eyes" index="3"]
 
-transform = Transform( -3.69832e-008, 0.99033, 0.138732, -1, -4.1578e-008, 3.02224e-008, 3.56983e-008, -0.138732, 0.99033, 0, 0, 0 )
+transform = Transform( -6.76187e-008, 0.813896, -0.58101, -1, -4.09375e-008, 5.90349e-008, 2.42632e-008, 0.58101, 0.813896, -0.339878, 0, 1.48565e-008 )
+enabled = true
+exclude_parent = true
+cast_to = Vector3( 0, 0, 20 )
+collision_mask = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Eyes5" type="RayCast" parent="Senses/SmellandHear/Eyes" index="4"]
+
+transform = Transform( -1.84314e-008, 0.838913, 0.544265, -1, -4.1578e-008, 3.02224e-008, 4.79834e-008, -0.544265, 0.838913, 0.540355, 0, -2.36197e-008 )
+enabled = true
+exclude_parent = true
+cast_to = Vector3( 0, 0, 20 )
+collision_mask = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Eyes7" type="RayCast" parent="Senses/SmellandHear/Eyes" index="5"]
+
+transform = Transform( 1.67239e-008, 0.292798, 0.956174, -1, -4.1578e-008, 3.02224e-008, 4.86049e-008, -0.956174, 0.292798, 1, 0, -4.37114e-008 )
 enabled = true
 exclude_parent = true
 cast_to = Vector3( 0, 0, 20 )

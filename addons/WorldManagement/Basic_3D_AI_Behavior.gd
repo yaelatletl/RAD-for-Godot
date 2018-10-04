@@ -30,7 +30,7 @@ export(bool) var flies = false
 export(bool) var fixed_up = true
 export(float) var weight = 1
 export(float) var max_speed = 10
-export(int) var turn_speed = 40
+export(int) var turn_speed = 1
 export(float) var accel = 19.0
 export(float) var deaccel = 14.0
 export(bool) var keep_jump_inertia = true
@@ -54,6 +54,8 @@ var visible_obj2
 var visible_obj3
 var visible_obj4
 var visible_obj5
+var visible_obj6
+var visible_obj7
 
 
 var current_target
@@ -86,6 +88,8 @@ func _ready():
 	visible_obj3 = $AI/Senses/SmellandHear/Eyes/Eyes3
 	visible_obj4 = $AI/Senses/SmellandHear/Eyes/Eyes4
 	visible_obj5 = $AI/Senses/SmellandHear/Eyes/Eyes5
+	visible_obj6 = $AI/Senses/SmellandHear/Eyes/Eyes6
+	visible_obj7 = $AI/Senses/SmellandHear/Eyes/Eyes7
 	set_process(true)
 	m.flags_unshaded = true
 	m.flags_use_point_size = true
@@ -99,7 +103,7 @@ func _ready():
 		add_child(gun.instance())
 	
 func visible_colliding():
-	if visible_obj1.is_colliding() or visible_obj2.is_colliding() or visible_obj3.is_colliding() or visible_obj4.is_colliding() or visible_obj5.is_colliding():
+	if visible_obj1.is_colliding() or visible_obj2.is_colliding() or visible_obj3.is_colliding() or visible_obj4.is_colliding() or visible_obj5.is_colliding() or visible_obj7.is_colliding() or visible_obj6.is_colliding():
 		return true
 	else:
 		return false
@@ -109,7 +113,7 @@ func visible_colliding():
 func get_visible():
 	var vis = []
 	vis.append(visible_obj1)
-	for a in range(1,5):
+	for a in range(1,7):
 		if get("visible_obj"+str(a)).get_collider() != null:
 			for x in get("visible_obj"+str(a)).get_collider().get_groups():
 				if x == "Player" or "Workstation" or "AI":
@@ -282,6 +286,7 @@ func Spatial_move_to(vector,delta):
 		linear_velocity = move_and_slide(linear_velocity,-gravity.normalized())
 
 func _process(delta):
+	
 	var precision = 1 
 	if AI_active:
 		globaldelta = delta
@@ -319,6 +324,7 @@ func _process(delta):
 		AI_active = false
 
 func new_position():
+	print(get_visible())
 	if not has_target:
 		randposition = translation + 5*Vector3(rand_range(-1,1),rand_range(-1,1),rand_range(-1,1))
 		if NavMeshMovement: 
