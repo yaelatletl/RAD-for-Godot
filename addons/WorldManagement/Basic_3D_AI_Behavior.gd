@@ -1,8 +1,8 @@
  extends KinematicBody
 
-
-
 #AI Characteristics
+export(NodePath) var AstarPath = null
+export(NodePath) var Navmesh = null 
 export(bool) var AI_active = true
 export(bool) var static_AI = false
 export(int) var Team = 0
@@ -21,6 +21,9 @@ export(float) var smelling_precision = 2
 export(bool) var can_hear_workstations = true
 export(bool) var can_smell_workstations = false
 export(PackedScene) var gun = preload("res://BaseGD/Guns/Staff.tscn")
+
+
+var as  = null
 #time for timers
 export(int) var timewaiting = 2
 
@@ -44,7 +47,7 @@ var on_workstation = false
 var workstation_near = false
 var player_near = false
 var is_on_sight = false
-var path = []
+var path = [Vector3(0,0,0),Vector3(0,0,0)]
 var m = SpatialMaterial.new()
 var can_shoot = true
 
@@ -74,11 +77,52 @@ var jumping = false
 var globaldelta = 0.0
 var CHAR_SCALE = Vector3(1, 1, 1)
 var is_moving = false
+var NM 
 
-
+func direct_path_collides():
+	var rel_vec = (position-translation)
+	var test1_collides = test_move(transform, rel_vec)
+	if test1_collides: 
+		return test_move(transform.translated(Vector3(0,0.5,0)), rel_vec)
+	else: 
+		return test1_collides
+		
+func NM_get_path(pos):
+	var In_path = NM.get_simple_path(NM.get_closest_point(translation), NM.get_closest_point(pos), true)
+	return In_path
+	
+	
+func NM_Move_in_path(pos):
+	#var In_path = path #NM_get_path(pos)
+	#var R=NM.get_closest_point(translation)
+	#In_path.invert()
+	#In_path.append(R)
+	#In_path.invert()
+	#for point in In_path:
+	#	print(point)
+	#	if (point-translation).length() > 0.5:
+	#		Spatial_move_to(point, globaldelta)
+	#pass
+	if (translation-path[1]).length() > 1:
+		Spatial_move_to(NM.to_global(path[1]), globaldelta)
+	else:
+		 new_position()
+		
+func move(pos):
+	Dumb_movement()
+#	var rel_vec = (pos-translation)
+#	if (rel_vec.length() > 5 and rel_vec.length() < 10) or direct_path_collides():
+#		NM_Move_in_path(pos)
+#	elif rel_vec.length() >= 10:
+#		pass
+#			#ASMove_in_path()
+#	else: 
+#		Spatial_Move_to(pos, globaldelta)	
 
 func _ready():
-	add_child(preload("res://addons/WorldManagement/3D_AI.tscn").instance())
+	var AI = preload("res://addons/WorldManagement/3D_AI.tscn").instance()
+	AI.translation += Vector3(0,1,0)
+	add_child(AI)
 	$AI/Wait.wait_time = timewaiting
 	$AI/Senses/SmellandHear/CollisionShape.shape.radius = smellarea
 	$AI/Senses/Hear/CollisionShape.shape.radius = heararea
@@ -99,9 +143,20 @@ func _ready():
 	initialized = true
 	current_target = null
 	if not has_node("gun"):
-		
 		add_child(gun.instance())
-	
+	as = get_node(AstarPath).as
+	NM = get_node(Navmesh)
+
+func find_APath():
+	var node = get_node("/root")	
+	for N in node.get_children():
+		if N.is_class("Path") and N.get(as)!=null:
+			as = N.as
+		else:
+			if N.get_child_count() > 0:
+				find_APath()
+
+
 func visible_colliding():
 	if visible_obj1.is_colliding() or visible_obj2.is_colliding() or visible_obj3.is_colliding() or visible_obj4.is_colliding() or visible_obj5.is_colliding() or visible_obj7.is_colliding() or visible_obj6.is_colliding():
 		return true
@@ -200,6 +255,29 @@ func Dumb_movement():
 	if has_target and current_target != null:
 		
 		Spatial_move_to(current_target.translation, globaldelta)
+func AStar_Movement(pos):
+	var Distance = RAD.vec_distance(translation, as.get_point_position(as.get_closest_point(pos))) 
+	if Distance < 3 and Distance > 1:
+		Spatial_move_to(as.get_point_position(as.get_closest_point(pos)), globaldelta)
+	else:
+		Astar_Move_near(pos)
+		pass
+	
+	pass
+
+func Astar_Move_near(Pos):
+	#if it is not on the path, look for the closest point to the path
+	var closest = as.get_closest_point_in_segment(Pos)
+	var clos_point = as.get_closest_point(Pos)
+	if RAD.vec_distance(translation, closest)<1:
+		while RAD.vec_distance(translation, closest) > 0.2: 
+			Spatial_move_to(closest,globaldelta)
+	else:
+		
+		for point in as.get_point_path(as.get_closest_point(translation), clos_point):
+			while RAD.vec_distance(translation, point)>0.3:
+				Spatial_move_to(point,globaldelta)
+
 
 func Spatial_move_to(vector,delta):
 	if RAD.vec_distance(vector,translation) > 0.5:
@@ -220,7 +298,7 @@ func Spatial_move_to(vector,delta):
 
 		var target_dir = (vector - up*vector.dot(up)).normalized()
 
-		if (is_on_floor()): #Only lets the character change it's facing direction when it's on the floor.
+		if (is_on_floor() or flies): #Only lets the character change it's facing direction when it's on the floor.
 			var sharp_turn = hspeed > 0.1 and rad2deg(acos(target_dir.dot(hdir))) > sharp_turn_threshold
 
 			if (vector.length() > 0.1 and !sharp_turn):
@@ -255,7 +333,10 @@ func Spatial_move_to(vector,delta):
 			var m3 = Basis(-facing_mesh, up, -facing_mesh.cross(up).normalized()).scaled(CHAR_SCALE)
 
 			set_transform(Transform(m3, mesh_xform.origin))
-
+			
+			#if $AI/Senses/SmellandHear/Feet.is_colliding() and not direct_path_collides():
+			#	jump_attempt = true
+			
 			if (not jumping and jump_attempt):
 				vertical_velocity = JumpHeight
 				jumping = true
@@ -285,21 +366,37 @@ func Spatial_move_to(vector,delta):
 
 		linear_velocity = move_and_slide(linear_velocity,-gravity.normalized())
 
+
+		
+
+		
 func _process(delta):
 	
 	var precision = 1 
 	if AI_active:
 		globaldelta = delta
+		
 		if is_moving:
-			if NavMeshMovement:
-				Navmesh_movement(delta)
-			elif AstarMovement:
-				pass
+			if has_target:
+				move(position)
 			else:
-				Dumb_movement()
+				move(randposition)
+		
+		
+		#if is_moving:
+		#	if NavMeshMovement:
+		#		Navmesh_movement(delta)
+		#	elif AstarMovement:
+		#		if has_target:
+		#			AStar_Movement(position)
+		#		else:
+		#			AStar_Movement(randposition)
+		#	else:
+		#		Dumb_movement()
 			
 		else:
 			Spatial_move_to(translation,delta)
+			
 		if initialized:
 			AI_is_seeing()
 			AI_Check_Target_State()
@@ -324,13 +421,17 @@ func _process(delta):
 		AI_active = false
 
 func new_position():
-	print(get_visible())
+	
 	if not has_target:
 		randposition = translation + 5*Vector3(rand_range(-1,1),rand_range(-1,1),rand_range(-1,1))
-		if NavMeshMovement: 
-			_update_path(randposition)
+		_update_path(randposition)
+		#if NavMeshMovement: 
+			#pass
+			#_update_path(randposition)
 	else:
-		pass
+		_update_path(position)
+		
+		print(path[1])
 	if $AI/Senses/SmellandHear/Checkheight.is_colliding():
 		#new_position()
 		pass
@@ -383,49 +484,46 @@ func attack():
 
 	
 func _update_path(pos):
-	var begin = get_node("../../").get_closest_point(translation)
-	var end = get_node("../../").get_closest_point(pos)
-	var p = get_node("../../").get_simple_path(begin, end, true)
-	path = Array(p) # Vector3array too complex to use, convert to regular array
+	pass
+	path = NM.get_simple_path(NM.get_closest_point(translation), NM.get_closest_point(pos), true)
 	
-	path.invert()
-	if (true==true):
-		var im = $AI/draw
-		im.set_material_override(m)
-		im.clear()
-		im.begin(Mesh.PRIMITIVE_POINTS, null)
-		im.add_vertex(begin)
-		im.add_vertex(end)
-		im.end()
-		im.begin(Mesh.PRIMITIVE_LINE_STRIP, null)
-		for x in p:
-			im.add_vertex(x)
-		im.end()
+	#if (true==true):
+	#	var im = $AI/draw
+	#	im.set_material_override(m)
+	#	im.clear()
+	#	im.begin(Mesh.PRIMITIVE_POINTS, null)
+	#	im.add_vertex(begin)
+	#	im.add_vertex(end)
+	#	im.end()
+	#	im.begin(Mesh.PRIMITIVE_LINE_STRIP, null)
+#		for x in p:
+#			im.add_vertex(x)
+#		im.end()
 		
 
 		
 
 func Navmesh_movement(delta):
-	var NMPosition = Vector3()
-	if (path.size() > 1):
-		var pto
-		while(path.size() >= 2):
-			var pfrom = path[path.size() - 1]
-			NMPosition = path[path.size() - 2]
-			
-			var d = pfrom.distance_to(NMPosition)
-			if (d <= 0.2):
-				path.remove(path.size() - 1)
-			else:
-				path[path.size() - 1] = pfrom.linear_interpolate(NMPosition, 0.1)
-				
-		
-		var atpos = path[path.size() - 1]
-		
-		
+	#var NMPosition = Vector3()
+	#if (path.size() > 1):
+	#	var pto
+	#	while(path.size() >= 2):
+	#		var pfrom = path[path.size() - 1]
+	#		NMPosition = path[path.size() - 2]
+	#		
+	#		var d = pfrom.distance_to(NMPosition)
+#			if (d <= 0.2):
+#				path.remove(path.size() - 1)
+#			else:
+#				path[path.size() - 1] = pfrom.linear_interpolate(NMPosition, 0.1)
+#				
+#		
+#		var atpos = path[path.size() - 1]
+#		
+###	
+	#	if (path.size() < 2):
+	#		path = []
+	#Spatial_move_to(NMPosition, delta)
+	pass
 	
-		
-		if (path.size() < 2):
-			path = []
-	Spatial_move_to(NMPosition, delta)
-	
+

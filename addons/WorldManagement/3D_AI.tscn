@@ -101,6 +101,7 @@ disabled = false
 
 [node name="Eyes" type="RayCast" parent="Senses/SmellandHear" index="1"]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53976, 0 )
 enabled = true
 exclude_parent = true
@@ -173,7 +174,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Feet" type="RayCast" parent="Senses/SmellandHear" index="3"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12954, 0 )
+transform = Transform( 1, -2.00103e-008, -4.84913e-009, 2.00103e-008, 0.889065, 0.457781, -4.84913e-009, -0.457781, 0.889065, 4.84757e-008, 0.7709, 1.10899 )
 enabled = true
 exclude_parent = true
 cast_to = Vector3( 0, -0.5, 1 )

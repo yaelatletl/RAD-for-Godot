@@ -1,4 +1,3 @@
-
 extends KinematicBody
 
 # Member variables
@@ -94,8 +93,6 @@ func adjust_facing(p_facing, p_target, p_step, p_adjust_rate, current_gn):
 	return (n*cos(ang) + t*sin(ang))*p_facing.length()
 
 func _process(delta):
-	
-	
 	if self.has_node("HUD"):
 		$HUD.health = health
 		$HUD.change_health()

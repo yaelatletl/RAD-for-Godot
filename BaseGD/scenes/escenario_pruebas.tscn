@@ -1532,6 +1532,8 @@ up_vector = Vector3( 0, 1, 0 )
 [node name="Pfhor" parent="." index="8" instance=ExtResource( 17 )]
 
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.896962, 0.303316, -0.862156 )
+AstarPath = null
+Navmesh = null
 smellarea = 150.0
 turn_speed = 1
 
