@@ -67,6 +67,13 @@ var linear_velocity=Vector3()
 var hspeed
 
 
+##Networking
+slave var slave_translation
+slave var slave_transform
+slave var slave_linear_vel
+
+
+
 #Rotates the model to where the camera points
 func adjust_facing(p_facing, p_target, p_step, p_adjust_rate, current_gn):
 	var n = p_target # Normal
@@ -128,25 +135,34 @@ func _physics_process(delta):
 
 #THIS BLOCK IS INTENDED FOR FPS CONTROLLER USE ONLY
 	var aim = $Pivot/FPSCamera.get_global_transform().basis
-	if (Input.is_action_pressed("move_forwards")):
-		dir -= aim[2]
-		ismoving = true
+	if (is_network_master()):
+		$Pivot/FPSCamera.make_current()
+		if (Input.is_action_pressed("move_up")):
+			dir -= aim[2]
+			ismoving = true
+		else:
+			ismoving = false
+		if (Input.is_action_pressed("move_down")):
+			dir += aim[2]
+			ismoving = true
+		else:
+			ismoving = false
+		if (Input.is_action_pressed("move_left")):
+			dir -= aim[0]
+
+			$Pivot/FPSCamera.Znoice =  1*hspeed
+
+		if (Input.is_action_pressed("move_right")):
+			dir += aim[0]
+			$Pivot/FPSCamera.Znoice =  -1*hspeed
+		rset("slave_linear_vel", linear_velocity)
+		rset("slave_translation", translation)
+		rset("slave_transform", $Yaw.transform)
 	else:
-		ismoving = false
-	if (Input.is_action_pressed("move_backwards")):
-		dir += aim[2]
-		ismoving = true
-	else:
-		ismoving = false
-	if (Input.is_action_pressed("move_left")):
-		dir -= aim[0]
-
-		$Pivot/FPSCamera.Znoice =  1*hspeed
-
-	if (Input.is_action_pressed("move_right")):
-		dir += aim[0]
-		$Pivot/FPSCamera.Znoice =  -1*hspeed
-
+		$Yaw.transform = slave_transform
+		translation = slave_translation
+		linear_velocity = slave_linear_vel
+		
 	var jump_attempt = Input.is_action_pressed("jump")
 	var shoot_attempt = Input.is_action_pressed("shoot")
 #END OF THE BLOCK
@@ -276,3 +292,6 @@ func _ready():
 	#get_node("AnimationTreePlayer").set_active(true)
 	set_process_input(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+func set_player_name(new_name):
+	get_node("label").set_text(new_name)

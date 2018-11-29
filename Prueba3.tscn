@@ -97,7 +97,7 @@ filter/ledge_spans = false
 filter/filter_walkable_low_height_spans = false
 _sections_unfolded = [ "Resource", "cell", "sample_partition_type" ]
 
-[sub_resource type="CubeMesh" id=7]
+[sub_resource type="CubeMesh" id=5]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
@@ -105,11 +105,11 @@ subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="BoxShape" id=8]
+[sub_resource type="BoxShape" id=6]
 
 extents = Vector3( 1, 0.904246, 1 )
 
-[sub_resource type="Environment" id=5]
+[sub_resource type="Environment" id=7]
 
 background_mode = 2
 background_sky = ExtResource( 6 )
@@ -189,7 +189,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background", "Glow", "Glow/levels" ]
 
-[sub_resource type="Curve3D" id=6]
+[sub_resource type="Curve3D" id=8]
 
 bake_interval = 0.2
 _data = {
@@ -320,7 +320,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 7 )
+mesh = SubResource( 5 )
 skeleton = NodePath("..")
 material/0 = SubResource( 2 )
 _sections_unfolded = [ "Transform", "material" ]
@@ -338,8 +338,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance4/StaticBody" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 disabled = false
 
 [node name="Player" parent="." index="4" groups=[
@@ -444,11 +443,11 @@ turn_speed = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="7"]
 
-environment = SubResource( 5 )
+environment = SubResource( 7 )
 
 [node name="AStarPath" type="Path" parent="." index="8"]
 
-curve = SubResource( 6 )
+curve = SubResource( 8 )
 script = ExtResource( 7 )
 __meta__ = {
 "_editor_icon": ExtResource( 8 )

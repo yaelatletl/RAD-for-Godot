@@ -284,6 +284,7 @@ func Spatial_move_to(vector,delta):
 		vector = vector - translation
 		if not flies:
 			linear_velocity += gravity*delta/weight
+		
 
 		if fixed_up:
 			up = Vector3(0,1,0) # (up is against gravity)
