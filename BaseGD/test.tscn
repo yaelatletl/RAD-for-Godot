@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://BaseGD/GridThemes/Sci-fi cleanwalls/Grid.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://BaseGD/pl3d/Player3d.tscn" type="PackedScene" id=2]
+[ext_resource path="res://default_env.tres" type="Environment" id=3]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 6.65319, 0.257659, 4.62912 )
+
+[node name="GridMap" type="GridMap" index="0"]
+
+theme = ExtResource( 1 )
+cell_size = Vector3( 2, 2, 2 )
+cell_octant_size = 8
+cell_center_x = true
+cell_center_y = true
+cell_center_z = true
+cell_scale = 1.0
+collision_layer = 1
+collision_mask = 1
+data = {
+"cells": PoolIntArray( 0, 2, 655363, 1, 2, 655363, 2, 2, 655363, 3, 2, 524291, 65532, 2, 655363, 65533, 2, 655363, 65534, 2, 655363, 65535, 2, 655363, 0, 65534, 3, 1, 65534, 3, 2, 65534, 3, 3, 65534, 3, 65529, 65534, 3, 65530, 65534, 3, 65531, 65534, 3, 65532, 65534, 3, 65533, 65534, 3, 65534, 65534, 3, 65535, 65534, 3 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="StaticBody" type="StaticBody" parent="." index="0"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
+
+shape = SubResource( 1 )
+disabled = false
+
+[node name="Player" parent="." index="1" instance=ExtResource( 2 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
+
+environment = ExtResource( 3 )
+
+

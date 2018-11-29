@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://BaseGD/GridThemes/Grid.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://BaseGD/pl3d/Player3d.tscn" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 13.8683, 0.25264, 2.57937 )
+
+[sub_resource type="CubeMesh" id=2]
+
+size = Vector3( 2, 2, 2 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
+
+[node name="GridMap" type="GridMap" index="0"]
+
+theme = ExtResource( 1 )
+cell_size = Vector3( 2, 2, 2 )
+cell_octant_size = 8
+cell_center_x = true
+cell_center_y = true
+cell_center_z = true
+cell_scale = 1.0
+collision_layer = 1
+collision_mask = 1
+data = {
+"cells": PoolIntArray( 0, 0, 655361, 1, 0, 655361, 2, 0, 655361, 3, 0, 655361, 4, 0, 655361, 5, 0, 655361, 6, 0, 589824, 65534, 0, 655361, 65535, 0, 655361, 5, 1, 655361, 0, 3, 655366, 1, 3, 655366, 2, 3, 655366, 3, 3, 655365, 4, 3, 655365, 5, 3, 655365, 65527, 3, 655360, 65528, 3, 655360, 65529, 3, 655367, 65530, 3, 655367, 65531, 3, 655367, 65532, 3, 655366, 65533, 3, 655366, 65534, 3, 655366, 65535, 3, 655366, 8, 65534, 6, 0, 65535, 1, 1, 65535, 1, 2, 65535, 1, 3, 65535, 1, 4, 65535, 1, 5, 65535, 1, 6, 65535, 0, 7, 65535, 0, 8, 65535, 0, 9, 65535, 0, 65534, 65535, 1, 65535, 65535, 1 )
+}
+_sections_unfolded = [ "Cell", "Collision" ]
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="Player" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="StaticBody" type="StaticBody" parent="." index="1"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
+
+shape = SubResource( 1 )
+disabled = false
+
+[node name="DirectionalLight" type="DirectionalLight" parent="StaticBody/CollisionShape" index="0"]
+
+transform = Transform( 0.630128, -0.653286, 0.41971, -0.523929, 0.041225, 0.850763, -0.573095, -0.755988, -0.316299, -3.19868, 7.05461, 10.2606 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 1.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.1
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody" index="1"]
+
+transform = Transform( 19.6044, 0, 0, 0, 0.272318, 0, 0, 0, 3.05505, 0, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 2 )
+skeleton = NodePath("..")
+material/0 = null
+
+

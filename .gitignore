@@ -1,7 +1,413 @@
 
-.import/
-BaseShapes/
-default_env.tres
+.import/Zeuz Class Fusion Pistol.dae-02c40c22a9cb2f7972b3af7179965c74.scn
+.import/Zeuz Class Fusion Pistol.dae-02c40c22a9cb2f7972b3af7179965c74.md5
+.import/ZeusRoughness.png-8dba0b61a46a4d010e6371a9e8ed087a.stex
+.import/ZeusRoughness.png-8dba0b61a46a4d010e6371a9e8ed087a.s3tc.stex
+.import/ZeusRoughness.png-8dba0b61a46a4d010e6371a9e8ed087a.md5
+.import/ZeusRoughness.png-8dba0b61a46a4d010e6371a9e8ed087a.etc2.stex
+.import/ZeusNormals.png-d449e86ab8e0a30ac9eeb2f11530723f.stex
+.import/ZeusNormals.png-d449e86ab8e0a30ac9eeb2f11530723f.s3tc.stex
+.import/ZeusNormals.png-d449e86ab8e0a30ac9eeb2f11530723f.md5
+.import/ZeusNormals.png-d449e86ab8e0a30ac9eeb2f11530723f.etc2.stex
+.import/ZeusMetalness.png-dfb924f4ddc2ca434f80c77b2a7f5882.stex
+.import/ZeusMetalness.png-dfb924f4ddc2ca434f80c77b2a7f5882.s3tc.stex
+.import/ZeusMetalness.png-dfb924f4ddc2ca434f80c77b2a7f5882.md5
+.import/ZeusMetalness.png-dfb924f4ddc2ca434f80c77b2a7f5882.etc2.stex
+.import/ZeusDiff.png-2ddc6635d4bee4b3655ae2ef45e71370.stex
+.import/ZeusDiff.png-2ddc6635d4bee4b3655ae2ef45e71370.s3tc.stex
+.import/ZeusDiff.png-2ddc6635d4bee4b3655ae2ef45e71370.md5
+.import/ZeusDiff.png-2ddc6635d4bee4b3655ae2ef45e71370.etc2.stex
+.import/water_normal_2.png-19299bb9e2fe4bc5dc8e8e5d11ee74c6.stex
+.import/water_normal_2.png-19299bb9e2fe4bc5dc8e8e5d11ee74c6.s3tc.stex
+.import/water_normal_2.png-19299bb9e2fe4bc5dc8e8e5d11ee74c6.md5
+.import/water_normal_2.png-19299bb9e2fe4bc5dc8e8e5d11ee74c6.etc2.stex
+.import/walls2.dae-b796cbe5fa70cb82f5f03f99a9519975.scn
+.import/walls2.dae-b796cbe5fa70cb82f5f03f99a9519975.md5
+.import/walls.dae-4537e8940cfecd7880fd31c8409d9cc9.scn
+.import/walls.dae-4537e8940cfecd7880fd31c8409d9cc9.md5
+.import/VACBOB.dae-974fc7d60af888421f45c3987502b72d.scn
+.import/VACBOB.dae-974fc7d60af888421f45c3987502b72d.md5
+.import/UV_checker_grid_dark.png-e3385f416eb033a293008136d6a2c8ec.md5
+.import/Upperlegs-S.png-b1085304145f6fc8d45823fbe3d06798.stex
+.import/Upperlegs-S.png-b1085304145f6fc8d45823fbe3d06798.s3tc.stex
+.import/Upperlegs-S.png-b1085304145f6fc8d45823fbe3d06798.md5
+.import/Upperlegs-S.png-b1085304145f6fc8d45823fbe3d06798.etc2.stex
+.import/UpperLegs-N.png-aa1375c5ef4a388502123d91f93c1f9f.stex
+.import/UpperLegs-N.png-aa1375c5ef4a388502123d91f93c1f9f.s3tc.stex
+.import/UpperLegs-N.png-aa1375c5ef4a388502123d91f93c1f9f.md5
+.import/UpperLegs-N.png-aa1375c5ef4a388502123d91f93c1f9f.etc2.stex
+.import/UpperLegs-D.png-9ea97772d8c68df705c007bbe4644463.stex
+.import/UpperLegs-D.png-9ea97772d8c68df705c007bbe4644463.s3tc.stex
+.import/UpperLegs-D.png-9ea97772d8c68df705c007bbe4644463.md5
+.import/UpperLegs-D.png-9ea97772d8c68df705c007bbe4644463.etc2.stex
+.import/Upperbody-S.png-5f35b0293b2077ac6c12a54ce958a242.stex
+.import/Upperbody-S.png-5f35b0293b2077ac6c12a54ce958a242.s3tc.stex
+.import/Upperbody-S.png-5f35b0293b2077ac6c12a54ce958a242.md5
+.import/Upperbody-S.png-5f35b0293b2077ac6c12a54ce958a242.etc2.stex
+.import/Upperbody-N.png-a84012ef026af04d258bd4c7df473763.stex
+.import/Upperbody-N.png-a84012ef026af04d258bd4c7df473763.s3tc.stex
+.import/Upperbody-N.png-a84012ef026af04d258bd4c7df473763.md5
+.import/Upperbody-N.png-a84012ef026af04d258bd4c7df473763.etc2.stex
+.import/UpperBody-Dif.png-c88d85250bea224ed774525ddad3d82b.stex
+.import/UpperBody-Dif.png-c88d85250bea224ed774525ddad3d82b.s3tc.stex
+.import/UpperBody-Dif.png-c88d85250bea224ed774525ddad3d82b.md5
+.import/UpperBody-Dif.png-c88d85250bea224ed774525ddad3d82b.etc2.stex
+.import/TheTowers.png-05a24a4c9cc6ee01a00b5be3fb659059.stex
+.import/TheTowers.png-05a24a4c9cc6ee01a00b5be3fb659059.md5
+.import/Staff.obj-9dff2d14b61af4e50e4350553f2d6ba2.mesh
+.import/Staff.obj-9dff2d14b61af4e50e4350553f2d6ba2.md5
+.import/specular.tga-df8965236e98ef0de62f35864b5d646e.s3tc.stex
+.import/specular.tga-df8965236e98ef0de62f35864b5d646e.md5
+.import/specular.tga-df8965236e98ef0de62f35864b5d646e.etc2.stex
+.import/specular.tga-a80fc45622d2d85cd085bcf80d54195e.s3tc.stex
+.import/specular.tga-a80fc45622d2d85cd085bcf80d54195e.md5
+.import/specular.tga-a80fc45622d2d85cd085bcf80d54195e.etc2.stex
+.import/specular.tga-93f38423f265de3e4fef58f9093d5764.s3tc.stex
+.import/specular.tga-93f38423f265de3e4fef58f9093d5764.md5
+.import/specular.tga-93f38423f265de3e4fef58f9093d5764.etc2.stex
+.import/specular.tga-4dc870431c45d8d721f036c25f4f3b58.s3tc.stex
+.import/specular.tga-4dc870431c45d8d721f036c25f4f3b58.md5
+.import/specular.tga-4dc870431c45d8d721f036c25f4f3b58.etc2.stex
+.import/specular.tga-18d96e28f6de97904faa4fea05b7dfd3.stex
+.import/specular.tga-18d96e28f6de97904faa4fea05b7dfd3.md5
+.import/specular.tga-1637283e61e6b6c77d99425a59837bd6.s3tc.stex
+.import/specular.tga-1637283e61e6b6c77d99425a59837bd6.md5
+.import/specular.tga-1637283e61e6b6c77d99425a59837bd6.etc2.stex
+.import/Sand.png-5278df92fa1eb992b484f78c23712ebf.stex
+.import/Sand.png-5278df92fa1eb992b484f78c23712ebf.s3tc.stex
+.import/Sand.png-5278df92fa1eb992b484f78c23712ebf.etc2.stex
+.import/Sand.png-28cf867e7fe759604d79b26d67abc93a.s3tc.stex
+.import/Sand.png-28cf867e7fe759604d79b26d67abc93a.md5
+.import/Sand.png-28cf867e7fe759604d79b26d67abc93a.etc2.stex
+.import/Pfhor_testanim.dae-cf51de3cb510058f8c87dee831f5df6d.scn
+.import/Pfhor_testanim.dae-cf51de3cb510058f8c87dee831f5df6d.md5
+.import/pfhor_SPC.png-f9e28b9ece28093ecffdd14a30c67500.stex
+.import/pfhor_SPC.png-f9e28b9ece28093ecffdd14a30c67500.s3tc.stex
+.import/pfhor_SPC.png-f9e28b9ece28093ecffdd14a30c67500.md5
+.import/pfhor_SPC.png-f9e28b9ece28093ecffdd14a30c67500.etc2.stex
+.import/pfhor_NRM.png-1407d43f66c651ffab8e06e3feeb6434.stex
+.import/pfhor_NRM.png-1407d43f66c651ffab8e06e3feeb6434.s3tc.stex
+.import/pfhor_NRM.png-1407d43f66c651ffab8e06e3feeb6434.md5
+.import/pfhor_NRM.png-1407d43f66c651ffab8e06e3feeb6434.etc2.stex
+.import/pfhor_diffuse.png-98730af227d7c593417f7e25a9f9e9b9.stex
+.import/pfhor_diffuse.png-98730af227d7c593417f7e25a9f9e9b9.s3tc.stex
+.import/pfhor_diffuse.png-98730af227d7c593417f7e25a9f9e9b9.md5
+.import/pfhor_diffuse.png-98730af227d7c593417f7e25a9f9e9b9.etc2.stex
+.import/ocean_albedo.png-78d1ffe6f8bdaedd4d3ab0b96564cffc.s3tc.stex
+.import/ocean_albedo.png-78d1ffe6f8bdaedd4d3ab0b96564cffc.md5
+.import/ocean_albedo.png-78d1ffe6f8bdaedd4d3ab0b96564cffc.etc2.stex
+.import/ocean_albedo.png-374b65a187d1d20a199d61f6f156eb52.stex
+.import/ocean_albedo.png-374b65a187d1d20a199d61f6f156eb52.s3tc.stex
+.import/ocean_albedo.png-374b65a187d1d20a199d61f6f156eb52.etc2.stex
+.import/normal.tga-f502ba8e7280112a448278a2417a2f5b.s3tc.stex
+.import/normal.tga-f502ba8e7280112a448278a2417a2f5b.md5
+.import/normal.tga-f502ba8e7280112a448278a2417a2f5b.etc2.stex
+.import/normal.tga-866b6a09ebead50e641709b6e35d030b.s3tc.stex
+.import/normal.tga-866b6a09ebead50e641709b6e35d030b.md5
+.import/normal.tga-866b6a09ebead50e641709b6e35d030b.etc2.stex
+.import/normal.tga-76ac4825c145f8fa16dc4c19e1e6a31d.stex
+.import/normal.tga-76ac4825c145f8fa16dc4c19e1e6a31d.md5
+.import/normal.tga-6b25cce408820d5ec238feaf63a1c0f8.s3tc.stex
+.import/normal.tga-6b25cce408820d5ec238feaf63a1c0f8.md5
+.import/normal.tga-6b25cce408820d5ec238feaf63a1c0f8.etc2.stex
+.import/normal.tga-64d0909756f53675d5d8d97c4cbcef4f.s3tc.stex
+.import/normal.tga-64d0909756f53675d5d8d97c4cbcef4f.md5
+.import/normal.tga-64d0909756f53675d5d8d97c4cbcef4f.etc2.stex
+.import/normal.tga-560e67d522fbdd39914ca3eb206b3848.s3tc.stex
+.import/normal.tga-560e67d522fbdd39914ca3eb206b3848.md5
+.import/normal.tga-560e67d522fbdd39914ca3eb206b3848.etc2.stex
+.import/normal.tga-51fc28c76f8047f0f85dbbb548a0f913.s3tc.stex
+.import/normal.tga-51fc28c76f8047f0f85dbbb548a0f913.md5
+.import/normal.tga-51fc28c76f8047f0f85dbbb548a0f913.etc2.stex
+.import/MADD.dae-57d0855bf2ddaa2dbd3d16a77ab4fce3.scn
+.import/MADD.dae-57d0855bf2ddaa2dbd3d16a77ab4fce3.md5
+.import/LowerLegs-S.png-9d19ff178637a1e390e453cbfa9dc55d.stex
+.import/LowerLegs-S.png-9d19ff178637a1e390e453cbfa9dc55d.s3tc.stex
+.import/LowerLegs-S.png-9d19ff178637a1e390e453cbfa9dc55d.md5
+.import/LowerLegs-S.png-9d19ff178637a1e390e453cbfa9dc55d.etc2.stex
+.import/LowerLegs-N.png-b18d40576be9d0d1e461328113b1a14f.stex
+.import/LowerLegs-N.png-b18d40576be9d0d1e461328113b1a14f.s3tc.stex
+.import/LowerLegs-N.png-b18d40576be9d0d1e461328113b1a14f.md5
+.import/LowerLegs-N.png-b18d40576be9d0d1e461328113b1a14f.etc2.stex
+.import/Lowerlegs-D.png-dfe0f07f19b055103ff6bb200bc1f1b2.stex
+.import/Lowerlegs-D.png-dfe0f07f19b055103ff6bb200bc1f1b2.s3tc.stex
+.import/Lowerlegs-D.png-dfe0f07f19b055103ff6bb200bc1f1b2.md5
+.import/Lowerlegs-D.png-dfe0f07f19b055103ff6bb200bc1f1b2.etc2.stex
+.import/Lowerbody-S.png-0f19b99b3bca6fd0bcbfcf4ed50f265a.stex
+.import/Lowerbody-S.png-0f19b99b3bca6fd0bcbfcf4ed50f265a.s3tc.stex
+.import/Lowerbody-S.png-0f19b99b3bca6fd0bcbfcf4ed50f265a.md5
+.import/Lowerbody-S.png-0f19b99b3bca6fd0bcbfcf4ed50f265a.etc2.stex
+.import/Lowerbody-N.png-a8bff46e9c4464b75d949e7ce83205ef.stex
+.import/Lowerbody-N.png-a8bff46e9c4464b75d949e7ce83205ef.md5
+.import/LowerBody-D.png-cb26ac6edbdbce6d7271074ca03cb959.stex
+.import/LowerBody-D.png-cb26ac6edbdbce6d7271074ca03cb959.s3tc.stex
+.import/LowerBody-D.png-cb26ac6edbdbce6d7271074ca03cb959.md5
+.import/LowerBody-D.png-cb26ac6edbdbce6d7271074ca03cb959.etc2.stex
+.import/Indicator Diff.png-8439263eb31a1f9e0bc7946068c60453.stex
+.import/Indicator Diff.png-8439263eb31a1f9e0bc7946068c60453.s3tc.stex
+.import/Indicator Diff.png-8439263eb31a1f9e0bc7946068c60453.md5
+.import/Indicator Diff.png-8439263eb31a1f9e0bc7946068c60453.etc2.stex
+.import/icon.png-c1606e7bd9af7e3161f7d63f5e647d5d.stex
+.import/icon.png-c1606e7bd9af7e3161f7d63f5e647d5d.md5
+.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex
+.import/icon.png-487276ed1e3a0c39cad0279d744ee560.md5
+.import/icon.png-453a6b142a64f469565fa7b5b08efa1d.stex
+.import/icon.png-453a6b142a64f469565fa7b5b08efa1d.md5
+.import/IA_icon.png-de30de8cad7920f6036e804ec94d18f2.stex
+.import/IA_icon.png-de30de8cad7920f6036e804ec94d18f2.md5
+.import/huh.hdr-cce1de5ec97468d57e38f1c19112b51e.stex
+.import/huh.hdr-cce1de5ec97468d57e38f1c19112b51e.md5
+.import/Gun-S.png-c759c227234dfc7bd9e50124f601b118.stex
+.import/Gun-S.png-c759c227234dfc7bd9e50124f601b118.s3tc.stex
+.import/Gun-S.png-c759c227234dfc7bd9e50124f601b118.md5
+.import/Gun-S.png-c759c227234dfc7bd9e50124f601b118.etc2.stex
+.import/Gun-N.png-06e640f22279960834e7c4cb6fcd7a84.stex
+.import/Gun-N.png-06e640f22279960834e7c4cb6fcd7a84.s3tc.stex
+.import/Gun-N.png-06e640f22279960834e7c4cb6fcd7a84.md5
+.import/Gun-N.png-06e640f22279960834e7c4cb6fcd7a84.etc2.stex
+.import/Gun-D.png-83c4cd91cecb2da8d400ad74ee948d2f.stex
+.import/Gun-D.png-83c4cd91cecb2da8d400ad74ee948d2f.s3tc.stex
+.import/Gun-D.png-83c4cd91cecb2da8d400ad74ee948d2f.md5
+.import/Gun-D.png-83c4cd91cecb2da8d400ad74ee948d2f.etc2.stex
+.import/Gravicon.png-ef38ae312d1fe3632278879ff5cee758.stex
+.import/Gravicon.png-ef38ae312d1fe3632278879ff5cee758.md5
+.import/generic_water.png-f706a9111982ae65e5796a834de54cff.md5
+.import/foam_alpha_black.png-b977818769cf1fdd7227f779aa7d598e.stex
+.import/foam_alpha_black.png-b977818769cf1fdd7227f779aa7d598e.md5
+.import/foam_alpha_black.png-54578b37c751eddf105e0b3c3b51f843.stex
+.import/foam_alpha.png-ba48bd140176963e36d5b0b2b3f9b481.s3tc.stex
+.import/foam_alpha.png-ba48bd140176963e36d5b0b2b3f9b481.md5
+.import/foam_alpha.png-ba48bd140176963e36d5b0b2b3f9b481.etc2.stex
+.import/foam_alpha.png-2d70abeccc2f6b551b64a6dea4fb2a03.stex
+.import/foam_alpha.png-2d70abeccc2f6b551b64a6dea4fb2a03.s3tc.stex
+.import/foam_alpha.png-2d70abeccc2f6b551b64a6dea4fb2a03.etc2.stex
+.import/foam.png-f66ab88d503819018c767f8aa84c7a6c.md5
+.import/fi_dev_avatar_64_clear.png-3f0584f5bd06d91927aa5bd1b205c344.stex
+.import/fi_dev_avatar_64_clear.png-24df7582df2f5cf43d275d5555725620.stex
+.import/fi_dev_avatar_64_clear.png-24df7582df2f5cf43d275d5555725620.md5
+.import/diffuse.tga-d8fb941b3eb1adc066d1539ce9e2e904.s3tc.stex
+.import/diffuse.tga-d8fb941b3eb1adc066d1539ce9e2e904.md5
+.import/diffuse.tga-d8fb941b3eb1adc066d1539ce9e2e904.etc2.stex
+.import/diffuse.tga-a102b64dc96829ff45094675f8f555e9.s3tc.stex
+.import/diffuse.tga-a102b64dc96829ff45094675f8f555e9.md5
+.import/diffuse.tga-a102b64dc96829ff45094675f8f555e9.etc2.stex
+.import/diffuse.tga-9e266bd6f49b8a00fa38761e2add1629.s3tc.stex
+.import/diffuse.tga-9e266bd6f49b8a00fa38761e2add1629.md5
+.import/diffuse.tga-9e266bd6f49b8a00fa38761e2add1629.etc2.stex
+.import/diffuse.tga-7c9b1dc91dd769ca047f809780a90238.stex
+.import/diffuse.tga-7c9b1dc91dd769ca047f809780a90238.md5
+.import/diffuse.tga-764889bc057525552267b115a3f7112c.s3tc.stex
+.import/diffuse.tga-764889bc057525552267b115a3f7112c.md5
+.import/diffuse.tga-764889bc057525552267b115a3f7112c.etc2.stex
+.import/diffuse.tga-64a049b88398418b633f533bca1b81ba.s3tc.stex
+.import/diffuse.tga-64a049b88398418b633f533bca1b81ba.md5
+.import/diffuse.tga-64a049b88398418b633f533bca1b81ba.etc2.stex
+.import/diffuse.tga-2ff999d7d98ab56f18ad84cb5c463015.s3tc.stex
+.import/diffuse.tga-2ff999d7d98ab56f18ad84cb5c463015.md5
+.import/diffuse.tga-2ff999d7d98ab56f18ad84cb5c463015.etc2.stex
+.import/City Foreground.png-13b03cc3d48d7dd53968a83402a8a9a7.stex
+.import/City Foreground.png-13b03cc3d48d7dd53968a83402a8a9a7.md5
+.import/Can-S.png-73935342fff384789736c08012817728.stex
+.import/Can-S.png-73935342fff384789736c08012817728.s3tc.stex
+.import/Can-S.png-73935342fff384789736c08012817728.md5
+.import/Can-S.png-73935342fff384789736c08012817728.etc2.stex
+.import/Can-N.png-1deb6b02e63165a78678df6808eda6cd.stex
+.import/Can-N.png-1deb6b02e63165a78678df6808eda6cd.s3tc.stex
+.import/Can-N.png-1deb6b02e63165a78678df6808eda6cd.md5
+.import/Can-N.png-1deb6b02e63165a78678df6808eda6cd.etc2.stex
+.import/Can-D.png-50752cf43a9cb7a5a24972ba7fa70dcc.stex
+.import/Can-D.png-50752cf43a9cb7a5a24972ba7fa70dcc.s3tc.stex
+.import/Can-D.png-50752cf43a9cb7a5a24972ba7fa70dcc.md5
+.import/Can-D.png-50752cf43a9cb7a5a24972ba7fa70dcc.etc2.stex
+.import/BaseSpec.png-70523cd69eab7e3fd9270cc44c02069e.stex
+.import/BaseSpec.png-70523cd69eab7e3fd9270cc44c02069e.s3tc.stex
+.import/BaseSpec.png-70523cd69eab7e3fd9270cc44c02069e.md5
+.import/BaseSpec.png-70523cd69eab7e3fd9270cc44c02069e.etc2.stex
+.import/BaseNorm.png-4fac5d37e4ee944fed022b46a8867166.stex
+.import/BaseNorm.png-4fac5d37e4ee944fed022b46a8867166.s3tc.stex
+.import/BaseNorm.png-4fac5d37e4ee944fed022b46a8867166.md5
+.import/BaseNorm.png-4fac5d37e4ee944fed022b46a8867166.etc2.stex
+.import/BaseDiff.png-5af0796db4b76de2899ef94dc8029c2a.stex
+.import/BaseDiff.png-5af0796db4b76de2899ef94dc8029c2a.s3tc.stex
+.import/BaseDiff.png-5af0796db4b76de2899ef94dc8029c2a.md5
+.import/BaseDiff.png-5af0796db4b76de2899ef94dc8029c2a.etc2.stex
+.import/armor_SPC.png-816b1b74478d2da6e480ed867aadfded.stex
+.import/armor_SPC.png-816b1b74478d2da6e480ed867aadfded.s3tc.stex
+.import/armor_SPC.png-816b1b74478d2da6e480ed867aadfded.md5
+.import/armor_SPC.png-816b1b74478d2da6e480ed867aadfded.etc2.stex
+.import/armor_NRM.png-1f7ab9438cd1de9d7a16c49d1da2eebd.stex
+.import/armor_NRM.png-1f7ab9438cd1de9d7a16c49d1da2eebd.s3tc.stex
+.import/armor_NRM.png-1f7ab9438cd1de9d7a16c49d1da2eebd.md5
+.import/armor_NRM.png-1f7ab9438cd1de9d7a16c49d1da2eebd.etc2.stex
+.import/armor_EMS.png-3853eea6550adab4353646f1afe7fa93.stex
+.import/armor_EMS.png-3853eea6550adab4353646f1afe7fa93.s3tc.stex
+.import/armor_EMS.png-3853eea6550adab4353646f1afe7fa93.md5
+.import/armor_EMS.png-3853eea6550adab4353646f1afe7fa93.etc2.stex
+.import/armor_DIFF.png-da99c4658f89171e844a1d584a89cbea.stex
+.import/armor_DIFF.png-da99c4658f89171e844a1d584a89cbea.s3tc.stex
+.import/armor_DIFF.png-da99c4658f89171e844a1d584a89cbea.md5
+.import/armor_DIFF.png-da99c4658f89171e844a1d584a89cbea.etc2.stex
+.import/512_gris.png-65933969a4482e52eafc2f0fc8c1300e.s3tc.stex
+.import/512_gris.png-65933969a4482e52eafc2f0fc8c1300e.md5
+.import/512_gris.png-65933969a4482e52eafc2f0fc8c1300e.etc2.stex
+.import/512_celeste.png-1134e2e9b7d16796681445d5f2578de9.s3tc.stex
+.import/512_celeste.png-1134e2e9b7d16796681445d5f2578de9.md5
+.import/512_celeste.png-1134e2e9b7d16796681445d5f2578de9.etc2.stex
+.import/512_anaranjado.png-4a35127b290ef5823d2424c53d76bfcd.stex
+.import/512_anaranjado.png-4a35127b290ef5823d2424c53d76bfcd.md5
+.import/512_anaranjado.png-48fb7c0a8e0776799e59a8e84b3ad022.s3tc.stex
+.import/512_anaranjado.png-48fb7c0a8e0776799e59a8e84b3ad022.md5
+.import/512_anaranjado.png-48fb7c0a8e0776799e59a8e84b3ad022.etc2.stex
+.import/23.png-c9cdd80fbcf4c0369253aee12d986bde.stex
+.import/23.png-c9cdd80fbcf4c0369253aee12d986bde.s3tc.stex
+.import/23.png-c9cdd80fbcf4c0369253aee12d986bde.md5
+.import/23.png-c9cdd80fbcf4c0369253aee12d986bde.etc2.stex
+.import/22.png-69914680ede7c3a775f00cca5c96d0b6.stex
+.import/22.png-69914680ede7c3a775f00cca5c96d0b6.s3tc.stex
+.import/22.png-69914680ede7c3a775f00cca5c96d0b6.md5
+.import/22.png-69914680ede7c3a775f00cca5c96d0b6.etc2.stex
+.import/21.png-d13ee049081cf00ddb53b7fe417e39af.stex
+.import/21.png-d13ee049081cf00ddb53b7fe417e39af.s3tc.stex
+.import/21.png-d13ee049081cf00ddb53b7fe417e39af.md5
+.import/21.png-d13ee049081cf00ddb53b7fe417e39af.etc2.stex
+.import/20.png-8d0ea2502c84257d0d24c5e8525db62e.stex
+.import/20.png-8d0ea2502c84257d0d24c5e8525db62e.s3tc.stex
+.import/20.png-8d0ea2502c84257d0d24c5e8525db62e.md5
+.import/20.png-8d0ea2502c84257d0d24c5e8525db62e.etc2.stex
+.import/19.png-285da0ddb34ec1bbf2331979fe8a5702.stex
+.import/19.png-285da0ddb34ec1bbf2331979fe8a5702.s3tc.stex
+.import/19.png-285da0ddb34ec1bbf2331979fe8a5702.md5
+.import/19.png-285da0ddb34ec1bbf2331979fe8a5702.etc2.stex
+.import/18.png-d03ade0cd84b9271e18ffb8e8950ba73.stex
+.import/18.png-d03ade0cd84b9271e18ffb8e8950ba73.s3tc.stex
+.import/18.png-d03ade0cd84b9271e18ffb8e8950ba73.md5
+.import/18.png-d03ade0cd84b9271e18ffb8e8950ba73.etc2.stex
+.import/17.png-4725cd84844f24758a024e9a0f430571.stex
+.import/17.png-4725cd84844f24758a024e9a0f430571.s3tc.stex
+.import/17.png-4725cd84844f24758a024e9a0f430571.md5
+.import/17.png-4725cd84844f24758a024e9a0f430571.etc2.stex
+.import/16.png-401a794d14530456be78fedd3693b89e.stex
+.import/16.png-401a794d14530456be78fedd3693b89e.s3tc.stex
+.import/16.png-401a794d14530456be78fedd3693b89e.md5
+.import/16.png-401a794d14530456be78fedd3693b89e.etc2.stex
+.import/15.png-2b5e6bed86fd1623d32e1232281cfd11.stex
+.import/15.png-2b5e6bed86fd1623d32e1232281cfd11.s3tc.stex
+.import/15.png-2b5e6bed86fd1623d32e1232281cfd11.md5
+.import/15.png-2b5e6bed86fd1623d32e1232281cfd11.etc2.stex
+.import/14.png-e6e6d2457f22625b7d9bdf696ff448be.stex
+.import/14.png-e6e6d2457f22625b7d9bdf696ff448be.s3tc.stex
+.import/14.png-e6e6d2457f22625b7d9bdf696ff448be.md5
+.import/14.png-e6e6d2457f22625b7d9bdf696ff448be.etc2.stex
+.import/13.png-2c329513a180ff7532fc4bd28e477418.stex
+.import/13.png-2c329513a180ff7532fc4bd28e477418.s3tc.stex
+.import/13.png-2c329513a180ff7532fc4bd28e477418.md5
+.import/13.png-2c329513a180ff7532fc4bd28e477418.etc2.stex
+.import/12.png-acd0d649ebf80cf1752be84877ba33bc.stex
+.import/12.png-acd0d649ebf80cf1752be84877ba33bc.s3tc.stex
+.import/12.png-acd0d649ebf80cf1752be84877ba33bc.md5
+.import/12.png-acd0d649ebf80cf1752be84877ba33bc.etc2.stex
+.import/11.png-f659ee81289943eb4f3a76e72fa11b84.stex
+.import/11.png-f659ee81289943eb4f3a76e72fa11b84.s3tc.stex
+.import/11.png-f659ee81289943eb4f3a76e72fa11b84.md5
+.import/11.png-f659ee81289943eb4f3a76e72fa11b84.etc2.stex
+.import/1001_Roughness.png-c56af0f83826c713436839cb066ceb36.stex
+.import/1001_Roughness.png-c56af0f83826c713436839cb066ceb36.md5
+.import/10011_Roughness.png-47a5889fd4a8d0d552b5560f2fca9a48.stex
+.import/10011_Roughness.png-47a5889fd4a8d0d552b5560f2fca9a48.s3tc.stex
+.import/10011_Roughness.png-47a5889fd4a8d0d552b5560f2fca9a48.md5
+.import/10011_Roughness.png-47a5889fd4a8d0d552b5560f2fca9a48.etc2.stex
+.import/10011_Normal_DirectX.png-f7342a51df0e221560ce76bcae514324.stex
+.import/10011_Normal_DirectX.png-f7342a51df0e221560ce76bcae514324.s3tc.stex
+.import/10011_Normal_DirectX.png-f7342a51df0e221560ce76bcae514324.md5
+.import/10011_Normal_DirectX.png-f7342a51df0e221560ce76bcae514324.etc2.stex
+.import/10011_Metallic.png-ff10682fd71885f2db10392ed1a84c6c.stex
+.import/10011_Metallic.png-ff10682fd71885f2db10392ed1a84c6c.s3tc.stex
+.import/10011_Metallic.png-ff10682fd71885f2db10392ed1a84c6c.md5
+.import/10011_Metallic.png-ff10682fd71885f2db10392ed1a84c6c.etc2.stex
+.import/10011_Base_Color.png-b4ce73958f290fed2737195e45101ebc.stex
+.import/10011_Base_Color.png-b4ce73958f290fed2737195e45101ebc.s3tc.stex
+.import/10011_Base_Color.png-b4ce73958f290fed2737195e45101ebc.md5
+.import/10011_Base_Color.png-b4ce73958f290fed2737195e45101ebc.etc2.stex
+.import/10.png-3a2944c28c86a5e700861be49df70c3a.stex
+.import/10.png-3a2944c28c86a5e700861be49df70c3a.s3tc.stex
+.import/10.png-3a2944c28c86a5e700861be49df70c3a.md5
+.import/10.png-3a2944c28c86a5e700861be49df70c3a.etc2.stex
+.import/09.png-65d63070f0cdc78bc306be6866d83106.stex
+.import/09.png-65d63070f0cdc78bc306be6866d83106.s3tc.stex
+.import/09.png-65d63070f0cdc78bc306be6866d83106.md5
+.import/09.png-65d63070f0cdc78bc306be6866d83106.etc2.stex
+.import/08.png-d643a42ea2405ccacb867bf9d6d75aba.stex
+.import/08.png-d643a42ea2405ccacb867bf9d6d75aba.s3tc.stex
+.import/08.png-d643a42ea2405ccacb867bf9d6d75aba.md5
+.import/08.png-d643a42ea2405ccacb867bf9d6d75aba.etc2.stex
+.import/07.png-60f5173c59de1e4403543dd36e3695ac.stex
+.import/07.png-60f5173c59de1e4403543dd36e3695ac.s3tc.stex
+.import/07.png-60f5173c59de1e4403543dd36e3695ac.md5
+.import/07.png-60f5173c59de1e4403543dd36e3695ac.etc2.stex
+.import/06.png-615bcd3f00858b64e139c4be65639659.stex
+.import/06.png-615bcd3f00858b64e139c4be65639659.s3tc.stex
+.import/06.png-615bcd3f00858b64e139c4be65639659.md5
+.import/06.png-615bcd3f00858b64e139c4be65639659.etc2.stex
+.import/05.png-173df605fe4b59b49c29caa726287c5d.stex
+.import/05.png-173df605fe4b59b49c29caa726287c5d.s3tc.stex
+.import/05.png-173df605fe4b59b49c29caa726287c5d.md5
+.import/05.png-173df605fe4b59b49c29caa726287c5d.etc2.stex
+.import/04.png-00f3adc4b97326f768bc7f75eec38455.stex
+.import/04.png-00f3adc4b97326f768bc7f75eec38455.s3tc.stex
+.import/04.png-00f3adc4b97326f768bc7f75eec38455.md5
+.import/04.png-00f3adc4b97326f768bc7f75eec38455.etc2.stex
+.import/03.png-055aaf4813e637218c7c3e23bd1b077c.stex
+.import/03.png-055aaf4813e637218c7c3e23bd1b077c.s3tc.stex
+.import/03.png-055aaf4813e637218c7c3e23bd1b077c.md5
+.import/03.png-055aaf4813e637218c7c3e23bd1b077c.etc2.stex
+.import/02.png-13914d05d63a967f69cb079c71d232f0.stex
+.import/02.png-13914d05d63a967f69cb079c71d232f0.s3tc.stex
+.import/02.png-13914d05d63a967f69cb079c71d232f0.md5
+.import/02.png-13914d05d63a967f69cb079c71d232f0.etc2.stex
+.import/01.png-911e6aa74d15167b46c5654cdda830ca.stex
+.import/01.png-911e6aa74d15167b46c5654cdda830ca.s3tc.stex
+.import/01.png-911e6aa74d15167b46c5654cdda830ca.md5
+.import/01.png-911e6aa74d15167b46c5654cdda830ca.etc2.stex
+BaseGD/pl3d/Thoughts Inmmerse on blue
+BaseShapes/VACBOB.dae
+BaseShapes/VACBOB.dae.import
+BaseShapes/vacbob.material
+BaseShapes/middleage_cauasian_male.material
+BaseGD/GridThemes/Grid.meshlib
+BaseGD/GridThemes/Sci-fi cleanwalls/BaseDiff.png
+BaseGD/GridThemes/Sci-fi cleanwalls/BaseDiff.png.import
+BaseGD/GridThemes/Sci-fi cleanwalls/BaseNorm.png
+BaseGD/GridThemes/Sci-fi cleanwalls/BaseNorm.png.import
+BaseGD/GridThemes/Sci-fi cleanwalls/BaseSpec.png
+BaseGD/GridThemes/Sci-fi cleanwalls/BaseSpec.png.import
+BaseGD/GridThemes/Sci-fi cleanwalls/Grid.meshlib
+BaseGD/GridThemes/Sci-fi cleanwalls/GridBase.tscn
+BaseGD/GridThemes/Sci-fi cleanwalls/Lamps.tres
+BaseGD/GridThemes/Sci-fi cleanwalls/Material_000.material
+BaseGD/GridThemes/Sci-fi cleanwalls/Material_005.material
+BaseGD/GridThemes/Sci-fi cleanwalls/Wall.tres
+BaseGD/GridThemes/Sci-fi cleanwalls/wall1.material
+BaseGD/GridThemes/Sci-fi cleanwalls/wall2.material
+BaseGD/GridThemes/Sci-fi cleanwalls/wall3.material
+BaseGD/GridThemes/Sci-fi cleanwalls/wall3_001.material
+BaseGD/GridThemes/Sci-fi cleanwalls/walls2.dae
+BaseGD/GridThemes/Sci-fi cleanwalls/walls2.dae.import
+BaseGD/GridThemes/Urban.meshlib
+BaseGD/GridThemes/UrbanTheme/Barriers.material
+BaseGD/GridThemes/UrbanTheme/Barriers_001.material
+BaseGD/GridThemes/UrbanTheme/Barriers_002.material
+BaseGD/GridThemes/UrbanTheme/Barriers_003.material
+BaseGD/GridThemes/UrbanTheme/Barriers_004.material
+BaseGD/GridThemes/UrbanTheme/City Foreground.png
+BaseGD/GridThemes/UrbanTheme/City Foreground.png.import
+BaseGD/GridThemes/UrbanTheme/ConcretePipes.material
+BaseGD/GridThemes/UrbanTheme/Modular_building2s.material
+BaseGD/GridThemes/UrbanTheme/Modular_buildings.material
+BaseGD/GridThemes/UrbanTheme/Texturees/barrier/diffuse.tga
+BaseGD/GridThemes/UrbanTheme/Texturees/barrier/diffuse.tga.import
+BaseGD/GridThemes/UrbanTheme/Texturees/barrier/normal.tga
+BaseGD/GridThemes/UrbanTheme/Texturees/barrier/normal.tga.import
+BaseGD/GridThemes/UrbanTheme/Texturees/barrier/specular.tga
 BaseGD/GridThemes/UrbanTheme/Texturees/barrier/specular.tga.import
 BaseGD/GridThemes/UrbanTheme/Texturees/cube/diffuse.tga
 BaseGD/GridThemes/UrbanTheme/Texturees/cube/diffuse.tga.import
@@ -38,51 +444,13 @@ BaseGD/GridThemes/UrbanTheme/Texturees/wall/normal.tga.import
 BaseGD/GridThemes/UrbanTheme/Texturees/wall/specular.tga
 BaseGD/GridThemes/UrbanTheme/Texturees/wall/specular.tga.import
 BaseGD/GridThemes/UrbanTheme/UrbanTheme.tscn
-BaseGD/test.tscn
-BaseGD/pl3d/Thoughts Inmmerse on blue
-BaseGD/GridThemes/UrbanTheme/Texturees/barrier/specular.tga
-BaseGD/GridThemes/UrbanTheme/Texturees/barrier/normal.tga.import
-BaseGD/GridThemes/UrbanTheme/Texturees/barrier/normal.tga
-BaseGD/GridThemes/UrbanTheme/Texturees/barrier/diffuse.tga.import
-BaseGD/GridThemes/UrbanTheme/Texturees/barrier/diffuse.tga
-BaseGD/GridThemes/UrbanTheme/Modular_buildings.material
-BaseGD/GridThemes/UrbanTheme/Modular_building2s.material
-BaseGD/GridThemes/UrbanTheme/ConcretePipes.material
-BaseGD/GridThemes/UrbanTheme/City Foreground.png.import
-BaseGD/GridThemes/UrbanTheme/City Foreground.png
-BaseGD/GridThemes/UrbanTheme/Barriers_004.material
-BaseGD/GridThemes/UrbanTheme/Barriers_003.material
-BaseGD/GridThemes/UrbanTheme/Barriers_002.material
-BaseGD/GridThemes/UrbanTheme/Barriers_001.material
-BaseGD/GridThemes/UrbanTheme/Barriers.material
-BaseGD/GridThemes/Urban.meshlib
-BaseGD/GridThemes/Sci-fi cleanwalls/walls2.dae.import
-BaseGD/GridThemes/Sci-fi cleanwalls/walls2.dae
-BaseGD/GridThemes/Sci-fi cleanwalls/wall3_001.material
-BaseGD/GridThemes/Sci-fi cleanwalls/wall3.material
-BaseGD/GridThemes/Sci-fi cleanwalls/wall2.material
-BaseGD/GridThemes/Sci-fi cleanwalls/wall1.material
-BaseGD/GridThemes/Sci-fi cleanwalls/Wall.tres
-BaseGD/GridThemes/Sci-fi cleanwalls/Material_005.material
-BaseGD/GridThemes/Sci-fi cleanwalls/Material_000.material
-BaseGD/GridThemes/Sci-fi cleanwalls/Lamps.tres
-BaseGD/GridThemes/Sci-fi cleanwalls/GridBase.tscn
-BaseGD/GridThemes/Sci-fi cleanwalls/Grid.meshlib
-BaseGD/GridThemes/Sci-fi cleanwalls/BaseSpec.png.import
-BaseGD/GridThemes/Sci-fi cleanwalls/BaseSpec.png
-BaseGD/GridThemes/Sci-fi cleanwalls/BaseNorm.png.import
-BaseGD/GridThemes/Sci-fi cleanwalls/BaseNorm.png
-BaseGD/GridThemes/Sci-fi cleanwalls/BaseDiff.png.import
-BaseGD/GridThemes/Sci-fi cleanwalls/BaseDiff.png
-BaseGD/GridThemes/Grid.meshlib
-AHHH.tscn
-10011_Base_Color.png
-10011_Base_Color.png.import
-10011_Metallic.png
-10011_Metallic.png.import
-10011_Normal_DirectX.png
-10011_Normal_DirectX.png.import
-10011_Roughness.png
-10011_Roughness.png.import
-1001_Roughness.png
 1001_Roughness.png.import
+1001_Roughness.png
+10011_Roughness.png.import
+10011_Roughness.png
+10011_Normal_DirectX.png.import
+10011_Normal_DirectX.png
+10011_Metallic.png.import
+10011_Metallic.png
+10011_Base_Color.png.import
+10011_Base_Color.png
