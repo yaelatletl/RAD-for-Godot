@@ -138,12 +138,12 @@ func _physics_process(delta):
 	var aim = $Pivot/FPSCamera.get_global_transform().basis
 	if (is_network_master()):
 		$Pivot/FPSCamera.make_current()
-		if (Input.is_action_pressed("move_up")):
+		if (Input.is_action_pressed("move_forwards")):
 			dir -= aim[2]
 			ismoving = true
 		else:
 			ismoving = false
-		if (Input.is_action_pressed("move_down")):
+		if (Input.is_action_pressed("move_backwards")):
 			dir += aim[2]
 			ismoving = true
 		else:
