@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://addons/WorldManagement/WorldManagement.gd" type="Script" id=1]
 [ext_resource path="res://addons/WorldManagement/icon.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://BaseGD/Workstations/BasicWorkStation.tscn" type="PackedScene" id=18]
 [ext_resource path="res://addons/WorldManagement/GravityArea.gd" type="Script" id=19]
 [ext_resource path="res://addons/WorldManagement/Gravicon.png" type="Texture" id=20]
+[ext_resource path="res://addons/WorldManagement/AStar_Path.gd" type="Script" id=21]
 
 [sub_resource type="NavigationMesh" id=1]
 
@@ -322,7 +323,7 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
-[node name="mundo" type="Spatial"]
+[node name="mundo" type="Spatial" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
@@ -1532,8 +1533,8 @@ up_vector = Vector3( 0, 1, 0 )
 [node name="Pfhor" parent="." index="8" instance=ExtResource( 17 )]
 
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.896962, 0.303316, -0.862156 )
-AstarPath = null
-Navmesh = null
+AstarPath = NodePath("../Path")
+Navmesh = NodePath("../statics")
 smellarea = 150.0
 turn_speed = 1
 
@@ -1580,6 +1581,10 @@ disabled = false
 [node name="Path" type="Path" parent="." index="10"]
 
 curve = SubResource( 21 )
+script = ExtResource( 21 )
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
 
 [node name="PathFollow" type="PathFollow" parent="Path" index="0"]
 
