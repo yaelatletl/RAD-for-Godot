@@ -79,6 +79,11 @@ var CHAR_SCALE = Vector3(1, 1, 1)
 var is_moving = false
 var NM 
 
+slave var slave_translation
+slave var slave_linear
+slave var slave_transform
+
+
 func direct_path_collides():
 	var rel_vec = (position-translation)
 	var test1_collides = test_move(transform, rel_vec)
@@ -280,93 +285,100 @@ func Astar_Move_near(Pos):
 
 
 func Spatial_move_to(vector,delta):
-	if RAD.vec_distance(vector,translation) > 0.5:
-		vector = vector - translation
-		if not flies:
-			linear_velocity += gravity*delta/weight
+	if is_network_master():
+		if RAD.vec_distance(vector,translation) > 0.5:
+			vector = vector - translation
+			if not flies:
+				linear_velocity += gravity*delta/weight
 		
 
-		if fixed_up:
-			up = Vector3(0,1,0) # (up is against gravity)
-		else:
-			up = -gravity.normalized()
-		var vertical_velocity = up.dot(linear_velocity) # Vertical velocity
-		var horizontal_velocity = linear_velocity - up*vertical_velocity # Horizontal velocity
-		var hdir = horizontal_velocity.normalized() # Horizontal direction
-		var hspeed = horizontal_velocity.length()*speedfactor
+			if fixed_up:
+				up = Vector3(0,1,0) # (up is against gravity)
+			else:
+				up = -gravity.normalized()
+			var vertical_velocity = up.dot(linear_velocity) # Vertical velocity
+			var horizontal_velocity = linear_velocity - up*vertical_velocity # Horizontal velocity
+			var hdir = horizontal_velocity.normalized() # Horizontal direction
+			var hspeed = horizontal_velocity.length()*speedfactor
 
 		#look_at(vector, Vector3(0,1,0)) #Change to something that turns to the player or something they have to see
 
-		var target_dir = (vector - up*vector.dot(up)).normalized()
+			var target_dir = (vector - up*vector.dot(up)).normalized()
 
-		if (is_on_floor() or flies): #Only lets the character change it's facing direction when it's on the floor.
-			var sharp_turn = hspeed > 0.1 and rad2deg(acos(target_dir.dot(hdir))) > sharp_turn_threshold
+			if (is_on_floor() or flies): #Only lets the character change it's facing direction when it's on the floor.
+				var sharp_turn = hspeed > 0.1 and rad2deg(acos(target_dir.dot(hdir))) > sharp_turn_threshold
 
-			if (vector.length() > 0.1 and !sharp_turn):
-				if (hspeed > 0.001):
-					#linear_dir = linear_h_velocity/linear_vel
-					#if (linear_vel > brake_velocity_limit and linear_dir.dot(ctarget_dir) < -cos(Math::deg2rad(brake_angular_limit)))
-					#	brake = true
-					#else
-					hdir = RAD.adjust_facing(hdir, target_dir, delta, 1.0/hspeed*turn_speed, up)
-					var facing_dir = hdir
+				if (vector.length() > 0.1 and !sharp_turn):
+					if (hspeed > 0.001):
+						#linear_dir = linear_h_velocity/linear_vel
+						#if (linear_vel > brake_velocity_limit and linear_dir.dot(ctarget_dir) < -cos(Math::deg2rad(brake_angular_limit)))
+						#	brake = true
+						#else
+						hdir = RAD.adjust_facing(hdir, target_dir, delta, 1.0/hspeed*turn_speed, up)
+						var facing_dir = hdir
 
+					else:
+						hdir = target_dir
+
+
+					if (hspeed < max_speed):
+						hspeed += accel*delta
 				else:
-					hdir = target_dir
+					hspeed -= deaccel*delta
+					if (hspeed < 0):
+						hspeed = 0
+
+				horizontal_velocity = hdir*hspeed
 
 
-				if (hspeed < max_speed):
-					hspeed += accel*delta
-			else:
-				hspeed -= deaccel*delta
-				if (hspeed < 0):
-					hspeed = 0
+				var mesh_xform = get_transform()
+				var facing_mesh = -mesh_xform.basis[0].normalized()
+				facing_mesh = (facing_mesh - up*facing_mesh.dot(up)).normalized()
 
-			horizontal_velocity = hdir*hspeed
+				if (hspeed>0):
+					facing_mesh = RAD.adjust_facing(facing_mesh, target_dir, delta, 1.0/hspeed*turn_speed, up)
+				var m3 = Basis(-facing_mesh, up, -facing_mesh.cross(up).normalized()).scaled(CHAR_SCALE)
 
-
-			var mesh_xform = get_transform()
-			var facing_mesh = -mesh_xform.basis[0].normalized()
-			facing_mesh = (facing_mesh - up*facing_mesh.dot(up)).normalized()
-
-			if (hspeed>0):
-				facing_mesh = RAD.adjust_facing(facing_mesh, target_dir, delta, 1.0/hspeed*turn_speed, up)
-			var m3 = Basis(-facing_mesh, up, -facing_mesh.cross(up).normalized()).scaled(CHAR_SCALE)
-
-			set_transform(Transform(m3, mesh_xform.origin))
+				set_transform(Transform(m3, mesh_xform.origin))
 			
 			#if $AI/Senses/SmellandHear/Feet.is_colliding() and not direct_path_collides():
 			#	jump_attempt = true
 			
-			if (not jumping and jump_attempt):
-				vertical_velocity = JumpHeight
-				jumping = true
-				#get_node("sound_jump").play()
-		else:
-			if (vector.length() > 0.1):
-				horizontal_velocity += target_dir*accel*delta
-				if (horizontal_velocity.length() > max_speed):
-					horizontal_velocity = horizontal_velocity.normalized()*max_speed
+				if (not jumping and jump_attempt):
+					vertical_velocity = JumpHeight
+					jumping = true
+					#get_node("sound_jump").play()
 			else:
-				if (air_idle_deaccel):
-					hspeed = hspeed - (deaccel*0.2)*delta
-					if (hspeed < 0):
-						hspeed = 0
+				if (vector.length() > 0.1):
+					horizontal_velocity += target_dir*accel*delta
+					if (horizontal_velocity.length() > max_speed):
+						horizontal_velocity = horizontal_velocity.normalized()*max_speed
+				else:
+					if (air_idle_deaccel):
+						hspeed = hspeed - (deaccel*0.2)*delta
+						if (hspeed < 0):
+							hspeed = 0
 
-					horizontal_velocity = hdir*hspeed
+						horizontal_velocity = hdir*hspeed
 
-		if (jumping and vertical_velocity < 0):
-			jumping = false
-		if not flies:
-			linear_velocity = horizontal_velocity + up*vertical_velocity
-		else:
-			linear_velocity = horizontal_velocity
+			if (jumping and vertical_velocity < 0):
+				jumping = false
+			if not flies:
+				linear_velocity = horizontal_velocity + up*vertical_velocity
+			else:
+				linear_velocity = horizontal_velocity
 
-		if (is_on_floor()):
-			var movement_dir = linear_velocity
+			if (is_on_floor()):
+				var movement_dir = linear_velocity
 
-		linear_velocity = move_and_slide(linear_velocity,-gravity.normalized())
-
+			linear_velocity = move_and_slide(linear_velocity,-gravity.normalized())
+		rset("slave_linear", linear_velocity)
+		#rset("slave_translation", translation)
+		rset("slave_transform", transform)
+	else:
+		linear_velocity = slave_linear
+		#translation = slave_translation
+		transform = slave_transform
 
 		
 
@@ -432,14 +444,14 @@ func new_position():
 	else:
 		_update_path(position)
 		
-		print(path[1])
+		#print(path[1])
 	if $AI/Senses/SmellandHear/Checkheight.is_colliding():
 		#new_position()
 		pass
 	
 
 func AI_is_seeing():
-	if visible_colliding():
+	if visible_colliding() and is_network_master():
 		if get_visible() != null:
 			for x in get_visible():
 				for y in x.get_groups():
@@ -472,7 +484,7 @@ func AI_Check_Target_State():
 
 
 
-func attack():
+sync func attack():
 	$gun.target = current_target
 	$gun.fire()
 	

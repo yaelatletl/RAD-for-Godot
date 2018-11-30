@@ -2,7 +2,7 @@
 
 [ext_resource path="res://lobby.gd" type="Script" id=1]
 
-[node name="lobby" type="Control"]
+[node name="lobby" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -127,9 +127,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 14.0
-margin_top = 11.0
+margin_top = 29.0
 margin_right = 56.0
-margin_bottom = 25.0
+margin_bottom = 43.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -148,9 +148,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 17.0
-margin_top = 30.0
+margin_top = 48.0
 margin_right = 173.0
-margin_bottom = 54.0
+margin_bottom = 72.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -173,9 +173,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 15.0
-margin_top = 66.0
+margin_top = 84.0
 margin_right = 57.0
-margin_bottom = 80.0
+margin_bottom = 98.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -194,9 +194,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 17.0
-margin_top = 85.0
+margin_top = 103.0
 margin_right = 173.0
-margin_bottom = 109.0
+margin_bottom = 127.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -219,9 +219,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 181.0
-margin_top = 31.0
+margin_top = 49.0
 margin_right = 246.0
-margin_bottom = 51.0
+margin_bottom = 69.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -244,9 +244,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 181.0
-margin_top = 87.0
+margin_top = 105.0
 margin_right = 246.0
-margin_bottom = 107.0
+margin_bottom = 125.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -269,9 +269,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 15.0
-margin_top = 125.0
+margin_top = 143.0
 margin_right = 257.0
-margin_bottom = 139.0
+margin_bottom = 157.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -283,6 +283,31 @@ align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Button" type="Button" parent="connect" index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 13.0
+margin_top = 6.0
+margin_right = 102.0
+margin_bottom = 26.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "SinglePlayer"
+flat = false
+align = 1
 
 [node name="error" type="AcceptDialog" parent="." index="2"]
 
@@ -309,5 +334,7 @@ dialog_hide_on_ok = true
 [connection signal="pressed" from="connect/host" to="." method="_on_host_pressed"]
 
 [connection signal="pressed" from="connect/join" to="." method="_on_join_pressed"]
+
+[connection signal="pressed" from="connect/Button" to="." method="_on_Sinlgeplayer_pressed"]
 
 

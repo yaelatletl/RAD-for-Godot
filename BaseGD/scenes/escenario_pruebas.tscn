@@ -323,7 +323,7 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
-[node name="mundo" type="Spatial" index="0"]
+[node name="mundo" type="Spatial"]
 
 _sections_unfolded = [ "Transform" ]
 

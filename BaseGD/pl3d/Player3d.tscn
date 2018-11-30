@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://BaseGD/pl3d/Player3d.gd" type="Script" id=1]
 [ext_resource path="res://BaseGD/pl3d/TopDownCamera.gd" type="Script" id=2]
 [ext_resource path="res://BaseGD/pl3d/FPSCamera.gd" type="Script" id=3]
 [ext_resource path="res://BaseGD/pl3d/3RDPersCamera.gd" type="Script" id=4]
 [ext_resource path="res://BaseGD/pl3d/3RDPersonCamera.gd" type="Script" id=5]
+[ext_resource path="res://BaseGD/pl3d/label.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -71,7 +72,7 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo" ]
 
-[sub_resource type="SphereMesh" id=5]
+[sub_resource type="SphereMesh" id=4]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 radius = 1.0
@@ -80,7 +81,7 @@ radial_segments = 64
 rings = 32
 is_hemisphere = false
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=5]
 
 render_priority = 0
 flags_transparent = false
@@ -131,11 +132,13 @@ uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
 
-[sub_resource type="SphereShape" id=4]
+[sub_resource type="SphereShape" id=6]
 
 radius = 0.245702
 
-[node name="Player" type="KinematicBody" index="0"]
+[node name="Player" type="KinematicBody" groups=[
+"Player",
+]]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -214,9 +217,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 5 )
+mesh = SubResource( 4 )
 skeleton = NodePath("..")
-material/0 = SubResource( 6 )
+material/0 = SubResource( 5 )
 _sections_unfolded = [ "material" ]
 
 [node name="TopDownCamera" type="Camera" parent="." index="2"]
@@ -307,7 +310,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="CollisionShape" type="CollisionShape" parent="Pivot/CameraCollision" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.476892, 0.0157118, -0.0391517 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 disabled = false
 _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
@@ -332,6 +335,12 @@ text = "Default"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script = ExtResource( 6 )
 _sections_unfolded = [ "Rect" ]
+
+[node name="TextPoint" type="Position3D" parent="." index="7"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.44772, 0 )
+_sections_unfolded = [ "Transform" ]
 
 

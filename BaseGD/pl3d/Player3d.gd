@@ -74,6 +74,7 @@ slave var slave_linear_vel
 
 
 
+
 #Rotates the model to where the camera points
 func adjust_facing(p_facing, p_target, p_step, p_adjust_rate, current_gn):
 	var n = p_target # Normal
