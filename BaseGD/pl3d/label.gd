@@ -10,6 +10,6 @@ func _ready():
 	pass
 
 sync func _process(delta):
-	var pos = get_node("../TextPoint").to_global(get_node("../TextPoint").transform.origin)
+	var pos = get_node("../TextPoint").to_global(get_node("../TextPoint").translation)
 	rect_position = get_viewport().get_camera().unproject_position(pos)
 	
