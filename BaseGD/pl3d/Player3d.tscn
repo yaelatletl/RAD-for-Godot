@@ -186,6 +186,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Yaw" type="Spatial" parent="." index="1"]
 
+editor/display_folded = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="Yaw" index="0"]
@@ -251,6 +252,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489479, 2.14343, 1.44329 )
 
 [node name="Pivot" type="Position3D" parent="." index="5"]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58644, 0 )
 _sections_unfolded = [ "Transform" ]
 
@@ -320,10 +322,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 30.0
-margin_top = 33.0
-margin_right = 76.0
-margin_bottom = 47.0
+margin_right = 46.0
+margin_bottom = 14.0
 rect_scale = Vector2( 3, 3 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -332,15 +332,16 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 text = "Default"
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = ExtResource( 6 )
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="TextPoint" type="Position3D" parent="." index="7"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.44772, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07561, 0 )
 _sections_unfolded = [ "Transform" ]
 
 
