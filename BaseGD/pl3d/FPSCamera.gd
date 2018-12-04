@@ -11,14 +11,16 @@ var originalrotation = Vector3()
 var time = 0.0
 var Znoice = 0.0
 var Zholder = 0.0
-var v_off = 0.0
 
 func _ready():
 	set_process_input(true)
+	v_offset = 0.0
 	originaltranslation = Vector3(translation.x,translation.y,translation.z)
 	originalrotation = Vector3(rotation_degrees.x,rotation_degrees.y,rotation_degrees.z)
 
 func bobbing_effect(time, speed, delta):
+	if speed == null:
+		speed = 0.0
 	if speed >= 0.1 and get_parent().get_parent().is_on_floor():
 		var Oscillation = sin(time * speed*3.1416)
 		
