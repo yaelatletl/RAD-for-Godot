@@ -79,9 +79,14 @@ var CHAR_SCALE = Vector3(1, 1, 1)
 var is_moving = false
 var NM 
 
-slave var slave_translation
-slave var slave_linear
-slave var slave_transform
+slave var slave_translation = Vector3(0,0,0)
+slave var slave_linear = 0
+slave var slave_transform = Transform(
+	Vector3(0,0,0),
+	Vector3(0,0,0),
+	Vector3(0,0,0),
+	Vector3(0,0,0)
+);
 
 
 func direct_path_collides():
@@ -151,6 +156,10 @@ func _ready():
 		add_child(gun.instance())
 	as = get_node(AstarPath).as
 	NM = get_node(Navmesh)
+	if is_network_master():
+		rset("slave_linear", linear_velocity)
+		rset("slave_translation", translation)
+		rset("slave_transform", transform)
 
 func find_APath():
 	var node = get_node("/root")	
@@ -373,11 +382,11 @@ func Spatial_move_to(vector,delta):
 
 			linear_velocity = move_and_slide(linear_velocity,-gravity.normalized())
 		rset("slave_linear", linear_velocity)
-		#rset("slave_translation", translation)
+		rset("slave_translation", translation)
 		rset("slave_transform", transform)
 	else:
 		linear_velocity = slave_linear
-		#translation = slave_translation
+		translation = slave_translation
 		transform = slave_transform
 
 		

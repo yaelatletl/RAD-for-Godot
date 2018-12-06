@@ -160,9 +160,10 @@ func _physics_process(delta):
 		rset("slave_translation", translation)
 		rset("slave_transform", $Yaw.transform)
 	else:
-		$Yaw.transform = slave_transform
-		translation = slave_translation
-		linear_velocity = slave_linear_vel
+		pass
+		#$Yaw.transform = slave_transform
+		#translation = slave_translation
+		#linear_velocity = slave_linear_vel
 		
 	var jump_attempt = Input.is_action_pressed("jump")
 	var shoot_attempt = Input.is_action_pressed("shoot")
@@ -293,6 +294,14 @@ func _ready():
 	#get_node("AnimationTreePlayer").set_active(true)
 	set_process_input(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if is_network_master():
+		rset("slave_linear_vel", linear_velocity)
+		rset("slave_translation", translation)
+		rset("slave_transform", $Yaw.transform)
+	#else:
+	#	$Yaw.transform = slave_transform
+	#	translation = slave_translation
+	#	linear_velocity = slave_linear_vel
 	
 func set_player_name(new_name):
 	get_node("label").set_text(new_name)
