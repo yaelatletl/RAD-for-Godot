@@ -8,10 +8,7 @@ path.etc2="res://.import/Can-D.png-50752cf43a9cb7a5a24972ba7fa70dcc.etc2.stex"
 [deps]
 
 source_file="res://BaseGD/mesh/characters/Can-D.png"
-source_md5="ec457a0df88b3e1dee0f0700be3061af"
-
 dest_files=[ "res://.import/Can-D.png-50752cf43a9cb7a5a24972ba7fa70dcc.s3tc.stex", "res://.import/Can-D.png-50752cf43a9cb7a5a24972ba7fa70dcc.etc2.stex" ]
-dest_md5="7ae242a8571eac1fd59b08c56ec6835e"
 
 [params]
 

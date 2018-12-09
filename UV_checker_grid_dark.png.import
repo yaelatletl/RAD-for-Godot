@@ -7,8 +7,6 @@ valid=false
 [deps]
 
 source_file="res://UV_checker_grid_dark.png"
-source_md5="eb8e82d1cb744dfcf7435e7ee59aeb1f"
-
 [params]
 
 compress/mode=0

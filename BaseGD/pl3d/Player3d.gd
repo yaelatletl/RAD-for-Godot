@@ -73,7 +73,9 @@ slave var slave_transform
 slave var slave_linear_vel
 
 
-
+##Weapons and Object Handling
+var inventory = [] # inventory array to store the objects we are currently holding
+var weapon_point
 
 #Rotates the model to where the camera points
 func adjust_facing(p_facing, p_target, p_step, p_adjust_rate, current_gn):
@@ -101,9 +103,18 @@ func adjust_facing(p_facing, p_target, p_step, p_adjust_rate, current_gn):
 	return (n*cos(ang) + t*sin(ang))*p_facing.length()
 
 func _process(delta):
+	print(inventory)
+	#holding is called every loop to refresh whatever gun is being held and hide the gun that was put away.
+	holding()
+	
+	# if the node has a HUD
 	if self.has_node("HUD"):
-		$HUD.health = health
-		$HUD.change_health()
+		
+		# if there is a weapon in hand
+		if is_held().size() > 0:
+			# update the HUD with its proper name
+			$HUD/weapon_indicator.set_text(is_held()[0].identity+" "+str(is_held()[0].in_magazine))
+
 	
 func _physics_process(delta):
 	#	var d = 1.0 - delta*state.get_total_density()
@@ -138,6 +149,19 @@ func _physics_process(delta):
 	var aim = $Pivot/FPSCamera.get_global_transform().basis
 	if (is_network_master()):
 		$Pivot/FPSCamera.make_current()
+		
+		if Input.is_action_pressed("shoot"):
+			primary_fire()
+			
+		if Input.is_action_pressed("shoot_secondary"):
+			secondary_fire()
+		
+		if Input.is_action_just_released("shoot_secondary"):
+			secondary_release()
+		
+		if Input.is_action_just_pressed("last_weapon"):
+			last_weapon()
+		
 		if (Input.is_action_pressed("move_forwards")):
 			dir -= aim[2]
 			ismoving = true
@@ -287,12 +311,80 @@ func _physics_process(delta):
 #	state.set_angular_velocity(Vector3())
 	aimrotation = $Pivot/FPSCamera.rotation_degrees
 	translationcamera=$Pivot/FPSCamera.get_global_transform().origin
+	
+	
 func _ready():
+	weapon_point = $Pivot/weapon_point
 	health2 = health
 	CHAR_SCALE = scale
 	#get_node("AnimationTreePlayer").set_active(true)
 	set_process_input(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
+	for i in range(10):
+		inventory.append(0)
+	
 func set_player_name(new_name):
 	get_node("label").set_text(new_name)
+	
+#returns the current weapons 
+func is_held():
+
+	var held = $Pivot/weapon_point.get_children()
+
+	return held
+	
+# called to update the visibility of objects currently in inventory.
+func holding():
+
+	var holding = is_held()
+
+	for i in range(holding.size()):
+		if i == 0:
+			holding[i].set_visible(true)
+		else:
+			holding[i].set_visible(false)
+
+func primary_fire():
+	#print("attempting to fire!")
+	var held_weapon = weapon_point.get_children()
+	if held_weapon.size() > 0:
+		if held_weapon[0].has_method("primary_fire"):
+			#print("click!")
+			held_weapon[0].primary_fire()
+
+func secondary_fire():
+	#print("attempting to fire!")
+	var held_weapon = weapon_point.get_children()
+	if held_weapon.size() > 0:
+		if held_weapon[0].has_method("primary_fire"):
+			#print("click!")
+			held_weapon[0].secondary_fire()
+
+func secondary_release():
+	#print("attempting to fire!")
+	var held_weapon = weapon_point.get_children()
+	if held_weapon.size() > 0:
+		if held_weapon[0].has_method("secondary_release"):
+			#print("click!")
+			held_weapon[0].secondary_release()
+
+
+func pick_up(object, kind = "default"):
+
+	if kind == "ammo":
+		inventory[object] +=1
+	else:
+		var pickup = object.instance()
+		pickup.setup(self)
+		$Pivot/weapon_point.add_child(pickup)
+	print(inventory)
+	
+func last_weapon():
+	var held = is_held()
+	if held.size() > 0:
+		$Pivot/weapon_point.move_child(held[0], 2)
+	
+func next_weapon():
+	var held = is_held()
+	$Pivot/weapon_point.move_child(held[1], 1)

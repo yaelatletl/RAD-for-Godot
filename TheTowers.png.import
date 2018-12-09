@@ -7,10 +7,7 @@ path="res://.import/TheTowers.png-05a24a4c9cc6ee01a00b5be3fb659059.stex"
 [deps]
 
 source_file="res://TheTowers.png"
-source_md5="3b3a2cdad5a2082f8eef8f39b6d70b29"
-
 dest_files=[ "res://.import/TheTowers.png-05a24a4c9cc6ee01a00b5be3fb659059.stex" ]
-dest_md5="0331862cd15dd7daaa3b80fc42d82ef7"
 
 [params]
 

@@ -7,8 +7,6 @@ valid=false
 [deps]
 
 source_file="res://foam.png"
-source_md5="bf4628ded61cd85a7fc045475e1f8905"
-
 [params]
 
 compress/mode=0

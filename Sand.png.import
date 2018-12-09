@@ -8,10 +8,7 @@ path.etc2="res://.import/Sand.png-28cf867e7fe759604d79b26d67abc93a.etc2.stex"
 [deps]
 
 source_file="res://Sand.png"
-source_md5="c9c430f648b7960f095f030d97582e0d"
-
 dest_files=[ "res://.import/Sand.png-28cf867e7fe759604d79b26d67abc93a.s3tc.stex", "res://.import/Sand.png-28cf867e7fe759604d79b26d67abc93a.etc2.stex" ]
-dest_md5="d9b27b1347cfe4d3599e1d774addd7d6"
 
 [params]
 

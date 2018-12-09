@@ -8,10 +8,7 @@ path.etc2="res://.import/ZeusRoughness.png-8dba0b61a46a4d010e6371a9e8ed087a.etc2
 [deps]
 
 source_file="res://ZeusRoughness.png"
-source_md5="a7ce9bfc250ff6e0dfec7cc3ed239c75"
-
 dest_files=[ "res://.import/ZeusRoughness.png-8dba0b61a46a4d010e6371a9e8ed087a.s3tc.stex", "res://.import/ZeusRoughness.png-8dba0b61a46a4d010e6371a9e8ed087a.etc2.stex" ]
-dest_md5="6464f04db3b4a24b2acec35411078999"
 
 [params]
 

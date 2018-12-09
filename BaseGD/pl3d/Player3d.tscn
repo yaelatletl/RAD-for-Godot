@@ -1,11 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://BaseGD/pl3d/Player3d.gd" type="Script" id=1]
 [ext_resource path="res://BaseGD/pl3d/TopDownCamera.gd" type="Script" id=2]
-[ext_resource path="res://BaseGD/pl3d/FPSCamera.gd" type="Script" id=3]
-[ext_resource path="res://BaseGD/pl3d/3RDPersCamera.gd" type="Script" id=4]
-[ext_resource path="res://BaseGD/pl3d/3RDPersonCamera.gd" type="Script" id=5]
-[ext_resource path="res://BaseGD/pl3d/label.gd" type="Script" id=6]
+[ext_resource path="res://BaseGD/Guns/fusion_pistol.gd" type="Script" id=3]
+[ext_resource path="res://BaseGD/Guns/fusion_bolt.tscn" type="PackedScene" id=4]
+[ext_resource path="res://BaseGD/Guns/charged_fusion_bolt.tscn" type="PackedScene" id=5]
+[ext_resource path="res://BaseGD/pl3d/FPSCamera.gd" type="Script" id=6]
+[ext_resource path="res://BaseGD/pl3d/3RDPersCamera.gd" type="Script" id=7]
+[ext_resource path="res://BaseGD/pl3d/3RDPersonCamera.gd" type="Script" id=8]
+[ext_resource path="res://BaseGD/pl3d/label.gd" type="Script" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -136,7 +139,7 @@ distance_fade_enable = false
 
 radius = 0.245702
 
-[node name="Player" type="KinematicBody" groups=[
+[node name="Player" type="KinematicBody" index="0" groups=[
 "Player",
 ]]
 
@@ -179,7 +182,7 @@ grav = 9.8
 
 [node name="Collision" type="CollisionShape" parent="." index="0"]
 
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
 shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -187,11 +190,12 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 [node name="Yaw" type="Spatial" parent="." index="1"]
 
 editor/display_folded = true
+visible = false
 _sections_unfolded = [ "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="Yaw" index="0"]
 
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 1.05647, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.05647, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -225,7 +229,7 @@ _sections_unfolded = [ "material" ]
 
 [node name="TopDownCamera" type="Camera" parent="." index="2"]
 
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 14.246, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 14.246, 0 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -252,11 +256,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489479, 2.14343, 1.44329 )
 
 [node name="Pivot" type="Position3D" parent="." index="5"]
 
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58644, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="FPSCamera" type="Camera" parent="Pivot" index="0"]
+[node name="weapon_point" type="Position3D" parent="Pivot" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.757517, 0.0377058 )
+script = ExtResource( 3 )
+Fusion_Bolt = ExtResource( 4 )
+Charged_Fusion_Bolt = ExtResource( 5 )
+
+[node name="FPSCamera" type="Camera" parent="Pivot" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0436552, -0.14649 )
 keep_aspect = 1
@@ -271,10 +281,10 @@ fov = 90.0
 size = 1.0
 near = 0.05
 far = 100.0
-script = ExtResource( 3 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="3RDPersCamera" type="Camera" parent="Pivot" index="1"]
+[node name="3RDPersCamera" type="Camera" parent="Pivot" index="2"]
 
 transform = Transform( 0.997858, -0.0247958, 0.0605398, 0.0132274, 0.982746, 0.184489, -0.0640698, -0.183292, 0.980968, 0.497637, 0.54344, 1.31724 )
 keep_aspect = 1
@@ -289,12 +299,12 @@ fov = 90.0
 size = 1.0
 near = 0.05
 far = 100.0
-script = ExtResource( 4 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CameraCollision" type="KinematicBody" parent="Pivot" index="2"]
+[node name="CameraCollision" type="KinematicBody" parent="Pivot" index="3"]
 
-transform = Transform( 0.999903, -1.86265e-009, -0.0139474, -0.00282001, 0.979347, -0.202169, 0.0136593, 0.202189, 0.979251, -0.00137392, 0.472392, 1.50019 )
+transform = Transform( 0.999903, -1.86265e-09, -0.0139474, -0.00282001, 0.979347, -0.202169, 0.0136593, 0.202189, 0.979251, -0.00137392, 0.472392, 1.50019 )
 input_ray_pickable = false
 input_capture_on_drag = false
 collision_layer = 1
@@ -306,7 +316,7 @@ axis_lock_angular_x = false
 axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
-script = ExtResource( 5 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Pivot/CameraCollision" index="0"]
@@ -336,12 +346,43 @@ align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="TextPoint" type="Position3D" parent="." index="7"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07561, 0 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="HUD" type="Control" parent="." index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="weapon_indicator" type="Label" parent="HUD" index="0"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -226.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Current Weapon"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 

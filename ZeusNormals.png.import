@@ -8,10 +8,7 @@ path.etc2="res://.import/ZeusNormals.png-d449e86ab8e0a30ac9eeb2f11530723f.etc2.s
 [deps]
 
 source_file="res://ZeusNormals.png"
-source_md5="81236a076856218256f587e0ce0697b9"
-
 dest_files=[ "res://.import/ZeusNormals.png-d449e86ab8e0a30ac9eeb2f11530723f.s3tc.stex", "res://.import/ZeusNormals.png-d449e86ab8e0a30ac9eeb2f11530723f.etc2.stex" ]
-dest_md5="2bf17a0506e1cbda17f0f51a85da6873"
 
 [params]
 

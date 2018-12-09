@@ -7,10 +7,7 @@ path="res://.import/Pfhor_testanim.dae-cf51de3cb510058f8c87dee831f5df6d.scn"
 [deps]
 
 source_file="res://BaseShapes/Pfhor_testanim.dae"
-source_md5="d3c2ed80107237d77f5bdf7221346b02"
-
 dest_files=[ "res://.import/Pfhor_testanim.dae-cf51de3cb510058f8c87dee831f5df6d.scn" ]
-dest_md5="21ac20ef3040907534aca454c66ff5d2"
 
 [params]
 

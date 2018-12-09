@@ -7,10 +7,7 @@ path="res://.import/Lowerbody-N.png-a8bff46e9c4464b75d949e7ce83205ef.stex"
 [deps]
 
 source_file="res://BaseGD/mesh/characters/Lowerbody-N.png"
-source_md5="3d8a58ab5207a24ea44c0327ac2c2048"
-
 dest_files=[ "res://.import/Lowerbody-N.png-a8bff46e9c4464b75d949e7ce83205ef.stex" ]
-dest_md5="104b1edaf9719f656ea9edfb00a1e8e8"
 
 [params]
 

@@ -8,10 +8,7 @@ path.etc2="res://.import/UpperLegs-D.png-9ea97772d8c68df705c007bbe4644463.etc2.s
 [deps]
 
 source_file="res://BaseGD/mesh/characters/UpperLegs-D.png"
-source_md5="3d342ea25d76f590dfe2a978c36724b5"
-
 dest_files=[ "res://.import/UpperLegs-D.png-9ea97772d8c68df705c007bbe4644463.s3tc.stex", "res://.import/UpperLegs-D.png-9ea97772d8c68df705c007bbe4644463.etc2.stex" ]
-dest_md5="29dbecccbf802ba6b1f60e333e4332dd"
 
 [params]
 

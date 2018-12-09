@@ -7,8 +7,6 @@ valid=false
 [deps]
 
 source_file="res://generic_water.png"
-source_md5="c1b5cefa44141feaabad46e6c8df9838"
-
 [params]
 
 compress/mode=0

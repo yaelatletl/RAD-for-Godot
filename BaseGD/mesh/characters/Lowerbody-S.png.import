@@ -8,10 +8,7 @@ path.etc2="res://.import/Lowerbody-S.png-0f19b99b3bca6fd0bcbfcf4ed50f265a.etc2.s
 [deps]
 
 source_file="res://BaseGD/mesh/characters/Lowerbody-S.png"
-source_md5="cc611b2fdf92d805564ff0aa2774d022"
-
 dest_files=[ "res://.import/Lowerbody-S.png-0f19b99b3bca6fd0bcbfcf4ed50f265a.s3tc.stex", "res://.import/Lowerbody-S.png-0f19b99b3bca6fd0bcbfcf4ed50f265a.etc2.stex" ]
-dest_md5="23c6c7c8c87ceed90c9e457f3f9313ad"
 
 [params]
 

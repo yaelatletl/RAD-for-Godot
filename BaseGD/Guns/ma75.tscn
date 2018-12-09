@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://BaseGD/Guns/ma75.gd" type="Script" id=1]
+[ext_resource path="res://BaseGD/Guns/grenade.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BaseGD/Guns/squib.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/MA-75B.dae" type="PackedScene" id=4]
+
+[node name="ma75" type="Spatial"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Visibility" ]
+Projectile = ExtResource( 2 )
+squib = ExtResource( 3 )
+spread = 12
+
+[node name="aperture" type="Position3D" parent="." index="0"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.317387, -1.25386 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RayCast" type="RayCast" parent="aperture" index="0"]
+
+enabled = true
+exclude_parent = true
+cast_to = Vector3( 0, 0, -100 )
+collision_mask = 1
+
+[node name="chamber_timer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 0.1
+one_shot = true
+autostart = false
+
+[node name="Scene Root2" parent="." index="2" instance=ExtResource( 4 )]
+
+transform = Transform( -0.24111, 0, -2.10785e-08, 0, 0.24111, 0, 2.10785e-08, 0, -0.24111, 0, -0.0136424, 0.260689 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="grenade" type="Position3D" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.152007, -0.0709366, -1.05628 )
+
+[node name="grenade_timer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="chamber_timer" to="." method="_on_chamber_timer_timeout"]
+
+[connection signal="timeout" from="chamber_timer" to="." method="_on_Timer_timeout"]
+
+[connection signal="timeout" from="grenade_timer" to="." method="_on_grenade_timer_timeout"]
+
+

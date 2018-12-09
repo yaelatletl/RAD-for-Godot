@@ -8,10 +8,7 @@ path.etc2="res://.import/Gun-D.png-83c4cd91cecb2da8d400ad74ee948d2f.etc2.stex"
 [deps]
 
 source_file="res://BaseGD/mesh/characters/Gun-D.png"
-source_md5="71fbb59c00fdd7569000dd90d174e1ed"
-
 dest_files=[ "res://.import/Gun-D.png-83c4cd91cecb2da8d400ad74ee948d2f.s3tc.stex", "res://.import/Gun-D.png-83c4cd91cecb2da8d400ad74ee948d2f.etc2.stex" ]
-dest_md5="9d54f403cebcada0e727d9d6ea6a259d"
 
 [params]
 

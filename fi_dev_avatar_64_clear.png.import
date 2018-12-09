@@ -7,10 +7,7 @@ path="res://.import/fi_dev_avatar_64_clear.png-24df7582df2f5cf43d275d5555725620.
 [deps]
 
 source_file="res://fi_dev_avatar_64_clear.png"
-source_md5="a35842d38170b163c5db543b2cae7338"
-
 dest_files=[ "res://.import/fi_dev_avatar_64_clear.png-24df7582df2f5cf43d275d5555725620.stex" ]
-dest_md5="9d6380772314fb44195361b644d54756"
 
 [params]
 

@@ -8,10 +8,7 @@ path.etc2="res://.import/512_gris.png-65933969a4482e52eafc2f0fc8c1300e.etc2.stex
 [deps]
 
 source_file="res://BaseGD/materiales/texturas/512_gris.png"
-source_md5="888cf67d309f52d1bb5f0b2944c9c997"
-
 dest_files=[ "res://.import/512_gris.png-65933969a4482e52eafc2f0fc8c1300e.s3tc.stex", "res://.import/512_gris.png-65933969a4482e52eafc2f0fc8c1300e.etc2.stex" ]
-dest_md5="065d82c43bd0e2511d5fc4e3f37d4f6b"
 
 [params]
 

@@ -7,10 +7,7 @@ path="res://.import/foam_alpha_black.png-b977818769cf1fdd7227f779aa7d598e.stex"
 [deps]
 
 source_file="res://foam_alpha_black.png"
-source_md5="c746b7bb5075c05d3f8ac3334a255abe"
-
 dest_files=[ "res://.import/foam_alpha_black.png-b977818769cf1fdd7227f779aa7d598e.stex" ]
-dest_md5="969b82d354545f9e8d377d50eb04d311"
 
 [params]
 

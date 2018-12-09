@@ -8,10 +8,7 @@ path.etc2="res://.import/Indicator Diff.png-8439263eb31a1f9e0bc7946068c60453.etc
 [deps]
 
 source_file="res://Indicator Diff.png"
-source_md5="fbbbd1364a17cd27c81094cea35e9198"
-
 dest_files=[ "res://.import/Indicator Diff.png-8439263eb31a1f9e0bc7946068c60453.s3tc.stex", "res://.import/Indicator Diff.png-8439263eb31a1f9e0bc7946068c60453.etc2.stex" ]
-dest_md5="7b4cdfdab454552f5196ddbca16f5e3d"
 
 [params]
 
