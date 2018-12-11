@@ -1,5 +1,5 @@
 extends Spatial
-var id = 3
+var id = 0
 
 func _on_Area_body_entered(body):
 	if body.has_method("pick_up"):

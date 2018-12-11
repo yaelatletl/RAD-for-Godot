@@ -39,7 +39,10 @@ func _on_Area_body_entered(body):
 			#var splodepos = splode.get_global_transform()
 			#squibpos.origin = squibpoint
 			#thissquib.set_global_transform(squibpos)
-			body.owner.add_child(splode)
+			if body.owner == null:
+				pass
+			else:
+				body.owner.add_child(splode)
 			# have some effect (right now it just queues free.
 			queue_free()
 

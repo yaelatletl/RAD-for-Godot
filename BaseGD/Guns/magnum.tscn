@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://BaseGD/Guns/magnum.gd" type="Script" id=1]
+[ext_resource path="res://BaseGD/Guns/squib.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Mega Class.dae" type="PackedScene" id=3]
+
+[node name="magnum" type="Spatial"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Visibility" ]
+squib = ExtResource( 2 )
+spread = 2
+
+[node name="Scene Root" parent="." index="0" instance=ExtResource( 3 )]
+
+transform = Transform( -0.137345, 0, -1.20071e-08, 0, 0.137345, 0, 1.20071e-08, 0, -0.137345, 0, 0.0542247, -0.334632 )
+
+[node name="aperture" type="Position3D" parent="." index="1"]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.115927, -0.664627 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RayCast" type="RayCast" parent="aperture" index="0"]
+
+enabled = true
+exclude_parent = true
+cast_to = Vector3( 0, 0, -100 )
+collision_mask = 1
+
+[node name="chamber_timer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 0.7
+one_shot = true
+autostart = false
+
+[node name="grenade" type="Position3D" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.152007, -0.0709366, -1.05628 )
+visible = false
+
+[node name="grenade_timer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="chamber_timer" to="." method="_on_chamber_timer_timeout"]
+
+[connection signal="timeout" from="chamber_timer" to="." method="_on_Timer_timeout"]
+
+[connection signal="timeout" from="grenade_timer" to="." method="_on_grenade_timer_timeout"]
+
+

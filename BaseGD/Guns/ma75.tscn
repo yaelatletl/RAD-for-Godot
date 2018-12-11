@@ -15,8 +15,7 @@ spread = 12
 
 [node name="aperture" type="Position3D" parent="." index="0"]
 
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.317387, -1.25386 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.170497, -0.747759 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="RayCast" type="RayCast" parent="aperture" index="0"]
@@ -35,12 +34,12 @@ autostart = false
 
 [node name="Scene Root2" parent="." index="2" instance=ExtResource( 4 )]
 
-transform = Transform( -0.24111, 0, -2.10785e-08, 0, 0.24111, 0, 2.10785e-08, 0, -0.24111, 0, -0.0136424, 0.260689 )
+transform = Transform( -0.110092, 0, -9.62451e-09, 0, 0.110092, 0, 9.62451e-09, 0, -0.110092, 0, 0.0187369, -0.0456478 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="grenade" type="Position3D" parent="." index="3"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.152007, -0.0709366, -1.05628 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0698099, -0.00887543, -0.636671 )
 
 [node name="grenade_timer" type="Timer" parent="." index="4"]
 

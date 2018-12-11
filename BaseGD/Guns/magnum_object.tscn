@@ -1,0 +1,119 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://BaseGD/Guns/magnum_object.gd" type="Script" id=1]
+[ext_resource path="res://Mega Class.dae" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 0.178784, 0.284731, 0.317287 )
+
+[sub_resource type="BoxShape" id=2]
+
+extents = Vector3( 0.037369, 0.130555, 0.0779196 )
+
+[sub_resource type="BoxShape" id=3]
+
+extents = Vector3( 0.0484975, 0.138215, 0.229802 )
+
+[node name="magnum_object" type="RigidBody"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = false
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+axis_lock_linear_x = false
+axis_lock_linear_y = false
+axis_lock_linear_z = false
+axis_lock_angular_x = false
+axis_lock_angular_y = false
+axis_lock_angular_z = false
+linear_velocity = Vector3( 0, 0, 0 )
+linear_damp = -1.0
+angular_velocity = Vector3( 0, 0, 0 )
+angular_damp = -1.0
+script = ExtResource( 1 )
+
+[node name="Scene Root" parent="." index="0" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform = Transform( -0.137345, 0, -1.20071e-08, 0, 0.137345, 0, 1.20071e-08, 0, -0.137345, 0, 0, 0.0536213 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Area" type="Area" parent="." index="1"]
+
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+
+shape = SubResource( 1 )
+disabled = false
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="OmniLight" type="OmniLight" parent="." index="2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.02562, 0 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 1.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 5.0
+omni_attenuation = 1.0
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, 0.839554, 0.543276, 0, -0.543276, 0.839554, 0, -0.0612813, 0.130222 )
+shape = SubResource( 2 )
+disabled = false
+
+[node name="CollisionShape2" type="CollisionShape" parent="." index="4"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0383009, -0.0268111 )
+shape = SubResource( 3 )
+disabled = false
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+
+

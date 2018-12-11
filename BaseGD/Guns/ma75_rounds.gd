@@ -1,8 +1,6 @@
-extends "res://BaseGD/Guns/object.gd"
+extends Spatial
 
-func _ready():
-	id = 1
-	type = "52 round .32 caliber Clip"
+var id = 1
 
 func _on_Area_body_entered(body):
 	if body.has_method("pick_up"):

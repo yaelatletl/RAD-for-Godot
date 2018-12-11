@@ -86,6 +86,8 @@ func ammo_check_secondary(size = 1):
 		return false
 	
 	
+func dual_weild():
+	pass
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.

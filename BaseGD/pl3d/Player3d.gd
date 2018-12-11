@@ -103,7 +103,8 @@ func adjust_facing(p_facing, p_target, p_step, p_adjust_rate, current_gn):
 	return (n*cos(ang) + t*sin(ang))*p_facing.length()
 
 func _process(delta):
-	print(inventory)
+	
+	#print(inventory)
 	#holding is called every loop to refresh whatever gun is being held and hide the gun that was put away.
 	holding()
 	
@@ -161,6 +162,9 @@ func _physics_process(delta):
 		
 		if Input.is_action_just_pressed("last_weapon"):
 			last_weapon()
+		
+		if Input.is_action_just_pressed("next_weapon"):
+			next_weapon()
 		
 		if (Input.is_action_pressed("move_forwards")):
 			dir -= aim[2]
@@ -338,7 +342,7 @@ func is_held():
 func holding():
 
 	var holding = is_held()
-
+	#print(is_held())
 	for i in range(holding.size()):
 		if i == 0:
 			holding[i].set_visible(true)
@@ -378,13 +382,14 @@ func pick_up(object, kind = "default"):
 		var pickup = object.instance()
 		pickup.setup(self)
 		$Pivot/weapon_point.add_child(pickup)
-	print(inventory)
+	#print(inventory)
 	
 func last_weapon():
 	var held = is_held()
-	if held.size() > 0:
-		$Pivot/weapon_point.move_child(held[0], 2)
+	var size = is_held().size()
+	$Pivot/weapon_point.move_child(held[size-1], 0)
 	
 func next_weapon():
 	var held = is_held()
-	$Pivot/weapon_point.move_child(held[1], 1)
+	var size = is_held().size()
+	$Pivot/weapon_point.move_child(held[0], size)

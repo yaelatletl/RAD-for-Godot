@@ -5,7 +5,6 @@ extends Spatial
 # var b = "textvar"
 
 func _ready():
-	print("explosion created")
 	$dismiss.start()
 	# Called when the node is added to the scene for the first time.
 	# Initialization here

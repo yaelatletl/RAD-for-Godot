@@ -261,7 +261,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="weapon_point" type="Position3D" parent="Pivot" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.757517, 0.0377058 )
+transform = Transform( 1, 0, 0, 0, 0.999999, 0.00161846, 0, -0.00161846, 0.999999, 0, -0.360902, -0.264265 )
 script = ExtResource( 3 )
 Fusion_Bolt = ExtResource( 4 )
 Charged_Fusion_Bolt = ExtResource( 5 )

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://BaseGD/Guns/fp_cell.gd" type="Script" id=1]
+[ext_resource path="res://BaseGD/Guns/magnum_rounds.gd" type="Script" id=1]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -33,7 +33,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 0.832031, 0.832031, 0.832031, 1 )
+albedo_color = Color( 1, 0.960938, 0, 1 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -64,7 +64,7 @@ _sections_unfolded = [ "Albedo" ]
 
 [sub_resource type="BoxShape" id=3]
 
-extents = Vector3( 0.240128, 0.347185, 0.29886 )
+extents = Vector3( 0.303696, 0.357011, 0.282639 )
 
 [sub_resource type="BoxShape" id=4]
 

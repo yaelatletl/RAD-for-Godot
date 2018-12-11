@@ -65,6 +65,7 @@ shoot_secondary=[ Object(InputEventMouseButton,"resource_local_to_scene":false,"
 
 [physics]
 
+common/physics_fps=30
 3d/physics_engine="Bullet"
 
 [rendering]

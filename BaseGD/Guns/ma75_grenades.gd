@@ -1,8 +1,6 @@
-extends "res://BaseGD/Guns/object.gd"
+extends Spatial
 
-func _ready():
-	id = 2
-	type = "7 round 20mm Grenade Pack"
+var id = 2
 
 func _on_Area_body_entered(body):
 	if body.has_method("pick_up"):

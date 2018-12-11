@@ -5,7 +5,9 @@ export(PackedScene) var Fusion_Bolt = preload("res://BaseGD/Guns/fusion_bolt.tsc
 export(PackedScene) var Charged_Fusion_Bolt = preload("res://BaseGD/Guns/charged_fusion_bolt.tscn")
 var charged = false
 var charging = false
-
+func _process(delta):
+	print(charged, charging)
+		
 func _ready():
 	identity = "Zeus Class Fusion Pistol"
 	in_magazine = 100
@@ -51,9 +53,14 @@ func secondary_release():
 				# trigger the cool down timer.
 				$Timer.start()
 				charged = false
+				charging = false
 	else:
 		charging = false
+		charged = false
 		$charge.stop()
+		
+
+	
 # when the cooldown timer has elapsed
 func _on_Timer_timeout():
 	# reset the canshoot variable.
