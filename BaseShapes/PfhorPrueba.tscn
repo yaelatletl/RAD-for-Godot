@@ -549,6 +549,7 @@ blend_times = [  ]
 
 [node name="metarig" type="Spatial" parent="." index="2"]
 
+editor/display_folded = true
 transform = Transform( 1.8521e-07, 0, -1.41237, 0, 1.41237, 0, 1.41237, 0, 1.8521e-07, 0, 1.1505, 0 )
 _sections_unfolded = [ "Transform" ]
 

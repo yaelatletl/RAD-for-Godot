@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://BaseGD/Guns/ar_object.gd" type="Script" id=1]
 [ext_resource path="res://assets/Material_001.material" type="Material" id=2]
+[ext_resource path="res://assets/ma75/ma75.tres" type="Material" id=3]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -34,13 +35,9 @@ surfaces/0 = {
 "vertex_count": 7716
 }
 
-[node name="ar_object" type="Spatial"]
+[node name="ar_object" type="RigidBody"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00170898, 0.00219727, -0.00292969 )
-script = ExtResource( 1 )
-
-[node name="RigidBody" type="RigidBody" parent="." index="0"]
-
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -55,7 +52,7 @@ continuous_cd = false
 contacts_reported = 0
 contact_monitor = false
 sleeping = false
-can_sleep = true
+can_sleep = false
 axis_lock_linear_x = false
 axis_lock_linear_y = false
 axis_lock_linear_z = false
@@ -66,9 +63,11 @@ linear_velocity = Vector3( 0, 0, 0 )
 linear_damp = -1.0
 angular_velocity = Vector3( 0, 0, 0 )
 angular_damp = -1.0
+script = ExtResource( 1 )
 
-[node name="Area" type="Area" parent="RigidBody" index="0"]
+[node name="Area" type="Area" parent="." index="0"]
 
+editor/display_folded = true
 input_ray_pickable = false
 input_capture_on_drag = false
 space_override = 0
@@ -91,28 +90,28 @@ reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody/Area" index="0"]
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0425441, -0.195347 )
 shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody" index="1"]
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0512695, 0.0442672, -0.190581 )
 shape = SubResource( 2 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2" type="CollisionShape" parent="RigidBody" index="2"]
+[node name="CollisionShape2" type="CollisionShape" parent="." index="2"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0310059, -0.341553 )
 shape = SubResource( 3 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="Low_Poly" type="MeshInstance" parent="RigidBody" index="3"]
+[node name="Low_Poly" type="MeshInstance" parent="." index="3"]
 
 transform = Transform( -0.110092, 0, -1.66234e-08, 0, 0.110092, 0, 1.66234e-08, 0, -0.110092, 0, 0, 0 )
 layers = 1
@@ -126,31 +125,9 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 4 )
 skeleton = NodePath("..")
-material/0 = null
-_sections_unfolded = [ "Transform" ]
+material/0 = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "material" ]
 
-[node name="OmniLight" type="OmniLight" parent="." index="1"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.667911, 2.24721, 0 )
-layers = 1
-light_color = Color( 1, 1, 1, 1 )
-light_energy = 1.0
-light_indirect_energy = 1.0
-light_negative = false
-light_specular = 0.5
-light_bake_mode = 1
-light_cull_mask = -1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_bias = 0.15
-shadow_contact = 0.0
-shadow_reverse_cull_face = false
-editor_only = false
-omni_range = 5.0
-omni_attenuation = 1.0
-omni_shadow_mode = 1
-omni_shadow_detail = 1
-
-[connection signal="body_entered" from="RigidBody/Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 
 

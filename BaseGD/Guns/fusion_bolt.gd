@@ -5,7 +5,10 @@ extends RigidBody
 # variables for position and speed
 var pos
 export var speed = 25
+var wielder
 
+func setup(wieldee):
+	wielder = wieldee
 
 func _ready():
 	# set transform relative to global
@@ -29,14 +32,15 @@ func _on_Area_body_entered(body):
 	if body is StaticBody or body is RigidBody or body is KinematicBody:
 		
 		# so long as the object is NOT the bolt itself (since the bolt is a rigid body)
-		if body == self:
+		if body == wielder:
 			pass	
 		else:
 			# have some effect (right now it just queues free.
 			queue_free()
 			
-	if body.is_in_group("enemy"):
+
 		if body.has_method("hit"):
 			body.hit()
-		queue_free()
+			queue_free()
+
 

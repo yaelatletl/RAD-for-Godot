@@ -539,4 +539,5 @@ func Navmesh_movement(delta):
 	#Spatial_move_to(NMPosition, delta)
 	pass
 	
-
+func hit():
+	queue_free()

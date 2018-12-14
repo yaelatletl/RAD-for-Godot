@@ -31,8 +31,8 @@ var wielder
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-func setup(wield):
-	wielder = wield
+func setup(wieldee):
+	wielder = wieldee
 	
 func _ready():
 	# Called when the node is added to the scene for the first time.

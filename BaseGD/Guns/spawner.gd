@@ -32,16 +32,16 @@ var ma75o = load("res://BaseGD/Guns/ma75_object.tscn")
 var fpistolo = load("res://BaseGD/Guns/fusion_object.tscn")
 var magnumo = load("res://BaseGD/Guns/magnum_object.tscn")
 var tozto = load("res://BaseGD/Guns/magnum.tscn")
-var spnkro = load("res://BaseGD/Guns/magnum.tscn")
+var spnkro = load("res://BaseGD/Guns/spnkr.tscn")
 var smgo = load("res://BaseGD/Guns/magnum.tscn")
 
 var weapon_objects = [magnumo, ma75o, fpistolo, tozto, spnkro,smgo]
 
-# stores the location of ammo meshes.
+# stores the location of ammo objects.
 var ma75_rounds = load("res://BaseGD/Guns/ma75_rounds.tscn")
 var ma75_grenades = load("res://BaseGD/Guns/ma75_grenades.tscn")
 var magnum_rounds = load("res://BaseGD/Guns/magnum_rounds.tscn")
-var spnkr_missiles = load("res://BaseGD/Guns/ma75.tscn")
+var spnkr_missiles = load("res://BaseGD/Guns/spnkr_ammo.tscn")
 var tozt_can = load("res://BaseGD/Guns/ma75.tscn")
 var fp_cell = load("res://BaseGD/Guns/fp_cell.tscn")
 
