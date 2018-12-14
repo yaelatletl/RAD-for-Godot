@@ -456,3 +456,5 @@ BaseGD/GridThemes/UrbanTheme/UrbanTheme.tscn
 10011_Base_Color.png
 RAD for Godot.exe
 RAD for Godot.pck
+*.import
+*.import
