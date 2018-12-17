@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://512_anaranjado.png" type="Texture" id=1]
-[ext_resource path="res://assets/Shaders/Noice.tres" type="Material" id=2]
-[ext_resource path="res://addons/WorldManagement/AStar_Path.gd" type="Script" id=3]
-[ext_resource path="res://addons/WorldManagement/icon.png" type="Texture" id=4]
-[ext_resource path="res://BaseShapes/PfhorPrueba.tscn" type="PackedScene" id=5]
-[ext_resource path="res://BaseGD/Guns/spawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/WorldManagement/AStar_Path.gd" type="Script" id=2]
+[ext_resource path="res://addons/WorldManagement/icon.png" type="Texture" id=3]
+[ext_resource path="res://BaseShapes/PfhorPrueba.tscn" type="PackedScene" id=4]
+[ext_resource path="res://BaseGD/Guns/spawner.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -80,7 +79,7 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0 )
 }
 
-[node name="world" type="Navigation" index="0"]
+[node name="world" type="Navigation"]
 
 up_vector = Vector3( 0, 1, 0 )
 
@@ -226,7 +225,7 @@ disabled = false
 [node name="MeshInstance5" type="MeshInstance" parent="map" index="4"]
 
 editor/display_folded = true
-transform = Transform( -9.43664e-09, 0, -19.5463, 0, 4.28056, 0, 0.215885, 0, -8.54394e-07, 1.05766, 4.07208, -15.942 )
+transform = Transform( -9.43664e-009, 0, -19.5463, 0, 4.28056, 0, 0.215885, 0, -8.54394e-007, 1.05766, 4.07208, -15.942 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -364,7 +363,7 @@ disabled = false
 [node name="MeshInstance8" type="MeshInstance" parent="map" index="8"]
 
 editor/display_folded = true
-transform = Transform( -6.67267e-07, 0, -2.87278, -5.20535, 0.113932, 4.28194e-08, 14.3504, 0.0413269, -1.18047e-07, -13.2169, -0.14856, 2.80493 )
+transform = Transform( -6.67267e-007, 0, -2.87278, -5.20535, 0.113932, 4.28194e-008, 14.3504, 0.0413269, -1.18047e-007, -13.2169, -0.14856, 2.80493 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -392,7 +391,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="map/MeshInstance8/StaticBody" index="0"]
 
-transform = Transform( 1, -2.32831e-10, -4.44089e-16, -3.8147e-06, 1, 2.84217e-14, 1.42109e-14, 0, 1, 0, 0, 0 )
+transform = Transform( 1, -2.32831e-010, -4.44089e-016, -3.8147e-006, 1, 2.84217e-014, 1.42109e-014, 0, 1, 0, 0, 0 )
 shape = SubResource( 3 )
 disabled = false
 
@@ -419,12 +418,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.46776, 6.82361, 8.14205 )
 [node name="AStarPath" type="Path" parent="." index="3"]
 
 curve = SubResource( 4 )
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 __meta__ = {
-"_editor_icon": ExtResource( 4 )
+"_editor_icon": ExtResource( 3 )
 }
 
-[node name="Pfhor" parent="." index="4" instance=ExtResource( 5 )]
+[node name="Pfhor" parent="." index="4" instance=ExtResource( 4 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.67779, 0.957259, 3.38426 )
 AstarPath = NodePath("../AStarPath")
@@ -459,60 +458,71 @@ directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
 _sections_unfolded = [ "Light", "Shadow" ]
 
-[node name="Spatial" parent="." index="6" instance=ExtResource( 6 )]
+[node name="Spatial" parent="." index="6" instance=ExtResource( 5 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.291, 5.56322, -12.7698 )
 object_type = "ammo"
 object_id = 1
 amount = 10
 
-[node name="object_drop" parent="." index="7" instance=ExtResource( 6 )]
+[node name="object_drop" parent="." index="7" instance=ExtResource( 5 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.32034, 5.46009, -12.5654 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.32034, 5.46009, -10.9778 )
 object_type = "weapon"
 object_id = 1
 amount = 2
 
-[node name="object_drop10" parent="." index="8" instance=ExtResource( 6 )]
+[node name="object_drop2" parent="." index="8" instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.32034, 5.46009, -9.69131 )
+object_type = "weapon"
+object_id = 2
+amount = 2
+
+[node name="object_drop3" parent="." index="9" instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.32034, 5.46009, -8.60182 )
+object_type = "weapon"
+amount = 2
+
+[node name="object_drop10" parent="." index="10" instance=ExtResource( 5 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1455, 5.46009, -14.4834 )
 object_type = "ammo"
 object_id = 2
 amount = 10
 
-[node name="object_drop11" parent="." index="9" instance=ExtResource( 5 )]
+[node name="object_drop11" parent="." index="11" instance=ExtResource( 4 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43627, 5.46009, -14.4834 )
-object_type = "weapon"
-object_id = 2
-amount = 2
+AstarPath = NodePath("../AStarPath")
+Navmesh = NodePath("..")
 
-[node name="object_drop4" parent="." index="10" instance=ExtResource( 5 )]
+[node name="object_drop4" parent="." index="12" instance=ExtResource( 4 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.766, 5.44632, -14.187 )
-object_type = "weapon"
-object_id = 2
+AstarPath = NodePath("../AStarPath")
+Navmesh = NodePath("..")
 
-[node name="object_drop5" parent="." index="11" instance=ExtResource( 5 )]
+[node name="object_drop5" parent="." index="13" instance=ExtResource( 4 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9572, 5.44632, -13.1878 )
-object_type = "ammo"
-object_id = 3
-amount = 100
+AstarPath = NodePath("../AStarPath")
+Navmesh = NodePath("..")
 
-[node name="object_drop7" parent="." index="12" instance=ExtResource( 5 )]
+[node name="object_drop7" parent="." index="14" instance=ExtResource( 4 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.76103, 5.62438, -13.7624 )
-object_type = "weapon"
-amount = 2
+AstarPath = NodePath("../AStarPath")
+Navmesh = NodePath("..")
 
-[node name="object_drop8" parent="." index="13" instance=ExtResource( 5 )]
+[node name="object_drop8" parent="." index="15" instance=ExtResource( 4 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50481, 5.62438, -13.7624 )
-object_type = "ammo"
-amount = 10
+AstarPath = NodePath("../AStarPath")
+Navmesh = NodePath("..")
 
-[node name="OmniLight3" type="OmniLight" parent="." index="14"]
+[node name="OmniLight3" type="OmniLight" parent="." index="16"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.69067, 13.4792, -5.89209 )
 layers = 1
@@ -534,3 +544,5 @@ omni_attenuation = 1.0
 omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Shadow" ]
+
+
