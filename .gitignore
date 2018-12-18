@@ -458,3 +458,6 @@ RAD for Godot.exe
 RAD for Godot.pck
 *.import
 *.import
+.DS_Store
+BaseGD/.DS_Store
+BaseGD/.DS_Store

@@ -82,6 +82,8 @@ func spawn():
 
 		if spawn == 1:
 			var shown_object = weapon_objects[weapon_type]
+			print("weapon_objects: ", weapon_objects)
+			print("shown object: ", shown_object)
 			shown_object = shown_object.instance()
 			shown_object.set_as_toplevel(true)
 			$drop.get_parent().add_child(shown_object)

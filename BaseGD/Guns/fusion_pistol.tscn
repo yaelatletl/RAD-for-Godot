@@ -108,12 +108,12 @@ autostart = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
-[connection signal="timeout" from="overload" to="." method="_on_overload_timeout"]
-
 [connection signal="timeout" from="overload" to="." method="_on_Timer_timeout"]
 
-[connection signal="timeout" from="charge" to="." method="_on_charge_timeout"]
+[connection signal="timeout" from="overload" to="." method="_on_overload_timeout"]
 
 [connection signal="timeout" from="charge" to="." method="_on_Timer_timeout"]
+
+[connection signal="timeout" from="charge" to="." method="_on_charge_timeout"]
 
 
