@@ -1,16 +1,26 @@
 # basic item spawner
 # place in scene and then select either "ammo", "powerup", or "weapon".
-# if ammo select integer from 0 - 7
-# if powerup, 0 - 2
-# if weapon 0 - 6
+
 
 
 extends Node
 #var id = 0
 #var type = "none"
 
-export(String, "ammo", "weapon", "object") var object_type
-export var object_id = 0
+
+enum spawn_a {ammo, weapon, object}
+export (spawn_a) var spawn
+
+enum if_weapon {magnum, ma75, fusion_pistol, flame_thrower, rocket_launcher}
+export (if_weapon) var weapon_type
+
+enum if_ammo {magnum_rounds, ma75_rounds, ma75_grenades, fusion_cell, napalm, rockets}
+export (if_ammo) var ammo_id
+
+enum if_object {chip, padd, overshield, invincible, invisible}
+export (if_object) var object_id
+
+
 export var spawn_on_ground = false
 export var teleport_in = false
 export var amount = 1
@@ -61,29 +71,25 @@ func _ready():
 
 func spawn():
 	$placeholder_cone.set_visible(false)
-	
+	print("weapon type is: ", weapon_type)
 	for i in range(amount):
 		
-		if object_type == "ammo":
-			var shown_object = ammo[object_id]
-			$drop.add_child(shown_object.instance())
-		if object_type == "weapon":
-			var shown_object = weapon_objects[object_id]
-			$drop.add_child(shown_object.instance())
-		if object_type == "powerup":
+		if spawn == 0:
+			var shown_object = ammo[ammo_id]
+			shown_object = shown_object.instance()
+			shown_object.set_as_toplevel(true)
+			$drop.get_parent().add_child(shown_object)
+
+		if spawn == 1:
+			var shown_object = weapon_objects[weapon_type]
+			shown_object = shown_object.instance()
+			shown_object.set_as_toplevel(true)
+			$drop.get_parent().add_child(shown_object)
+
+		if spawn == 2:
 			var shown_object = powerups[object_id]
-			$drop.add_child(shown_object.instance())
+			shown_object = shown_object.instance()
+			shown_object.set_as_toplevel(true)
+			$drop.get_parent().add_child(shown_object)
 
-# if something collides with the area
-func _on_Area_body_entered(body):
-	# check to see if that object has a method called "pick_up"
-	
-	if body.has_method("pick_up"):
-		if object_type == "ammo":
-			body.pick_up(object_id, "ammo")
-		if object_type == "powerup":
-			body.pick_up(object_id, "powerup")
-		if object_type == "weapon":
-			body.pick_up(weapons[object_id], "weapon")
 
-		queue_free()

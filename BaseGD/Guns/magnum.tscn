@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/magnum/magnum.tres" type="Material" id=4]
 [ext_resource path="res://Material_001.material" type="Material" id=5]
 
-[sub_resource type="ArrayMesh" id=12]
+[sub_resource type="ArrayMesh" id=1]
 
 resource_name = "Circle"
 blend_shape_mode = 1
@@ -25,7 +25,7 @@ surfaces/0 = {
 "vertex_count": 194
 }
 
-[sub_resource type="ArrayMesh" id=13]
+[sub_resource type="ArrayMesh" id=2]
 
 resource_name = "group1 pCube15"
 blend_shape_mode = 1
@@ -44,7 +44,7 @@ surfaces/0 = {
 "vertex_count": 836
 }
 
-[sub_resource type="ArrayMesh" id=14]
+[sub_resource type="ArrayMesh" id=3]
 
 resource_name = "group2 pCube16"
 blend_shape_mode = 1
@@ -224,7 +224,6 @@ spread = 2
 
 [node name="Scene Root2" type="Spatial" parent="." index="0"]
 
-editor/display_folded = true
 transform = Transform( -0.137345, 0, -1.20071e-08, 0, 0.137345, 0, 1.20071e-08, 0, -0.137345, 0, 0.0572385, -0.331638 )
 _sections_unfolded = [ "Transform" ]
 
@@ -240,7 +239,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 12 )
+mesh = SubResource( 1 )
 skeleton = NodePath("..")
 material/0 = ExtResource( 4 )
 _sections_unfolded = [ "material" ]
@@ -257,7 +256,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 13 )
+mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = ExtResource( 4 )
 _sections_unfolded = [ "material" ]
@@ -274,7 +273,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 14 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = ExtResource( 4 )
 _sections_unfolded = [ "material" ]
@@ -456,9 +455,9 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[connection signal="timeout" from="chamber_timer" to="." method="_on_Timer_timeout"]
-
 [connection signal="timeout" from="chamber_timer" to="." method="_on_chamber_timer_timeout"]
+
+[connection signal="timeout" from="chamber_timer" to="." method="_on_Timer_timeout"]
 
 [connection signal="timeout" from="grenade_timer" to="." method="_on_grenade_timer_timeout"]
 

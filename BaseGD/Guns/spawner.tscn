@@ -71,7 +71,9 @@ rings = 4
 [node name="spawner" type="Spatial"]
 
 script = ExtResource( 1 )
-object_type = null
+spawn = null
+weapon_type = null
+ammo_id = null
 object_id = 0
 spawn_on_ground = false
 teleport_in = false

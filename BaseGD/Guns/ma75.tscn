@@ -80,9 +80,9 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[connection signal="timeout" from="chamber_timer" to="." method="_on_Timer_timeout"]
-
 [connection signal="timeout" from="chamber_timer" to="." method="_on_chamber_timer_timeout"]
+
+[connection signal="timeout" from="chamber_timer" to="." method="_on_Timer_timeout"]
 
 [connection signal="timeout" from="grenade_timer" to="." method="_on_grenade_timer_timeout"]
 

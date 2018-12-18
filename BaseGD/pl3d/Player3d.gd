@@ -115,8 +115,9 @@ func _process(delta):
 		# if there is a weapon in hand
 		if is_held().size() > 0:
 			# update the HUD with its proper name
-			$HUD/weapon_indicator.set_text(is_held()[0].identity+" "+str(is_held()[0].in_magazine))
-
+			$HUD/Inventory/VBoxContainer/current_weapon.set_text(is_held()[0].identity)
+			$HUD/Inventory/VBoxContainer/in_magazine.set_text(str(is_held()[0].in_magazine))
+			$HUD/Inventory/VBoxContainer/ammo.set_text(str(inventory[is_held()[0].primary_ammo_id]))
 	
 func _physics_process(delta):
 	#	var d = 1.0 - delta*state.get_total_density()
