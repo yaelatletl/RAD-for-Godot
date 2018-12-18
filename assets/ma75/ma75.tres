@@ -44,7 +44,11 @@ rim_enabled = false
 clearcoat_enabled = false
 anisotropy_enabled = false
 ao_enabled = true
+<<<<<<< HEAD
 ao_light_affect = 0.5
+=======
+ao_light_affect = 1.0
+>>>>>>> 6c24f983134860ac0f4d52ca2f0fde51dd7e1c18
 ao_texture = ExtResource( 2 )
 ao_on_uv2 = false
 ao_texture_channel = 0
