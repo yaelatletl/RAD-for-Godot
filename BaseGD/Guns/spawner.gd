@@ -42,7 +42,7 @@ var ma75o = load("res://BaseGD/Guns/ma75_object.tscn")
 var fpistolo = load("res://BaseGD/Guns/fusion_object.tscn")
 var magnumo = load("res://BaseGD/Guns/magnum_object.tscn")
 var tozto = load("res://BaseGD/Guns/magnum.tscn")
-var spnkro = load("res://BaseGD/Guns/spnkr.tscn")
+var spnkro = load("res://BaseGD/Guns/spnkr_object.tscn")
 var smgo = load("res://BaseGD/Guns/magnum.tscn")
 
 var weapon_objects = [magnumo, ma75o, fpistolo, tozto, spnkro,smgo]
@@ -71,7 +71,7 @@ func _ready():
 
 func spawn():
 	$placeholder_cone.set_visible(false)
-	print("weapon type is: ", weapon_type)
+	#print("weapon type is: ", weapon_type)
 	for i in range(amount):
 		
 		if spawn == 0:
@@ -79,11 +79,12 @@ func spawn():
 			shown_object = shown_object.instance()
 			shown_object.set_as_toplevel(true)
 			$drop.get_parent().add_child(shown_object)
+			
 
 		if spawn == 1:
 			var shown_object = weapon_objects[weapon_type]
-			print("weapon_objects: ", weapon_objects)
-			print("shown object: ", shown_object)
+			#print("weapon_objects: ", weapon_objects)
+			#print("shown object: ", shown_object)
 			shown_object = shown_object.instance()
 			shown_object.set_as_toplevel(true)
 			$drop.get_parent().add_child(shown_object)
@@ -93,5 +94,7 @@ func spawn():
 			shown_object = shown_object.instance()
 			shown_object.set_as_toplevel(true)
 			$drop.get_parent().add_child(shown_object)
+	
+	#queue_free()
 
 

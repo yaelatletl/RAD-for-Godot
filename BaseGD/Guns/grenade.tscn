@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://BaseGD/Guns/grenade.gd" type="Script" id=1]
+[ext_resource path="res://grenade.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -136,7 +136,7 @@ is_hemisphere = false
 
 radius = 0.646266
 
-[node name="fusion_bolt" type="RigidBody"]
+[node name="fusion_bolt" type="RigidBody" index="0"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -146,7 +146,7 @@ mode = 0
 mass = 1.0
 friction = 1.0
 bounce = 0.0
-gravity_scale = 1.0
+gravity_scale = 0.8
 custom_integrator = false
 continuous_cd = false
 contacts_reported = 0
@@ -169,7 +169,7 @@ speed = 10
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="0"]
 
-transform = Transform( 0.169431, 0, 0, 0, 0.169431, 0, 0, 0, 0.169431, -0.0105624, 0, 0 )
+transform = Transform( 0.0522771, 0, 0, 0, 0.0522771, 0, 0, 0, 0.0522771, -0.0105624, 0, 0.0315832 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -186,7 +186,7 @@ _sections_unfolded = [ "Geometry", "material" ]
 
 [node name="MeshInstance2" type="MeshInstance" parent="." index="1"]
 
-transform = Transform( 0.169431, 0, 0, 0, 0.169431, 0, 0, 0, 0.169431, -0.0105624, 0, 0.0913529 )
+transform = Transform( 0.0522771, 0, 0, 0, 0.0522771, 0, 0, 0, 0.0522771, -0.0105624, 0, 0.0597697 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -233,7 +233,7 @@ disabled = false
 
 [node name="OmniLight" type="OmniLight" parent="." index="3"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.410889 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.144718 )
 layers = 1
 light_color = Color( 0.998593, 1, 0.819892, 1 )
 light_energy = 0.75
@@ -253,6 +253,13 @@ omni_attenuation = 1.0
 omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Light" ]
+
+[node name="launch_timer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 

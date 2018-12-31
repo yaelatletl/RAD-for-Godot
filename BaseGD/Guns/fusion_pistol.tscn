@@ -40,7 +40,7 @@ surfaces/0 = {
 }
 _sections_unfolded = [ "Resource" ]
 
-[node name="fusion_pistol" type="Spatial"]
+[node name="fusion_pistol" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 Fusion_Bolt = ExtResource( 2 )

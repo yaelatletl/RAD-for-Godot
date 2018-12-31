@@ -4,7 +4,10 @@ var explosion = load("res://BaseGD/Guns/explosion.tscn")
 # variables for position and speed
 var pos
 export var speed = 10
+var wielder
 
+func setup(wieldee):
+	wielder = wieldee
 
 func _ready():
 	# set transform relative to global
@@ -28,7 +31,7 @@ func _on_Area_body_entered(body):
 	if body is StaticBody or body is RigidBody or body is KinematicBody:
 
 		# so long as the object is NOT the bolt itself (since the bolt is a rigid body)
-		if body == self:
+		if body == wielder:
 			pass
 		else:
 			var splode = explosion.instance()

@@ -68,7 +68,7 @@ height = 0.5
 radial_segments = 64
 rings = 4
 
-[node name="spawner" type="Spatial"]
+[node name="spawner" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 spawn = null

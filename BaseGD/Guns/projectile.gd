@@ -4,6 +4,11 @@ extends RigidBody
 # variables for position and speed
 var pos
 export var speed = 25
+export var propelled = false
+export var explosive = false
+export var energy = false
+
+
 var wielder
 
 var damage = 10
@@ -12,6 +17,19 @@ var damage = 10
 func setup(wieldee):
 	wielder = wieldee
 
+func _physics_process(delta):
+	if propelled:
+		propel()
+		
+
+func propel():
+	# determine basis for flight
+	var dir = get_global_transform().basis*Vector3(0,0,-1).normalized()
+	
+	# exert impulse on bolt to propel it.
+	set_linear_velocity(Vector3(dir * speed))
+	apply_impulse(Vector3(),dir * speed ) 
+
 func _ready():
 	# set transform relative to global
 	set_as_toplevel(true)
@@ -19,12 +37,7 @@ func _ready():
 	# get current position/orientation
 	pos = get_transform()
 	
-	# determine basis for flight
-	var dir = get_global_transform().basis*Vector3(0,0,-1).normalized()
-	
-	# exert impulse on bolt to propel it.
-	set_linear_velocity(Vector3(dir * speed))
-	apply_impulse(Vector3(),dir * speed ) 
+
 	
 
 # when the hitbox collides with something:

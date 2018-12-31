@@ -56,7 +56,7 @@ func secondary_fire():
 		if ammo_check_secondary():
 				# load a bolt as an instance
 				var bolt = Projectile.instance()
-				
+				bolt.setup(wielder)
 				# add the bolt to the aperture of the fusion pistol
 				$aperture.add_child(bolt)
 				

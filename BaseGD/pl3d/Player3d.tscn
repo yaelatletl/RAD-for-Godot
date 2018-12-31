@@ -139,7 +139,7 @@ distance_fade_enable = false
 
 radius = 0.245702
 
-[node name="Player" type="KinematicBody" groups=[
+[node name="Player" type="KinematicBody" index="0" groups=[
 "Player",
 ]]
 

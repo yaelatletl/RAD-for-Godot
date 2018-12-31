@@ -1,12 +1,28 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://BaseGD/Guns/spnkr.gd" type="Script" id=1]
-[ext_resource path="res://BaseGD/Guns/grenade.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BaseGD/Guns/spnkr_missile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://BaseGD/Guns/squib.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/MA-75B.dae" type="PackedScene" id=4]
-[ext_resource path="res://BaseGD/Guns/spnkr_missile.tscn" type="PackedScene" id=5]
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="CylinderMesh" id=1]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+top_radius = 0.2
+bottom_radius = 0.2
+height = 2.0
+radial_segments = 64
+rings = 4
+
+[sub_resource type="CylinderMesh" id=2]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+top_radius = 0.031
+bottom_radius = 0.2
+height = 0.5
+radial_segments = 64
+rings = 4
+
+[sub_resource type="CubeMesh" id=3]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 1, 0.4, 4 )
@@ -14,7 +30,7 @@ subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="CubeMesh" id=4]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 size = Vector3( 2, 2, 2 )
@@ -32,54 +48,23 @@ spread = 20
 
 [node name="aperture" type="Position3D" parent="." index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.572364, 0.316721, -0.42232 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.506008, 0.38799, -0.115579 )
 _sections_unfolded = [ "Transform" ]
-
-[node name="RayCast" type="RayCast" parent="aperture" index="0"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0539306, 0.106027, 0 )
-enabled = true
-exclude_parent = true
-cast_to = Vector3( 0, 0, -100 )
-collision_mask = 1
 
 [node name="chamber_timer" type="Timer" parent="." index="1"]
 
 process_mode = 1
-wait_time = 0.1
+wait_time = 1.0
 one_shot = true
 autostart = false
 
-[node name="Scene Root2" parent="." index="2" instance=ExtResource( 4 )]
+[node name="missile_slot" type="Position3D" parent="." index="2"]
 
-transform = Transform( -0.110092, 0, -9.62451e-09, 0, 0.110092, 0, 9.62451e-09, 0, -0.110092, 0, 0.0187369, -0.0456478 )
-visible = false
-_sections_unfolded = [ "Transform" ]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.506011, 0.386609, -0.149997 )
 
-[node name="missile_slot" type="Position3D" parent="." index="3"]
+[node name="MeshInstance" type="MeshInstance" parent="missile_slot" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.506011, 0.419601, -0.149997 )
-visible = false
-
-[node name="spnkr_missile" parent="missile_slot" index="0" instance=ExtResource( 5 )]
-
-[node name="missile_slot2" type="Position3D" parent="." index="4"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.645437, 0.419601, -0.149997 )
-visible = false
-
-[node name="spnkr_missile" parent="missile_slot2" index="0" instance=ExtResource( 5 )]
-
-[node name="grenade_timer" type="Timer" parent="." index="5"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = false
-
-[node name="MeshInstance" type="MeshInstance" parent="." index="6"]
-
-transform = Transform( 0.234817, 0, 0, 0, 0.234817, 0, 0, 0, 0.234817, -0.577358, 0.317219, -0.142198 )
+transform = Transform( 0.32556, 0, 0, 0, -1.42307e-08, 0.32556, 0, -0.32556, -1.42307e-08, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -93,9 +78,9 @@ mesh = SubResource( 1 )
 skeleton = NodePath("..")
 material/0 = null
 
-[node name="MeshInstance2" type="MeshInstance" parent="." index="7"]
+[node name="MeshInstance2" type="MeshInstance" parent="missile_slot" index="1"]
 
-transform = Transform( 0.018453, 0, 0, 0, 0.0880789, 0, 0, 0, 0.018453, -0.571544, 0.24101, -0.297897 )
+transform = Transform( 0.32556, 0, 0, 0, -1.42307e-08, 0.32556, 0, -0.32556, -1.42307e-08, 0, 0, -0.397219 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -109,10 +94,106 @@ mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 
+[node name="MeshInstance3" type="MeshInstance" parent="missile_slot" index="2"]
+
+transform = Transform( 0.32556, 0, 0, 0, -1.42307e-08, 0.32556, 0, -0.32556, -1.42307e-08, 0, 0, 0.328799 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 2 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="missile_slot2" type="Position3D" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.645437, 0.434238, -0.149997 )
+
+[node name="MeshInstance" type="MeshInstance" parent="missile_slot2" index="0"]
+
+transform = Transform( 0.32556, 0, 0, 0, -1.42307e-08, 0.32556, 0, -0.32556, -1.42307e-08, 0, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="missile_slot2" index="1"]
+
+transform = Transform( 0.32556, 0, 0, 0, -1.42307e-08, 0.32556, 0, -0.32556, -1.42307e-08, 0, 0, -0.397219 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 2 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="missile_slot2" index="2"]
+
+transform = Transform( 0.32556, 0, 0, 0, -1.42307e-08, 0.32556, 0, -0.32556, -1.42307e-08, 0, 0, 0.328799 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 2 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="4"]
+
+transform = Transform( 0.234817, 0, 0, 0, 0.234817, 0, 0, 0, 0.234817, -0.577358, 0.317219, -0.142198 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 3 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="." index="5"]
+
+transform = Transform( 0.018453, 0, 0, 0, 0.0880789, 0, 0, 0, 0.018453, -0.571544, 0.24101, -0.297897 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 4 )
+skeleton = NodePath("..")
+material/0 = null
+
 [connection signal="timeout" from="chamber_timer" to="." method="_on_chamber_timer_timeout"]
-
-[connection signal="timeout" from="chamber_timer" to="." method="_on_Timer_timeout"]
-
-[connection signal="timeout" from="grenade_timer" to="." method="_on_grenade_timer_timeout"]
 
 
