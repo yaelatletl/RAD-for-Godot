@@ -41,7 +41,7 @@ var weapons = [magnum, ma75, fpistol, tozt, spnkr,smg]
 var ma75o = load("res://BaseGD/Guns/ma75_object.tscn")
 var fpistolo = load("res://BaseGD/Guns/fusion_object.tscn")
 var magnumo = load("res://BaseGD/Guns/magnum_object.tscn")
-var tozto = load("res://BaseGD/Guns/magnum.tscn")
+var tozto = load("res://BaseGD/Guns/tozt_object.tscn")
 var spnkro = load("res://BaseGD/Guns/spnkr_object.tscn")
 var smgo = load("res://BaseGD/Guns/magnum.tscn")
 

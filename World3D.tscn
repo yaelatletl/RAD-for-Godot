@@ -528,7 +528,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.43108, 6.45549, -17.8047 )
 spawn = 1
 weapon_type = 4
 
-[node name="spawner7" parent="." index="11" instance=ExtResource( 5 )]
+[node name="spawner9" parent="." index="11" instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.16394, 6.45549, -17.8047 )
+spawn = 1
+weapon_type = 3
+
+[node name="spawner7" parent="." index="12" instance=ExtResource( 5 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.01602, 6.45549, -17.8047 )
 spawn = 0
@@ -536,7 +542,7 @@ weapon_type = 1
 ammo_id = 2
 amount = 5
 
-[node name="spawner6" parent="." index="12" instance=ExtResource( 5 )]
+[node name="spawner6" parent="." index="13" instance=ExtResource( 5 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9533, 6.45549, -17.8047 )
 spawn = 0
@@ -544,7 +550,7 @@ weapon_type = 0
 ammo_id = 3
 amount = 5
 
-[node name="spawner5" parent="." index="13" instance=ExtResource( 5 )]
+[node name="spawner5" parent="." index="14" instance=ExtResource( 5 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6631, 6.45549, -17.8047 )
 spawn = 1

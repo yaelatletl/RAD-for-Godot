@@ -1,5 +1,6 @@
 # This script determines the behaviour of any projectile
 extends RigidBody
+export(PackedScene) var explosion = preload("res://BaseGD/Guns/explosion.tscn")
 
 # variables for position and speed
 var pos
@@ -11,7 +12,7 @@ export var energy = false
 
 var wielder
 
-var damage = 10
+export var damage = 10
 
 
 func setup(wieldee):
@@ -48,11 +49,20 @@ func _on_Area_body_entered(body):
 		
 		# so long as the object is NOT the bolt itself (since the bolt is a rigid body)
 		if body == wielder:
-			pass	
+			pass
 		else:
+			var splode = explosion.instance()
+			if explosive:
+				splode.set_as_toplevel(true)
+				splode.set_global_transform(get_global_transform())
+
+			if body.owner == null:
+				pass
+			else:
+				body.owner.add_child(splode)
 			# have some effect (right now it just queues free.
 			queue_free()
-			
+
 
 		if body.has_method("hit"):
 			body.hit()

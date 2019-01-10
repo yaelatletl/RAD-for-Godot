@@ -1,5 +1,4 @@
-extends "res://BaseGD/Guns/raycast_weapon.gd"
-export(PackedScene) var squib = preload("res://BaseGD/Guns/squib.tscn")
+extends "res://BaseGD/Guns/weapon.gd"
 
 export var spread = 2
 
@@ -28,10 +27,13 @@ func primary_fire():
 			randomshoot()
 			# check for collisions
 			
-			
+			$aperture/Particles.set_emitting(true)
 			# weapon set not chambered, start timer for cooldown.
+
+			$flame_timer.start()
 			can_shoot=false
-			$chamber_timer.start()
+	else:
+		$aperture/Particles.set_emitting(false)
 
 
 func _on_chamber_timer_timeout():
@@ -53,6 +55,5 @@ func randomshoot():
 	#$aperture/RayCast.set_cast_to(Vector3(newx,newy,-1000))
 
 
-func _on_grenade_timer_timeout():
-	can_shoot_secondary = true
-	pass # replace with function body
+func _on_flame_timer_timeout():
+	can_shoot = true

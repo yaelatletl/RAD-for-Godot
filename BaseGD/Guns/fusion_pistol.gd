@@ -1,6 +1,6 @@
 # This script determines the behaviours of the fusion pistol weapon (not the item laying on the ground)
 
-extends "res://BaseGD/Guns/projectile_weapon.gd"
+extends "res://BaseGD/Guns/weapon.gd"
 export(PackedScene) var Fusion_Bolt = preload("res://BaseGD/Guns/fusion_bolt.tscn")
 export(PackedScene) var Charged_Fusion_Bolt = preload("res://BaseGD/Guns/charged_fusion_bolt.tscn")
 var charged = false

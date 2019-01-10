@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://BaseGD/Guns/projectile.gd" type="Script" id=1]
+[ext_resource path="res://BaseGD/Guns/large_explosion.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CylinderMesh" id=1]
 
@@ -241,10 +242,12 @@ linear_damp = -1.0
 angular_velocity = Vector3( 0, 0, 0 )
 angular_damp = -1.0
 script = ExtResource( 1 )
+explosion = ExtResource( 2 )
 speed = 10
 propelled = true
 explosive = true
 energy = false
+damage = 10
 
 [node name="mesh" type="Spatial" parent="." index="0"]
 

@@ -1,4 +1,4 @@
-extends "res://BaseGD/Guns/raycast_weapon.gd"
+extends "res://BaseGD/Guns/weapon.gd"
 
 export(PackedScene) var Projectile = preload("res://BaseGD/Guns/grenade.tscn")
 export(PackedScene) var squib = preload("res://BaseGD/Guns/squib.tscn")
