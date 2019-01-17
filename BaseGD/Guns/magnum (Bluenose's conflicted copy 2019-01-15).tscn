@@ -235,7 +235,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("left:visible")
-tracks/1/interp = 0
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
@@ -247,7 +247,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("right:translation")
-tracks/2/interp = 2
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
@@ -306,18 +306,17 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[node name="magnum" type="Spatial"]
+[node name="magnum" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
-dual_wieldable = true
 squib = ExtResource( 2 )
 spread = 2
 
 [node name="right" type="Spatial" parent="." index="0"]
 
 editor/display_folded = true
-transform = Transform( -0.137345, -7.9942e-16, 1.20071e-08, 0, 0.137345, 9.1443e-09, -1.20071e-08, 9.1443e-09, -0.137345, 0.15, 0.057239, -0.331638 )
+transform = Transform( -0.137345, -2.57988e-15, 7.74983e-08, 0, 0.137345, 4.57215e-09, -7.74983e-08, 4.57215e-09, -0.137345, 0.15, 0.057239, -0.331638 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Circle" type="MeshInstance" parent="right" index="0"]
@@ -757,9 +756,9 @@ anims/fire = SubResource( 13 )
 anims/standard = SubResource( 14 )
 blend_times = [  ]
 
-[connection signal="timeout" from="chamber_timer" to="." method="_on_chamber_timer_timeout"]
-
 [connection signal="timeout" from="chamber_timer" to="." method="_on_Timer_timeout"]
+
+[connection signal="timeout" from="chamber_timer" to="." method="_on_chamber_timer_timeout"]
 
 [connection signal="timeout" from="grenade_timer" to="." method="_on_grenade_timer_timeout"]
 

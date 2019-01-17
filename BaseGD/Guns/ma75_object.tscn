@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://BaseGD/Guns/ar_object.gd" type="Script" id=1]
 [ext_resource path="res://assets/Material_001.material" type="Material" id=2]
@@ -8,9 +8,13 @@
 
 extents = Vector3( 0.177106, 0.237691, 0.547634 )
 
+[sub_resource type="BoxShape" id=5]
+
+extents = Vector3( 0.0392105, 0.146358, 0.505683 )
+
 [sub_resource type="BoxShape" id=2]
 
-extents = Vector3( 0.0703506, 0.206916, 0.518355 )
+extents = Vector3( 0.0392105, 0.146358, 0.0757161 )
 
 [sub_resource type="CapsuleShape" id=3]
 
@@ -99,19 +103,26 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0512695, 0.0442672, -0.190581 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.094148, -0.190581 )
+shape = SubResource( 5 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape3" type="CollisionShape" parent="." index="2"]
+
+transform = Transform( 1, 0, 0, 0, 0.773078, 0.634311, 0, -0.634311, 0.773078, 0, -0.0239856, -0.00564447 )
 shape = SubResource( 2 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2" type="CollisionShape" parent="." index="2"]
+[node name="CollisionShape2" type="CollisionShape" parent="." index="3"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0310059, -0.341553 )
 shape = SubResource( 3 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="Low_Poly" type="MeshInstance" parent="." index="3"]
+[node name="Low_Poly" type="MeshInstance" parent="." index="4"]
 
 transform = Transform( -0.110092, 0, -1.66234e-08, 0, 0.110092, 0, 1.66234e-08, 0, -0.110092, 0, 0, 0 )
 layers = 1

@@ -549,12 +549,12 @@ blend_times = [  ]
 
 [node name="metarig" type="Spatial" parent="." index="2"]
 
-editor/display_folded = true
 transform = Transform( 1.8521e-07, 0, -1.41237, 0, 1.41237, 0, 1.41237, 0, 1.8521e-07, 0, 1.1505, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Skeleton" type="Skeleton" parent="metarig" index="0"]
 
+editor/display_folded = true
 bones/0/name = "hips"
 bones/0/parent = -1
 bones/0/rest = Transform( 1, 2.38418e-07, 0, 7.79783e-08, -0.327065, -0.945002, -2.25306e-07, 0.945002, -0.327065, -1.86265e-09, 1.0153, 0.0170084 )

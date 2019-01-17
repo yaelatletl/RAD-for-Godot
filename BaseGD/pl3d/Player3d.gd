@@ -76,6 +76,7 @@ slave var slave_linear_vel
 ##Weapons and Object Handling
 var inventory = [] # inventory array to store the objects we are currently holding
 var arsenal = [] # inventory array to store the weapons we are currently holding
+var arsenal_links = []
 var weapon_point
 
 #Rotates the model to where the camera points
@@ -330,6 +331,7 @@ func _ready():
 	for i in range(10):
 		inventory.append(0)
 		arsenal.append(0)
+		arsenal_links.append(0)
 	
 func set_player_name(new_name):
 	get_node("label").set_text(new_name)
@@ -376,22 +378,37 @@ func secondary_release():
 			#print("click!")
 			held_weapon[0].secondary_release()
 
-
+# when an object on the ground triggers this it passes the object that it is, the kind of object (weapon, ammo, etc) and what id it is.
 func pick_up(object, kind = "default", id = 0):
+
+
 	if kind == "ammo":
 		inventory[object] +=1
 		return true
 	elif kind == "weapon":
-		if arsenal[id] == 0:
+		# does the player have this item yet? 
+		# checks the player arsenal to see if it is already there.
+		if arsenal[id] == 0: #no
+
+			# increment this item inventory id
 			arsenal[id] += 1
+
+			# add object to holding node
 			var pickup = object.instance()
+
+			# tell the weapon who we are (to account for who hit who, etc).
 			pickup.setup(self)
+			arsenal_links[id] = pickup
+			
 			$Pivot/weapon_point.add_child(pickup)
 			return true
 		else:
+			var pickup = object.instance()
+			if pickup.dual_wieldable:
+				arsenal_links[id].dual_wield()
 			return false
-	#print(inventory)
-	
+
+
 func last_weapon():
 	var held = is_held()
 	var size = is_held().size()

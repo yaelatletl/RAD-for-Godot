@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://BaseGD/Guns/fusion_bolt.gd" type="Script" id=1]
+[ext_resource path="res://BaseGD/Guns/projectile.gd" type="Script" id=1]
+[ext_resource path="res://BaseGD/Guns/explosion.tscn" type="PackedScene" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -218,7 +219,11 @@ angular_velocity = Vector3( 0, 0, 0 )
 angular_damp = -1.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-speed = 16
+type = 1
+speed = 10
+propelled = false
+explosion = ExtResource( 2 )
+damage = 10
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="0"]
 

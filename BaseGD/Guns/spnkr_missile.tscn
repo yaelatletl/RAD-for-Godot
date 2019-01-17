@@ -2,24 +2,8 @@
 
 [ext_resource path="res://BaseGD/Guns/projectile.gd" type="Script" id=1]
 [ext_resource path="res://BaseGD/Guns/large_explosion.tscn" type="PackedScene" id=2]
-
-[sub_resource type="CylinderMesh" id=1]
-
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-top_radius = 0.2
-bottom_radius = 0.2
-height = 2.0
-radial_segments = 64
-rings = 4
-
-[sub_resource type="CylinderMesh" id=2]
-
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-top_radius = 0.031
-bottom_radius = 0.2
-height = 0.5
-radial_segments = 64
-rings = 4
+[ext_resource path="res://BaseGD/Guns/explosion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/PoJ_SPNKR_Rocket_01.obj" type="ArrayMesh" id=4]
 
 [sub_resource type="SpatialMaterial" id=3]
 
@@ -87,14 +71,61 @@ radial_segments = 64
 rings = 32
 is_hemisphere = false
 
-[sub_resource type="SphereMesh" id=5]
+[sub_resource type="SpatialMaterial" id=12]
 
-custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
-radius = 1.0
-height = 2.0
-radial_segments = 64
-rings = 32
-is_hemisphere = false
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = false
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 1, 1, 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = true
+emission = Color( 1, 0.703125, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = false
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Emission" ]
 
 [sub_resource type="Curve" id=6]
 
@@ -214,7 +245,7 @@ is_hemisphere = false
 radius = 0.0866556
 height = 0.866399
 
-[node name="spnkr_missile" type="RigidBody"]
+[node name="spnkr_missile" type="RigidBody" index="0"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -242,21 +273,20 @@ linear_damp = -1.0
 angular_velocity = Vector3( 0, 0, 0 )
 angular_damp = -1.0
 script = ExtResource( 1 )
-explosion = ExtResource( 2 )
+type = 0
 speed = 10
 propelled = true
-explosive = true
-energy = false
+explosion = ExtResource( 2 )
+splash = ExtResource( 3 )
 damage = 10
 
 [node name="mesh" type="Spatial" parent="." index="0"]
 
-editor/display_folded = true
 transform = Transform( 0.32556, 0, 0, 0, 0.32556, 0, 0, 0, 0.32556, 0, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="mesh" index="0"]
 
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+transform = Transform( -0.60675, 0, 5.30438e-08, 0, 0.60675, 0, -5.30438e-08, 0, -0.60675, 0, 0, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -266,46 +296,14 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 1 )
+mesh = ExtResource( 4 )
 skeleton = NodePath("..")
 material/0 = null
+_sections_unfolded = [ "Transform" ]
 
-[node name="MeshInstance2" type="MeshInstance" parent="mesh" index="1"]
-
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1.22011 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
-skeleton = NodePath("..")
-material/0 = null
-
-[node name="MeshInstance3" type="MeshInstance" parent="mesh" index="2"]
-
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1.00995 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
-skeleton = NodePath("..")
-material/0 = null
-
-[node name="OmniLight" type="OmniLight" parent="mesh" index="3"]
+[node name="OmniLight" type="OmniLight" parent="mesh" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.87396 )
-visible = false
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
@@ -326,10 +324,9 @@ omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="plume" type="MeshInstance" parent="mesh" index="4"]
+[node name="plume" type="MeshInstance" parent="mesh" index="2"]
 
-transform = Transform( 0.71027, 0, 0, 0, -3.10469e-08, 0.71027, 0, -0.71027, -3.10469e-08, 0, 0, 1.79552 )
-visible = false
+transform = Transform( 0.71027, 0, 0, 0, -3.10469e-08, 0.71027, 0, -0.71027, -3.10469e-08, 0, 0, 2.07111 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -341,23 +338,8 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 4 )
 skeleton = NodePath("..")
-material/0 = null
-
-[node name="MeshInstance4" type="MeshInstance" parent="mesh" index="5"]
-
-transform = Transform( 0.193912, 0, 0, 0, 0.193912, 0, 0, 0, 0.862899, 0, 0, 1.95017 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 5 )
-skeleton = NodePath("..")
-material/0 = null
+material/0 = SubResource( 12 )
+_sections_unfolded = [ "material" ]
 
 [node name="Particles" type="Particles" parent="." index="1"]
 
@@ -417,6 +399,15 @@ reverb_bus_uniformity = 0.0
 shape = SubResource( 11 )
 disabled = false
 
+[node name="killtimer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 10.0
+one_shot = false
+autostart = true
+
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+
+[connection signal="timeout" from="killtimer" to="." method="_on_killtimer_timeout"]
 
 

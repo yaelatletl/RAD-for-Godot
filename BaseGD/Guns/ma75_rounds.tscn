@@ -70,7 +70,7 @@ extents = Vector3( 0.263148, 0.289252, 0.262336 )
 
 extents = Vector3( 0.10255, 0.159523, 0.102551 )
 
-[node name="ma75_rounds" type="RigidBody" index="0"]
+[node name="ma75_rounds" type="RigidBody"]
 
 input_ray_pickable = true
 input_capture_on_drag = false

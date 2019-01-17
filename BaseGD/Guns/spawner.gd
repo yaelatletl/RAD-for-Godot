@@ -51,7 +51,7 @@ var weapon_objects = [magnumo, ma75o, fpistolo, tozto, spnkro,smgo]
 var ma75_rounds = load("res://BaseGD/Guns/ma75_rounds.tscn")
 var ma75_grenades = load("res://BaseGD/Guns/ma75_grenades.tscn")
 var magnum_rounds = load("res://BaseGD/Guns/magnum_rounds.tscn")
-var spnkr_missiles = load("res://BaseGD/Guns/spnkr_ammo.tscn")
+var spnkr_missiles = load("res://BaseGD/Guns/SPNKR_missiles.tscn")
 var tozt_can = load("res://BaseGD/Guns/ma75.tscn")
 var fp_cell = load("res://BaseGD/Guns/fp_cell.tscn")
 

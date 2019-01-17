@@ -6,6 +6,7 @@ export var spread = 2
 
 
 func _ready():
+	$AnimationPlayer.play("standard")
 	identity = ".45 Magnum Mega Class"
 	in_magazine = 8
 	in_secondary_magazine = 8
@@ -13,6 +14,10 @@ func _ready():
 	secondary_magazine_size = 8
 	primary_ammo_id = 0
 	secondary_ammo_id = 0
+
+func dual_wield():
+	dual_wielding = true
+	$AnimationPlayer.play("dual_start")
 
 func primary_fire():
 
@@ -44,6 +49,7 @@ func primary_fire():
 					hit.owner.add_child(thissquib)
 
 			# weapon set not chambered, start timer for cooldown.
+			$AnimationPlayer.play("fire")
 			can_shoot=false
 			$chamber_timer.start()
 

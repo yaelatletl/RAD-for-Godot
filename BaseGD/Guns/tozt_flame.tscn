@@ -23,7 +23,7 @@ flag_rotate_y = false
 flag_disable_z = false
 spread = 0.0
 flatness = 0.0
-gravity = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, -2, 0 )
 initial_velocity = 6.0
 initial_velocity_random = 0.2
 angular_velocity = 5.10747
@@ -39,7 +39,7 @@ damping_random = 0.0
 angle = 0.0
 angle_random = 0.0
 scale = 1.0
-scale_random = 0.0
+scale_random = 0.09
 scale_curve = SubResource( 2 )
 color = Color( 1, 1, 1, 1 )
 hue_variation = 0.0
@@ -49,7 +49,7 @@ anim_speed_random = 0.0
 anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
-_sections_unfolded = [ "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Spread", "Trail" ]
+_sections_unfolded = [ "Color", "Emission Shape", "Flags", "Gravity", "Initial Velocity", "Scale", "Spread", "Trail" ]
 
 [sub_resource type="SpatialMaterial" id=4]
 
@@ -117,7 +117,7 @@ radial_segments = 64
 rings = 32
 is_hemisphere = false
 
-[node name="Particles" type="Particles"]
+[node name="Particles" type="Particles" index="0"]
 
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0 )
 layers = 1
@@ -130,7 +130,7 @@ lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 emitting = true
-amount = 8
+amount = 59
 lifetime = 1.0
 one_shot = false
 preprocess = 0.0

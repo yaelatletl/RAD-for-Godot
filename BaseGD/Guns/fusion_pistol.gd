@@ -24,8 +24,9 @@ func primary_fire():
 				var bolt = Fusion_Bolt.instance()
 				bolt.setup(wielder)
 				# add the bolt to the aperture of the fusion pistol
-				$aperture.add_child(bolt)
-				
+				#$aperture.add_child(bolt)
+				bolt.set_global_transform($aperture.get_global_transform())
+				get_node("/root").add_child(bolt)
 				# toggle can shoot (to avoid spawning a bolt per cycle)
 				can_shoot=false
 				
@@ -45,7 +46,8 @@ func secondary_release():
 				var bolt = Charged_Fusion_Bolt.instance()
 				
 				# add the bolt to the aperture of the fusion pistol
-				$aperture.add_child(bolt)
+				bolt.set_global_transform($aperture.get_global_transform())
+				get_node("/root").add_child(bolt)
 				
 				# toggle can shoot (to avoid spawning a bolt per cycle)
 				can_shoot=false

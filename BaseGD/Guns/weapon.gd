@@ -28,6 +28,9 @@ var secondary_magazine_size = 0 # how much ammo the secondary magazine canhold.
 
 var wielder
 
+export var dual_wieldable = false
+var dual_wielding = false
+
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
@@ -86,7 +89,8 @@ func ammo_check_secondary(size = 1):
 		return false
 	
 	
-func dual_weild():
+func dual_wield():
+	
 	pass
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
