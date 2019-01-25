@@ -10,10 +10,11 @@ var debug = false
 var x1
 var x2
 var x3
-
+export(NodePath) var radarpath = null
 
 
 func _ready():
+	get_node("Health|Radar/Radar").Ppath = radarpath
 	# Called every time the node is added to the scene.
 	# Initialization here
 	#print(get_viewport().size)
@@ -83,8 +84,6 @@ func _input(event):
 #	pass
 
 func change_health():
-	
-	
 	
 	if health >= 1 and health <= 100:
 		#get_node("Health|Radar/x1/T_health").interpolate_property(x1,"indicator_value", null ,float(health)/100 ,1.5,Tween.TRANS_LINEAR,Tween.EASE_OUT,0)

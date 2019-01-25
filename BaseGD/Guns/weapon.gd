@@ -1,7 +1,7 @@
 # This script attempts to unify the base behaviours of all weapons.
 # it is extended by each weapon to facilitate their specific functions
 # for example: the fusion pistol is a projectile weapon that has overload events, the pistol can be dual wielded.
-
+#class_type Weapon
 extends Node
 
 # sets the readiness of the weapon to fire
@@ -9,7 +9,7 @@ var can_shoot = true
 var can_shoot_secondary = true
 
 # if homing sets target
-var target = null
+var target = null 
 
 # the folloiwing variables handle basic naming and flavor.
 var identity = "default weapon"

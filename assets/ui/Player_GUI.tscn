@@ -1,17 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://BaseGD/User_Interface/Player_HUD.gd" type="Script" id=1]
 [ext_resource path="res://BaseGD/User_Interface/Player_GUI.gd" type="Script" id=2]
 [ext_resource path="res://BaseGD/User_Interface/Player_Radar.gd" type="Script" id=3]
-[ext_resource path="res://assets/Shaders/Blur.shader" type="Shader" id=4]
+[ext_resource path="res://assets/ui/Blur.tres" type="Material" id=4]
 [ext_resource path="res://BaseGD/User_Interface/Player_Weapon.gd" type="Script" id=5]
-
-[sub_resource type="ShaderMaterial" id=1]
-
-render_priority = 0
-shader = ExtResource( 4 )
-shader_param/blurSize = 10
-_sections_unfolded = [ "shader_param" ]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -21,6 +14,7 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 1 )
+radarpath = null
 
 [node name="Health|Radar" type="Node2D" parent="." index="0"]
 
@@ -188,26 +182,26 @@ _sections_unfolded = [ "Material", "Rect" ]
 __meta__ = {
 "_edit_lock_": true
 }
+Ppath = null
 
-[node name="Blur" type="Control" parent="Health|Radar" index="5"]
+[node name="Blur" type="Control" parent="Health|Radar/Radar" index="0"]
 
 modulate = Color( 1, 1, 1, 0.784314 )
-material = SubResource( 1 )
+material = ExtResource( 4 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -112.0
-margin_top = -108.0
-margin_right = 103.0
-margin_bottom = 114.0
+margin_left = -32.0
+margin_top = -28.0
+margin_right = 183.0
+margin_bottom = 194.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 3 )
 _sections_unfolded = [ "Material", "Rect", "Visibility" ]
 
 [node name="Weapon|Ammo" type="Node2D" parent="." index="1"]
@@ -239,15 +233,15 @@ __meta__ = {
 [node name="Blur" type="ColorRect" parent="Weapon|Ammo" index="1"]
 
 modulate = Color( 1, 1, 1, 0.784314 )
-material = SubResource( 1 )
+material = ExtResource( 4 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -252.0
-margin_top = -83.0
-margin_right = 252.0
-margin_bottom = 84.0
+margin_left = -253.46
+margin_top = -84.77
+margin_right = 250.54
+margin_bottom = 82.23
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -268,7 +262,5 @@ playback/speed = 1.0
 _sections_unfolded = [ "playback" ]
 
 [connection signal="item_rect_changed" from="Health|Radar/Radar" to="Health|Radar/Radar" method="_on_Radar_item_rect_changed"]
-
-[connection signal="item_rect_changed" from="Health|Radar/Blur" to="Health|Radar/Blur" method="_on_Radar_item_rect_changed"]
 
 

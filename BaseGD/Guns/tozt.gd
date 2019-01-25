@@ -12,6 +12,7 @@ func _ready():
 	secondary_magazine_size = 210
 	primary_ammo_id = 5
 	secondary_ammo_id = 5
+	
 
 func primary_fire():
 
@@ -31,9 +32,12 @@ func primary_fire():
 			# weapon set not chambered, start timer for cooldown.
 
 			$flame_timer.start()
+			$flame_on_timer.start()
 			can_shoot=false
-	else:
-		$aperture/Particles.set_emitting(false)
+			
+func _on_flame_on_timer_timeout():
+	$aperture/Particles.set_emitting(false)
+		
 
 
 func _on_chamber_timer_timeout():
@@ -52,7 +56,11 @@ func randomshoot():
 	var newx = 0 + randx
 	var newy = 0 + randy
 	#print("rando =", newx," ", newy)
-	#$aperture/RayCast.set_cast_to(Vector3(newx,newy,-1000))
+	$aperture/RayCast.set_cast_to(Vector3(newx,newy,-1000))
+	#return $aperture/RayCast  
+	#Must retrun the hitting point of the raycast to make the scale speed faster or slower
+	#So we can simulate the collsion
+	
 
 
 func _on_flame_timer_timeout():

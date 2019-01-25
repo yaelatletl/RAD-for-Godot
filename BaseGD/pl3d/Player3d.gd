@@ -112,7 +112,8 @@ func _process(delta):
 	
 	# if the node has a HUD
 	if self.has_node("HUD"):
-		
+		get_node("HUD").health = health
+		get_node("HUD")
 		# if there is a weapon in hand
 		if is_held().size() > 0:
 			# update the HUD with its proper name

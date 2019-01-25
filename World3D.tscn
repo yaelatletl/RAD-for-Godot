@@ -229,7 +229,7 @@ disabled = false
 [node name="MeshInstance5" type="MeshInstance" parent="map" index="4"]
 
 editor/display_folded = true
-transform = Transform( -9.43664e-09, 0, -19.5463, 0, 4.28056, 0, 0.215885, 0, -8.54394e-07, 1.15706, 3.95775, -19.2858 )
+transform = Transform( -9.43664e-009, 0, -19.5463, 0, 4.28056, 0, 0.215885, 0, -8.54394e-007, 1.15706, 3.95775, -19.2858 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -263,7 +263,7 @@ disabled = false
 [node name="MeshInstance11" type="MeshInstance" parent="map" index="5"]
 
 editor/display_folded = true
-transform = Transform( -9.43664e-09, 0, -19.5463, 0, 4.28056, 0, 0.215885, 0, -8.54394e-07, 20.572, 4.07208, 19.9551 )
+transform = Transform( -9.43664e-009, 0, -19.5463, 0, 4.28056, 0, 0.215885, 0, -8.54394e-007, 20.572, 4.07208, 19.9551 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -297,7 +297,7 @@ disabled = false
 [node name="MeshInstance12" type="MeshInstance" parent="map" index="6"]
 
 editor/display_folded = true
-transform = Transform( -9.43664e-09, 0, -19.5463, 0, 4.28056, 0, 0.215885, 0, -8.54394e-07, -22.3073, 4.07208, 19.9551 )
+transform = Transform( -9.43664e-009, 0, -19.5463, 0, 4.28056, 0, 0.215885, 0, -8.54394e-007, -22.3073, 4.07208, 19.9551 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -467,7 +467,7 @@ disabled = false
 [node name="MeshInstance8" type="MeshInstance" parent="map" index="11"]
 
 editor/display_folded = true
-transform = Transform( -6.67267e-07, 0, -2.87278, -5.20535, 0.113932, 4.28194e-08, 14.3504, 0.0413269, -1.18047e-07, -13.2169, -0.14856, 2.80493 )
+transform = Transform( -6.67267e-007, 0, -2.87278, -5.20535, 0.113932, 4.28194e-008, 14.3504, 0.0413269, -1.18047e-007, -13.2169, -0.14856, 2.80493 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -495,7 +495,7 @@ constant_angular_velocity = Vector3( 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="map/MeshInstance8/StaticBody" index="0"]
 
-transform = Transform( 1, -2.32831e-10, -4.44089e-16, -3.8147e-06, 1, 2.84217e-14, 1.42109e-14, 0, 1, 0, 0, 0 )
+transform = Transform( 1, -2.32831e-010, -4.44089e-016, -3.8147e-006, 1, 2.84217e-014, 1.42109e-014, 0, 1, 0, 0, 0 )
 shape = SubResource( 3 )
 disabled = false
 
@@ -506,7 +506,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36.0921 )
 [node name="MeshInstance6" type="MeshInstance" parent="map/hallway" index="0"]
 
 editor/display_folded = true
-transform = Transform( -0.215885, 0, 1.2672e-06, 0, 3.74503, 0, -2.25405e-08, 0, -15.2095, 1.05766, 3.79032, -0.924446 )
+transform = Transform( -0.215885, 0, 1.2672e-006, 0, 3.74503, 0, -2.25405e-008, 0, -15.2095, 1.05766, 3.79032, -0.924446 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -542,7 +542,7 @@ disabled = false
 [node name="MeshInstance12" type="MeshInstance" parent="map/hallway" index="1"]
 
 editor/display_folded = true
-transform = Transform( -0.215885, 0, 1.2672e-06, 0, 3.74503, 0, -2.25405e-08, 0, -15.2095, -2.86201, 3.79032, -0.924446 )
+transform = Transform( -0.215885, 0, 1.2672e-006, 0, 3.74503, 0, -2.25405e-008, 0, -15.2095, -2.86201, 3.79032, -0.924446 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -578,7 +578,7 @@ disabled = false
 [node name="MeshInstance11" type="MeshInstance" parent="map/hallway" index="2"]
 
 editor/display_folded = true
-transform = Transform( 9.43663e-09, 1.88822, -5.53913e-14, 0.215885, -8.25368e-08, -1.2672e-06, -2.25405e-08, 0, -15.2095, -0.854043, -0.16716, -0.924446 )
+transform = Transform( 9.43663e-009, 1.88822, -5.53913e-014, 0.215885, -8.25368e-008, -1.2672e-006, -2.25405e-008, 0, -15.2095, -0.854043, -0.16716, -0.924446 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -614,7 +614,7 @@ disabled = false
 [node name="MeshInstance13" type="MeshInstance" parent="map/hallway" index="3"]
 
 editor/display_folded = true
-transform = Transform( 9.43663e-09, -1.88822, -5.53913e-14, -0.215885, -8.25368e-08, 1.2672e-06, -2.25405e-08, 0, -15.2095, -0.854043, 7.31666, -0.924446 )
+transform = Transform( 9.43663e-009, -1.88822, -5.53913e-014, -0.215885, -8.25368e-008, 1.2672e-006, -2.25405e-008, 0, -15.2095, -0.854043, 7.31666, -0.924446 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -677,7 +677,10 @@ __meta__ = {
 "_editor_icon": ExtResource( 3 )
 }
 
-[node name="Pfhor" parent="." index="4" instance=ExtResource( 4 )]
+[node name="Pfhor" parent="." index="4" groups=[
+"AI",
+"Enemy",
+] instance=ExtResource( 4 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.67779, 0.957259, 3.38426 )
 AstarPath = NodePath("../AStarPath")

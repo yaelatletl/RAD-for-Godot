@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://BaseGD/pl3d/Player3d.gd" type="Script" id=1]
 [ext_resource path="res://BaseGD/pl3d/TopDownCamera.gd" type="Script" id=2]
@@ -9,7 +9,8 @@
 [ext_resource path="res://BaseGD/pl3d/3RDPersCamera.gd" type="Script" id=7]
 [ext_resource path="res://BaseGD/pl3d/3RDPersonCamera.gd" type="Script" id=8]
 [ext_resource path="res://BaseGD/pl3d/label.gd" type="Script" id=9]
-[ext_resource path="res://assets/green-crosshair-png-4.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/Player_GUI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/green-crosshair-png-4.png" type="Texture" id=11]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -140,6 +141,21 @@ distance_fade_enable = false
 
 radius = 0.245702
 
+[sub_resource type="GDScript" id=8]
+
+script/source = "extends Area
+
+func _ready():
+	var target = get_tree().get_root().get_node(\"HUD/Health|Radar/Radar\")
+	connect(\"body_entered\", target, \"_on_body_entered\")
+	connect(\"body_exited\" , target, \"_on_body_exit\")
+	pass
+"
+
+[sub_resource type="SphereShape" id=7]
+
+radius = 20.0
+
 [node name="Player" type="KinematicBody" groups=[
 "Player",
 ]]
@@ -183,7 +199,7 @@ grav = 9.8
 
 [node name="Collision" type="CollisionShape" parent="." index="0"]
 
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 1, 0 )
 shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -196,7 +212,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="Yaw" index="0"]
 
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.05647, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 1.05647, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -230,7 +246,7 @@ _sections_unfolded = [ "material" ]
 
 [node name="TopDownCamera" type="Camera" parent="." index="2"]
 
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 14.246, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 14.246, 0 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -264,6 +280,7 @@ _sections_unfolded = [ "Transform" ]
 
 transform = Transform( 1, 0, 0, 0, 0.999999, 0.00161846, 0, -0.00161846, 0.999999, 0, -0.391506, -0.342788 )
 script = ExtResource( 3 )
+dual_wieldable = false
 Fusion_Bolt = ExtResource( 4 )
 Charged_Fusion_Bolt = ExtResource( 5 )
 
@@ -328,7 +345,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CameraCollision" type="KinematicBody" parent="Pivot" index="3"]
 
-transform = Transform( 0.999903, -1.86265e-09, -0.0139474, -0.00282001, 0.979347, -0.202169, 0.0136593, 0.202189, 0.979251, -0.00137392, 0.472392, 1.50019 )
+transform = Transform( 0.999903, -1.86265e-009, -0.0139474, -0.00282001, 0.979347, -0.202169, 0.0136593, 0.202189, 0.979251, -0.00137392, 0.472392, 1.50019 )
 input_ray_pickable = false
 input_capture_on_drag = false
 collision_layer = 1
@@ -378,28 +395,24 @@ _sections_unfolded = [ "Rect", "Visibility" ]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07561, 0 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="HUD" type="Control" parent="." index="8"]
+[node name="HUD" parent="." index="8" instance=ExtResource( 10 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+radarpath = NodePath("../Area")
 
-[node name="Inventory" type="ColorRect" parent="HUD" index="0"]
+[node name="Radar" parent="HUD/Health|Radar" index="4"]
 
-editor/display_folded = true
+Ppath = NodePath("../../../Area")
+
+[node name="Inventory" type="ColorRect" parent="HUD" index="3"]
+
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -412.0
-margin_top = -196.0
+margin_left = 84.0
+margin_top = 145.0
+margin_right = 584.0
+margin_bottom = 310.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -483,26 +496,57 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="TextureRect" type="TextureRect" parent="HUD" index="1"]
+[node name="TextureRect" type="TextureRect" parent="HUD" index="4"]
 
 modulate = Color( 1, 1, 1, 0.353608 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -12.5
-margin_top = -11.5
-margin_right = 12.5
-margin_bottom = 11.5
+margin_left = -13.0
+margin_top = -12.0
+margin_right = 12.0
+margin_bottom = 11.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 expand = true
 stretch_mode = 0
 _sections_unfolded = [ "Visibility" ]
 
+[node name="Area" type="Area" parent="." index="9"]
 
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+script = SubResource( 8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+
+shape = SubResource( 7 )
+disabled = false
+
+
+[editable path="HUD"]
