@@ -1,5 +1,5 @@
 extends KinematicBody
-
+class_name Player
 # Member variables
 const ANIM_FLOOR = 0
 const ANIM_AIR_UP = 1
@@ -324,7 +324,7 @@ func _physics_process(delta):
 func _ready():
 	weapon_point = $Pivot/weapon_point
 	health2 = health
-	CHAR_SCALE = scale
+	
 	#get_node("AnimationTreePlayer").set_active(true)
 	set_process_input(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

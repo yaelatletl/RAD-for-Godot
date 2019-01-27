@@ -1,5 +1,5 @@
 extends Area
-
+class_name Workstation
 var functional = true
 var final_pos = Vector3(0,0,0)
 var health = 0 

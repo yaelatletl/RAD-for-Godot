@@ -1,5 +1,5 @@
 extends KinematicBody
-
+#OLD AI; DELETE
 
 
 #AI Characteristics
@@ -77,16 +77,20 @@ func switch_waiting():
 		pass
 func Work():
 	if on_workstation:
-		do_work()
+		#do_work()
+		pass
 	else:
-		walk()
+		#walk()
+		pass
 
 func Hunting():
 	if player_near and not static_AI:
-		Chase()
+		#Chase()
+		pass
 	else:
 		if is_on_sight:
-			attack()
+			#attack()
+			pass
 
 
 
@@ -200,7 +204,7 @@ func _process(delta):
 	if is_moving:
 		wander()
 	else:
-		Spatail_move_to(Vector3(0,0,0))
+		Spatial_move_to(Vector3(0,0,0))
 
 
 func new_position():

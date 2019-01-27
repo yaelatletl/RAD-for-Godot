@@ -1,4 +1,4 @@
- extends KinematicBody
+extends KinematicBody
 
 #AI Characteristics
 export(NodePath) var AstarPath = null
@@ -23,7 +23,7 @@ export(bool) var can_smell_workstations = false
 export(PackedScene) var gun = preload("res://BaseGD/Guns/Staff.tscn")
 
 
-var as  = null
+var astar  = null
 #time for timers
 export(int) var timewaiting = 2
 
@@ -149,14 +149,14 @@ func _ready():
 	current_target = null
 	if not has_node("gun"):
 		add_child(gun.instance())
-	as = get_node(AstarPath).as
+	astar = get_node(AstarPath).astar
 	NM = get_node(Navmesh)
 
 func find_APath():
 	var node = get_node("/root")	
 	for N in node.get_children():
-		if N.is_class("Path") and N.get(as)!=null:
-			as = N.as
+		if N.is_class("Path") and N.get(astar)!=null:
+			astar = N.astar
 		else:
 			if N.get_child_count() > 0:
 				find_APath()
@@ -214,16 +214,20 @@ func switch_waiting():
 
 func Work():
 	if on_workstation:
-		do_work()
+		#do_work()
+		pass
 	else:
-		walk()
+		#walk()
+		pass
 
 func Hunting():
 	if player_near and not static_AI:
-		Chase()
+		#Chase()
+		pass
 	else:
 		if is_on_sight:
-			attack()
+			#attack()
+			pass
 
 
 
@@ -261,9 +265,9 @@ func Dumb_movement():
 		
 		Spatial_move_to(current_target.translation, globaldelta)
 func AStar_Movement(pos):
-	var Distance = RAD.vec_distance(translation, as.get_point_position(as.get_closest_point(pos))) 
+	var Distance = RAD.vec_distance(translation, astar.get_point_position(astar.get_closest_point(pos))) 
 	if Distance < 3 and Distance > 1:
-		Spatial_move_to(as.get_point_position(as.get_closest_point(pos)), globaldelta)
+		Spatial_move_to(astar.get_point_position(astar.get_closest_point(pos)), globaldelta)
 	else:
 		Astar_Move_near(pos)
 		pass
@@ -272,14 +276,14 @@ func AStar_Movement(pos):
 
 func Astar_Move_near(Pos):
 	#if it is not on the path, look for the closest point to the path
-	var closest = as.get_closest_point_in_segment(Pos)
-	var clos_point = as.get_closest_point(Pos)
+	var closest = astar.get_closest_point_in_segment(Pos)
+	var clos_point = astar.get_closest_point(Pos)
 	if RAD.vec_distance(translation, closest)<1:
 		while RAD.vec_distance(translation, closest) > 0.2: 
 			Spatial_move_to(closest,globaldelta)
 	else:
 		
-		for point in as.get_point_path(as.get_closest_point(translation), clos_point):
+		for point in astar.get_point_path(astar.get_closest_point(translation), clos_point):
 			while RAD.vec_distance(translation, point)>0.3:
 				Spatial_move_to(point,globaldelta)
 
