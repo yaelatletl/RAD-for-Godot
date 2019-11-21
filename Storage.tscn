@@ -1,0 +1,158 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://BaseGD/GridThemes/Urban.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://BaseGD/pl3d/Player3d.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Environment" id=1]
+
+background_mode = 0
+background_sky_custom_fov = 0.0
+background_color = Color( 0, 0, 0, 1 )
+background_energy = 1.0
+background_canvas_max_layer = 0
+ambient_light_color = Color( 0, 0, 0, 1 )
+ambient_light_energy = 1.0
+ambient_light_sky_contribution = 1.0
+fog_enabled = false
+fog_color = Color( 0.5, 0.6, 0.7, 1 )
+fog_sun_color = Color( 1, 0.9, 0.7, 1 )
+fog_sun_amount = 0.0
+fog_depth_enabled = true
+fog_depth_begin = 10.0
+fog_depth_curve = 1.0
+fog_transmit_enabled = false
+fog_transmit_curve = 1.0
+fog_height_enabled = false
+fog_height_min = 0.0
+fog_height_max = 100.0
+fog_height_curve = 1.0
+tonemap_mode = 0
+tonemap_exposure = 1.0
+tonemap_white = 1.0
+auto_exposure_enabled = false
+auto_exposure_scale = 0.4
+auto_exposure_min_luma = 0.05
+auto_exposure_max_luma = 8.0
+auto_exposure_speed = 0.5
+ss_reflections_enabled = false
+ss_reflections_max_steps = 64
+ss_reflections_fade_in = 0.15
+ss_reflections_fade_out = 2.0
+ss_reflections_depth_tolerance = 0.2
+ss_reflections_roughness = true
+ssao_enabled = false
+ssao_radius = 1.0
+ssao_intensity = 1.0
+ssao_radius2 = 0.0
+ssao_intensity2 = 1.0
+ssao_bias = 0.01
+ssao_light_affect = 0.0
+ssao_color = Color( 0, 0, 0, 1 )
+ssao_quality = 0
+ssao_blur = 3
+ssao_edge_sharpness = 4.0
+dof_blur_far_enabled = false
+dof_blur_far_distance = 10.0
+dof_blur_far_transition = 5.0
+dof_blur_far_amount = 0.1
+dof_blur_far_quality = 1
+dof_blur_near_enabled = false
+dof_blur_near_distance = 2.0
+dof_blur_near_transition = 1.0
+dof_blur_near_amount = 0.1
+dof_blur_near_quality = 1
+glow_enabled = false
+glow_levels/1 = false
+glow_levels/2 = false
+glow_levels/3 = true
+glow_levels/4 = false
+glow_levels/5 = true
+glow_levels/6 = false
+glow_levels/7 = false
+glow_intensity = 0.8
+glow_strength = 1.0
+glow_bloom = 0.0
+glow_blend_mode = 2
+glow_hdr_threshold = 1.0
+glow_hdr_scale = 2.0
+glow_bicubic_upscale = false
+adjustment_enabled = false
+adjustment_brightness = 1.0
+adjustment_contrast = 1.0
+adjustment_saturation = 1.0
+_sections_unfolded = [ "Background", "Fog" ]
+
+[node name="Spatial" type="Spatial" index="0"]
+
+[node name="GridMap2" type="GridMap" parent="." index="0"]
+
+theme = ExtResource( 1 )
+cell_size = Vector3( 2, 2, 2 )
+cell_octant_size = 8
+cell_center_x = true
+cell_center_y = true
+cell_center_z = true
+cell_scale = 1.0
+collision_layer = 1
+collision_mask = 1
+data = {
+"cells": PoolIntArray( 65540, 0, 5, 65540, 1, 3, 0, 2, 1441795, 1, 2, 1441795, 2, 2, 1441797, 3, 2, 1179653, 4, 2, 1441794, 65532, 2, 1376258, 65533, 2, 458757, 65534, 2, 458757, 65535, 2, 1441795, 65536, 2, 1376261, 65537, 2, 1376261, 65540, 2, 131075, 131068, 2, 1376261, 131071, 2, 1376261, 65540, 3, 3, 3, 4, 1376262, 65540, 4, 3, 131068, 4, 1048620, 3, 5, 1376262, 65534, 5, 393218, 65535, 5, 393218, 65540, 5, 786434, 131070, 5, 393221, 131071, 5, 393221, 0, 6, 1245206, 1, 6, 1245206, 2, 6, 1245206, 65534, 6, 655363, 65535, 6, 655363, 131070, 6, 393221, 131071, 6, 393221, 65540, 65535, 5 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="GridMap" type="GridMap" parent="GridMap2" index="0"]
+
+theme = ExtResource( 1 )
+cell_size = Vector3( 2, 2, 2 )
+cell_octant_size = 8
+cell_center_x = true
+cell_center_y = true
+cell_center_z = true
+cell_scale = 1.0
+collision_layer = 1
+collision_mask = 1
+data = {
+"cells": PoolIntArray( 0, 0, 43, 2, 0, 43, 4, 0, 43, 5, 0, 1441824, 6, 0, 1441835, 65531, 0, 1441824, 65532, 0, 1441835, 65534, 0, 43, 131072, 0, 1441835, 131074, 0, 1441835, 131076, 0, 1441835, 131078, 0, 1441835, 196604, 0, 1441835, 196606, 0, 1441835, 0, 2, 43, 2, 2, 43, 4, 2, 43, 5, 2, 1441824, 6, 2, 1441835, 65531, 2, 1441824, 65532, 2, 43, 65533, 2, 41, 65534, 2, 43, 65535, 2, 41, 131072, 2, 1441835, 131074, 2, 1441835, 131076, 2, 1441835, 131078, 2, 1441835, 196604, 2, 1441835, 196606, 2, 1441835, 0, 4, 43, 2, 4, 43, 4, 4, 43, 5, 4, 1441824, 6, 4, 1441835, 65531, 4, 1441824, 65532, 4, 43, 65534, 4, 43, 131072, 4, 1441835, 131074, 4, 1441835, 131076, 4, 1441835, 131078, 4, 1441835, 196604, 4, 1441835, 196606, 4, 1441835, 0, 6, 43, 2, 6, 43, 4, 6, 43, 5, 6, 1441824, 6, 6, 1441835, 65531, 6, 1441818, 65532, 6, 43, 65534, 6, 43, 131072, 6, 1441835, 131074, 6, 1441835, 131076, 6, 1441835, 131078, 6, 1441835, 196604, 6, 1441835, 196606, 6, 1441835, 1, 7, 37, 3, 7, 37, 5, 7, 35, 7, 7, 35, 65533, 7, 37, 65535, 7, 37, 0, 65534, 1441835, 2, 65534, 1441835, 4, 65534, 1441835, 6, 65534, 1441835, 65532, 65534, 1441835, 65534, 65534, 1441835, 131072, 65534, 43, 131074, 65534, 43, 131076, 65534, 43, 131078, 65534, 43, 196604, 65534, 1441835, 196606, 65534, 1441835, 0, 65535, 33, 1, 65535, 33, 2, 65535, 33, 3, 65535, 33, 4, 65535, 33, 5, 65535, 33, 65531, 65535, 33, 65532, 65535, 33, 65533, 65535, 33, 65534, 65535, 33, 65535, 65535, 33 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="SpotLight" type="OmniLight" parent="GridMap2/GridMap" index="0"]
+
+transform = Transform( 1, 0, 0, 0, -0.00976969, 0.999952, 0, -0.999952, -0.00976969, 0, 3.94099, 6.67933 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 1.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 2
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.35
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 12.582
+omni_attenuation = 1.0
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Shadow" ]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+
+environment = SubResource( 1 )
+
+[node name="Player" parent="." index="2" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26366, 0 )
+AllowChangeCamera = true
+thRDPersCamera = true
+
+

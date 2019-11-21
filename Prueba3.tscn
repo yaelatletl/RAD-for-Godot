@@ -1,0 +1,456 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://BaseGD/materiales/texturas/512_gris.png" type="Texture" id=1]
+[ext_resource path="res://BaseGD/pl3d/Player3d.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/ui/Player_GUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://BaseGD/Workstations/BasicWorkStation.tscn" type="PackedScene" id=4]
+[ext_resource path="res://BaseShapes/PfhorPrueba.tscn" type="PackedScene" id=5]
+[ext_resource path="res://LhowonSky.tres" type="PanoramaSky" id=6]
+[ext_resource path="res://addons/WorldManagement/AStar_Path.gd" type="Script" id=7]
+[ext_resource path="res://addons/WorldManagement/icon.png" type="Texture" id=8]
+
+[sub_resource type="CubeMesh" id=1]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+size = Vector3( 2, 2, 2 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
+
+[sub_resource type="SpatialMaterial" id=2]
+
+render_priority = 0
+flags_transparent = false
+flags_unshaded = false
+flags_vertex_lighting = false
+flags_no_depth_test = false
+flags_use_point_size = false
+flags_world_triplanar = true
+flags_fixed_size = false
+flags_albedo_tex_force_srgb = false
+vertex_color_use_as_albedo = false
+vertex_color_is_srgb = false
+params_diffuse_mode = 0
+params_specular_mode = 0
+params_blend_mode = 0
+params_cull_mode = 0
+params_depth_draw_mode = 0
+params_line_width = 1.0
+params_point_size = 1.0
+params_billboard_mode = 0
+params_grow = false
+params_use_alpha_scissor = false
+albedo_color = Color( 1, 1, 1, 1 )
+albedo_texture = ExtResource( 1 )
+metallic = 0.0
+metallic_specular = 0.5
+metallic_texture_channel = 0
+roughness = 0.0
+roughness_texture_channel = 0
+emission_enabled = false
+normal_enabled = false
+rim_enabled = false
+clearcoat_enabled = false
+anisotropy_enabled = false
+ao_enabled = false
+depth_enabled = false
+subsurf_scatter_enabled = false
+transmission_enabled = false
+refraction_enabled = false
+detail_enabled = false
+uv1_scale = Vector3( 1, 1, 1 )
+uv1_offset = Vector3( 0, 0, 0 )
+uv1_triplanar = true
+uv1_triplanar_sharpness = 1.0
+uv2_scale = Vector3( 1, 1, 1 )
+uv2_offset = Vector3( 0, 0, 0 )
+uv2_triplanar = false
+uv2_triplanar_sharpness = 1.0
+proximity_fade_enable = false
+distance_fade_enable = false
+_sections_unfolded = [ "Albedo", "Flags", "UV1" ]
+
+[sub_resource type="BoxShape" id=3]
+
+extents = Vector3( 1, 0.904246, 1 )
+
+[sub_resource type="NavigationMesh" id=4]
+
+vertices = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+polygons = [ PoolIntArray( 0, 2, 4 ), PoolIntArray( 2, 6, 4 ), PoolIntArray( 1, 3, 5 ), PoolIntArray( 3, 7, 5 ), PoolIntArray( 8, 10, 12 ), PoolIntArray( 10, 14, 12 ), PoolIntArray( 9, 11, 13 ), PoolIntArray( 11, 15, 13 ), PoolIntArray( 16, 18, 20 ), PoolIntArray( 18, 22, 20 ), PoolIntArray( 17, 19, 21 ), PoolIntArray( 19, 23, 21 ) ]
+sample_partition_type/sample_partition_type = 0
+cell/size = 0.3
+cell/height = 0.2
+agent/height = 2.0
+agent/radius = 0.6
+agent/max_climb = 0.9
+agent/max_slope = 45.0
+region/min_size = 8.0
+region/merge_size = 20.0
+edge/max_length = 12.0
+edge/max_error = 1.3
+polygon/verts_per_poly = 6.0
+detail/sample_distance = 6.0
+detail/sample_max_error = 1.0
+filter/low_hanging_obstacles = false
+filter/ledge_spans = false
+filter/filter_walkable_low_height_spans = false
+_sections_unfolded = [ "Resource", "cell", "sample_partition_type" ]
+
+[sub_resource type="CubeMesh" id=5]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+size = Vector3( 2, 2, 2 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
+
+[sub_resource type="BoxShape" id=6]
+
+extents = Vector3( 1, 0.904246, 1 )
+
+[sub_resource type="Environment" id=7]
+
+background_mode = 2
+background_sky = ExtResource( 6 )
+background_sky_custom_fov = 0.0
+background_color = Color( 0, 0, 0, 1 )
+background_energy = 0.5
+background_canvas_max_layer = 0
+ambient_light_color = Color( 0, 0, 0, 1 )
+ambient_light_energy = 1.0
+ambient_light_sky_contribution = 1.0
+fog_enabled = false
+fog_color = Color( 0.5, 0.6, 0.7, 1 )
+fog_sun_color = Color( 1, 0.9, 0.7, 1 )
+fog_sun_amount = 0.0
+fog_depth_enabled = true
+fog_depth_begin = 10.0
+fog_depth_curve = 1.0
+fog_transmit_enabled = false
+fog_transmit_curve = 1.0
+fog_height_enabled = false
+fog_height_min = 0.0
+fog_height_max = 100.0
+fog_height_curve = 1.0
+tonemap_mode = 0
+tonemap_exposure = 1.0
+tonemap_white = 1.0
+auto_exposure_enabled = false
+auto_exposure_scale = 0.4
+auto_exposure_min_luma = 0.05
+auto_exposure_max_luma = 8.0
+auto_exposure_speed = 0.5
+ss_reflections_enabled = false
+ss_reflections_max_steps = 64
+ss_reflections_fade_in = 0.15
+ss_reflections_fade_out = 2.0
+ss_reflections_depth_tolerance = 0.2
+ss_reflections_roughness = true
+ssao_enabled = false
+ssao_radius = 1.0
+ssao_intensity = 1.0
+ssao_radius2 = 0.0
+ssao_intensity2 = 1.0
+ssao_bias = 0.01
+ssao_light_affect = 0.0
+ssao_color = Color( 0, 0, 0, 1 )
+ssao_quality = 0
+ssao_blur = 3
+ssao_edge_sharpness = 4.0
+dof_blur_far_enabled = false
+dof_blur_far_distance = 10.0
+dof_blur_far_transition = 5.0
+dof_blur_far_amount = 0.1
+dof_blur_far_quality = 1
+dof_blur_near_enabled = false
+dof_blur_near_distance = 2.0
+dof_blur_near_transition = 1.0
+dof_blur_near_amount = 0.1
+dof_blur_near_quality = 1
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = false
+glow_levels/3 = true
+glow_levels/4 = false
+glow_levels/5 = true
+glow_levels/6 = false
+glow_levels/7 = true
+glow_intensity = 0.03
+glow_strength = 1.0
+glow_bloom = 0.0
+glow_blend_mode = 0
+glow_hdr_threshold = 1.0
+glow_hdr_scale = 2.0
+glow_bicubic_upscale = false
+adjustment_enabled = false
+adjustment_brightness = 1.0
+adjustment_contrast = 1.0
+adjustment_saturation = 1.0
+_sections_unfolded = [ "Background", "Glow", "Glow/levels" ]
+
+[sub_resource type="Curve3D" id=8]
+
+bake_interval = 0.2
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 10.3136, -0.696384, 10.5949, 0, 0, 0, 0, 0, 0, 26.8911, -4.45673, 23.6629, 0, 0, 0, 0, 0, 0, 29.114, -16.1033, 8.70062, 0, 0, 0, 0, 0, 0, 11.341, -15.79, -10.8873, 0, 0, 0, 0, 0, 0, -5.47615, -3.0466, -10.7503, 0, 0, 0, 0, 0, 0, 10.3136, -0.696384, 10.5949, 0, 0, 0, 0, 0, 0, 10.3136, -0.696384, 10.5949 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="MeshInstance" type="Navigation" index="0"]
+
+up_vector = Vector3( 0, 1, 0 )
+_sections_unfolded = [ "material" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="0"]
+
+transform = Transform( 37.3538, 0, 0, 0, 0.348547, 0, 0, 0, 37.5382, 0, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = SubResource( 2 )
+_sections_unfolded = [ "material" ]
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance" index="0"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody" index="0"]
+
+shape = SubResource( 3 )
+disabled = false
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="MeshInstance" index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.397214, 0 )
+navmesh = SubResource( 4 )
+enabled = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="MeshInstance2" type="MeshInstance" parent="." index="1"]
+
+transform = Transform( 0.375931, 0, 0, 0, 2, 0, 0, 0, 11.8873, 23.5376, 2.1761, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = SubResource( 2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance2" index="0"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance2/StaticBody" index="0"]
+
+shape = SubResource( 3 )
+disabled = false
+
+[node name="MeshInstance3" type="MeshInstance" parent="." index="2"]
+
+transform = Transform( 0.375931, 0, 0, 0, 15.3079, 0, 0, 0, 37.2526, -34.8314, 2.1761, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = SubResource( 2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance3" index="0"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance3/StaticBody" index="0"]
+
+shape = SubResource( 3 )
+disabled = false
+
+[node name="MeshInstance4" type="MeshInstance" parent="." index="3"]
+
+transform = Transform( 0.375931, 0, 0, 0, 0.761397, 0, 0, 0, 37.2526, 11.5108, 0.648801, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = SubResource( 2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance4" index="0"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance4/StaticBody" index="0"]
+
+shape = SubResource( 6 )
+disabled = false
+
+[node name="Player" parent="." index="4" groups=[
+"Player",
+] instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.211123, 0.753739, 13.2971 )
+_sections_unfolded = [ "Collision", "Transform" ]
+AllowChangeCamera = true
+thRDPersCamera = true
+TopDownCamera = true
+
+[node name="HUD" parent="Player" index="6" instance=ExtResource( 3 )]
+
+[node name="WorkStation" parent="." index="5" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.2369, 0.231243, 10.1623 )
+
+[node name="NPCS" type="Spatial" parent="." index="6"]
+
+[node name="Pfhor" parent="NPCS" index="0" groups=[
+"AI",
+] instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9888, -0.5745, -6.04143 )
+collision_layer = 3
+_sections_unfolded = [ "Collision", "Transform" ]
+AstarPath = NodePath("../../AStarPath")
+Navmesh = NodePath("../..")
+Team = 2
+is_worker = true
+NavMeshMovement = false
+smellarea = 2000.0
+heararea = 15.0
+hearing_precision = 0.1
+smelling_precision = 0.1
+can_hear_workstations = false
+can_smell_workstations = true
+flies = true
+turn_speed = 1
+
+[node name="Pfhor4" parent="NPCS" index="1" groups=[
+"AI",
+] instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9888, -0.5745, -1.27144 )
+collision_layer = 3
+_sections_unfolded = [ "Collision", "Transform" ]
+AstarPath = NodePath("../../AStarPath")
+Navmesh = NodePath("../..")
+Team = 2
+is_worker = true
+NavMeshMovement = false
+smellarea = 2000.0
+heararea = 15.0
+hearing_precision = 0.1
+smelling_precision = 0.1
+can_hear_workstations = false
+can_smell_workstations = true
+flies = true
+turn_speed = 1
+
+[node name="Pfhor2" parent="NPCS" index="2" groups=[
+"AI",
+] instance=ExtResource( 5 )]
+
+transform = Transform( -0.987426, 0, 0.158084, 0, 1, 0, -0.158084, 0, -0.987426, 6.01161, -0.5745, -1.27144 )
+collision_layer = 3
+_sections_unfolded = [ "Collision", "Transform" ]
+AstarPath = NodePath("../../AStarPath")
+Navmesh = NodePath("../..")
+is_worker = true
+NavMeshMovement = false
+smellarea = 2000.0
+heararea = 15.0
+hearing_precision = 0.1
+smelling_precision = 0.1
+can_hear_workstations = false
+can_smell_workstations = true
+flies = true
+turn_speed = 1
+
+[node name="Pfhor3" parent="NPCS" index="3" groups=[
+"AI",
+] instance=ExtResource( 5 )]
+
+transform = Transform( -0.987426, 0, 0.158084, 0, 1, 0, -0.158084, 0, -0.987426, 6.01161, -0.5745, -9.21707 )
+collision_layer = 3
+_sections_unfolded = [ "Collision", "Transform" ]
+AstarPath = NodePath("../../AStarPath")
+Navmesh = NodePath("../..")
+is_worker = true
+NavMeshMovement = false
+smellarea = 2000.0
+heararea = 15.0
+hearing_precision = 0.1
+smelling_precision = 0.1
+can_hear_workstations = false
+can_smell_workstations = true
+flies = true
+turn_speed = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="7"]
+
+environment = SubResource( 7 )
+
+[node name="AStarPath" type="Path" parent="." index="8"]
+
+curve = SubResource( 8 )
+script = ExtResource( 7 )
+__meta__ = {
+"_editor_icon": ExtResource( 8 )
+}
+
+

@@ -1,0 +1,77 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://BaseGD/materiales/texturas/512_anaranjado.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : hint_color;
+uniform sampler2D texture_albedo : hint_albedo;
+uniform float specular;
+uniform float metallic;
+uniform float roughness : hint_range(0,1);
+uniform float point_size : hint_range(0,128);
+uniform sampler2D texture_metallic : hint_white;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_white;
+uniform vec4 roughness_texture_channel;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+uniform vec4 color;
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	
+	
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	float delta = 0.015*TIME;
+
+vec2 image = vec2(258,258);
+float w = image.x;
+float h = image.y;
+float power = sin((delta*0.1));
+float offset = tan(float(int(-w/2.0)*int(mod((float(power)-1.0),2.0))));
+float f1 = tan(float(sin(delta*-5.0+sqrt(pow(base_uv.x+offset,power)+pow(base_uv.y,power)))));
+float b = cos(float(f1*0.4-0.4*1.2));
+float f2 = float(sin(delta*-4.0+sqrt(pow(base_uv.x+offset,power)+pow(base_uv.y,power))))+b;
+float r = sin(float(f1-f2+b));
+float g = sin(float(r*(0.4+0.1*sin(2.0*base_uv.x+base_uv.y)/w+delta*8.0)));
+
+vec4 albedo_tex = vec4(r,g,b,1);
+ALBEDO = albedo_tex.rgb;
+ }
+"
+
+[resource]
+
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 0.0
+shader_param/point_size = 1.0
+shader_param/metallic_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/roughness_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 9, 9, 9 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/color = null
+shader_param/texture_albedo = ExtResource( 1 )
+_sections_unfolded = [ "shader_param" ]
+

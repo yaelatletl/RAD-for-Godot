@@ -1,0 +1,134 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://BaseGD/materiales/test_material_anaranjado.material" type="Material" id=1]
+[ext_resource path="res://BaseGD/test.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BaseShapes/PfhorPrueba.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/WorldManagement/AStar_Path.gd" type="Script" id=4]
+[ext_resource path="res://addons/WorldManagement/icon.png" type="Texture" id=5]
+
+[sub_resource type="PlaneMesh" id=1]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+size = Vector2( 2, 2 )
+subdivide_width = 0
+subdivide_depth = 0
+
+[sub_resource type="BoxShape" id=2]
+
+extents = Vector3( 1, 0.134214, 1 )
+
+[sub_resource type="Curve3D" id=3]
+
+bake_interval = 0.2
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 3.73972, 0.538243, -0.776933, 0, 0, 0, 0, 0, 0, 8.14602, -0.749625, 0.456423, 0, 0, 0, 0, 0, 0, 11.5284, -2.27897, 2.00771, 0, 0, 0, 0, 0, 0, 9.57668, -13.5833, 14.7369, 0, 0, 0, 0, 0, 0, -11.2914, -10.1702, 11.8989, 0, 0, 0, 0, 0, 0, -17.4229, -4.83053, 6.21656, 0, 0, 0, 0, 0, 0, -12.4198, -1.19732, 1.92039, 0, 0, 0, 0, 0, 0, -6.89514, 0.344034, -0.0616112, 0, 0, 0, 0, 0, 0, 3.73972, 0.538243, -0.776933 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="NavigationMesh" id=4]
+
+vertices = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 1, 3, 2 ) ]
+sample_partition_type/sample_partition_type = 0
+cell/size = 0.3
+cell/height = 0.2
+agent/height = 2.0
+agent/radius = 0.6
+agent/max_climb = 0.9
+agent/max_slope = 45.0
+region/min_size = 8.0
+region/merge_size = 20.0
+edge/max_length = 12.0
+edge/max_error = 1.3
+polygon/verts_per_poly = 6.0
+detail/sample_distance = 6.0
+detail/sample_max_error = 1.0
+filter/low_hanging_obstacles = false
+filter/ledge_spans = false
+filter/filter_walkable_low_height_spans = false
+
+[node name="Spatial" type="Navigation" index="0"]
+
+up_vector = Vector3( 0, 1, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="0"]
+
+transform = Transform( 83.27, 0, 0, 0, 83.27, 0, 0, 0, 83.27, 0, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 1 )
+_sections_unfolded = [ "material" ]
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance" index="0"]
+
+input_ray_pickable = true
+input_capture_on_drag = false
+collision_layer = 1
+collision_mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.201706, 0 )
+shape = SubResource( 2 )
+disabled = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Spatial" type="Spatial" parent="." index="1"]
+
+[node name="GridMap" parent="Spatial" index="0" instance=ExtResource( 2 )]
+
+data = {
+"cells": PoolIntArray( 0, 2, 537526275, 1, 2, 655363, 2, 2, 655363, 3, 2, 524291, 65532, 2, 655363, 65533, 2, 655363, 65534, 2, 655363, 65535, 2, 655363, 0, 65534, 3, 1, 65534, 3, 2, 65534, -1610612733, 3, 65534, -2147483645, 65529, 65534, 3, 65530, 65534, 3, 65531, 65534, 3, 65532, 65534, 3, 65533, 65534, 3, 65534, 65534, 3, 65535, 65534, 3 )
+}
+
+[node name="Pfhor" parent="Spatial" index="1" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.10744, 0, 1.05865 )
+AstarPath = NodePath("../../AStarPath")
+
+[node name="AStarPath" type="Path" parent="." index="2"]
+
+transform = Transform( 1, 0, 0, 0, 0.783964, 0.620806, 0, -0.620806, 0.783964, 0, 2.19655, 12.3544 )
+curve = SubResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0488, 0.942408 )
+layers = 1
+update_mode = 0
+intensity = 1.0
+max_distance = 0.0
+extents = Vector3( 3.97024, 2.07363, 3.59136 )
+origin_offset = Vector3( 0, 0.517578, 0 )
+box_projection = true
+enable_shadows = false
+cull_mask = 1048575
+interior_enable = false
+interior_ambient_color = Color( 0, 0, 0, 1 )
+interior_ambient_energy = 1.0
+interior_ambient_contrib = 0.0
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="." index="4"]
+
+transform = Transform( 83.27, 0, 0, 0, 83.27, 0, 0, 0, 83.27, 0, 0, 0 )
+navmesh = SubResource( 4 )
+enabled = true
+
+

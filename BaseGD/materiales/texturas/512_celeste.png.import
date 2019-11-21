@@ -8,10 +8,7 @@ path.etc2="res://.import/512_celeste.png-1134e2e9b7d16796681445d5f2578de9.etc2.s
 [deps]
 
 source_file="res://BaseGD/materiales/texturas/512_celeste.png"
-source_md5="6e8397bccf34c55b903786faeedf5eec"
-
 dest_files=[ "res://.import/512_celeste.png-1134e2e9b7d16796681445d5f2578de9.s3tc.stex", "res://.import/512_celeste.png-1134e2e9b7d16796681445d5f2578de9.etc2.stex" ]
-dest_md5="1bb0e91c9ae9bba22a49ef9959c33a67"
 
 [params]
 
